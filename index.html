@@ -793,6 +793,139 @@ label .pw{display:flex;align-items:stretch}
 .stats .st b{font-size:clamp(14px,2.6vw,16px);font-weight:700}
 .stats .st span{font-size:12px}
 @media (max-width:640px){.rodape{margin-top:28px}.stats .si{width:28px;height:28px}.stats .si svg{width:16px;height:16px}.stats li{padding:8px;gap:8px}}
+
+/* ===== correções: tema claro, botões do topo alinhados, rankings ===== */
+:root[data-theme="light"] .hubnav .tema{background:#0B141A;color:#fff;border-color:#0B141A}
+:root[data-theme="light"] .hubnav .acct:not(.go){background:#0B141A;color:#fff;border-color:#0B141A}
+:root[data-theme="light"] .hubnav .tabs2{background:#E6EDF1}
+:root[data-theme="light"] .hubnav .tabs2 button{color:#1B2A33}
+:root[data-theme="light"] .hubnav .tabs2 button:hover{background:#D5E0E6}
+:root[data-theme="light"] .stats li{background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.3)}
+.hero .ctas{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:520px}
+.hero .ctas .btn{width:100%;justify-content:center;text-align:center;padding-left:8px;padding-right:8px;min-height:48px;white-space:nowrap}
+.hero .btn-ghost.on-dark{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.45);color:#fff}
+.hero .btn-ghost.on-dark:hover{background:rgba(255,255,255,.2)}
+.kicker{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--faixa);position:relative;padding-left:22px}
+.kicker::before{content:"";position:absolute;left:0;top:50%;width:14px;height:3px;margin-top:-1.5px;background:var(--faixa);transform:skewX(-30deg)}
+.rk-head h1{margin:4px 0 0;font-family:"Ubuntu",sans-serif;font-size:clamp(28px,5vw,40px);line-height:1.1}
+.rk-tabs{margin:6px 0 14px}.rk-src{margin:6px 0 12px;font-size:14px}
+.rk li .nm b{white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.2}
+.rk li .nm .mut{white-space:normal;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.rk .pos{display:inline-grid;place-items:center;min-width:34px;height:26px;padding:0 6px;font-style:italic;font-weight:800;font-size:14px;color:var(--muted);transform:skewX(-12deg);background:var(--surface);border-radius:4px}
+.rk .pos.p1{background:var(--faixa);color:#000}.rk .pos.p2{background:#C9D3D9;color:#000}.rk .pos.p3{background:#E0A36F;color:#000}
+.rk .bar{display:block;height:6px;border-radius:3px;background:var(--surface);overflow:hidden;min-width:60px}
+.rk .bar i{display:block;height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--ciano),var(--faixa));transition:width .9s cubic-bezier(.2,.7,.2,1)}
+.rk li.in .bar i{width:var(--w,100%)}
+.dc .rk .bar{display:none}
+
+/* ===== tela inicial minimalista + movimento ===== */
+.rk .bar i{width:var(--w,100%)}
+.rvon .rk .bar i{width:0}.rvon .rk li.in .bar i{width:var(--w,100%)}
+.rvon .rv{opacity:0;transform:translateY(16px);transition:opacity .7s ease var(--d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.rvon .rv.in{opacity:1;transform:none}
+.rvon .rk li.rv{transition:opacity .6s ease var(--d,0ms),transform .6s cubic-bezier(.2,.7,.2,1) var(--d,0ms)}
+.hero.compact{padding:34px 0 64px;overflow:hidden}
+.hero .hv{transform:scale(1.08);will-change:transform}
+.hero-in{will-change:transform,opacity}
+.kicker.on-dark{color:#fff}.kicker.on-dark::before{background:var(--faixa)}
+.hero .gauge{position:absolute;right:max(-30px,calc(50% - 560px));top:14px;width:min(300px,52vw);color:#fff;opacity:.2;z-index:0;pointer-events:none}
+.gauge .needle{transform-origin:110px 110px;animation:sway 7s ease-in-out infinite alternate}
+@keyframes sway{from{transform:rotate(-58deg)}to{transform:rotate(38deg)}}
+.hero .fontes{display:flex;flex-wrap:wrap;gap:6px 18px;margin:18px 0 0;padding:0;color:#C7D0D7;font-size:13px;letter-spacing:.04em}
+.hero .fontes span{display:inline-flex;align-items:center;gap:6px}.hero .fontes svg{width:15px;height:15px;color:var(--ciano)}
+.hero h1{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}.hero .slogan{animation:rise .9s .1s cubic-bezier(.2,.7,.2,1) both}.hero .ctas{animation:rise .9s .2s cubic-bezier(.2,.7,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.hubnav{transition:box-shadow .3s}.hubnav.scrolled{box-shadow:0 6px 24px rgba(0,0,0,.14)}
+.dash-wrap{margin-top:0}
+.hm{padding-top:8px}
+.hm-sec{margin:54px 0 0}
+.hm-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:14px}
+.hm-head h2{margin:4px 0 0;font-family:"Ubuntu",sans-serif;font-size:clamp(24px,4vw,32px);line-height:1.15}
+.hm .lk{background:none;border:0;color:var(--ciano-ink);font:inherit;font-weight:800;cursor:pointer;padding:6px 0;white-space:nowrap}
+.hm .lk:hover{text-decoration:underline}
+.seg-tabs{display:inline-flex;background:var(--surface);border-radius:999px;padding:4px;margin-bottom:10px;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.seg-tabs::-webkit-scrollbar{display:none}
+.seg-tabs button{border:0;background:none;color:var(--muted);font:inherit;font-weight:700;font-size:14px;padding:9px 16px;border-radius:999px;cursor:pointer;white-space:nowrap;transition:background .25s,color .25s}
+.seg-tabs button[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.hm .rk.big{margin:0}.hm .rk li{padding:12px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none;display:grid;grid-template-columns:40px 56px minmax(0,1.2fr) minmax(70px,1fr) auto;align-items:center;gap:12px}
+.hm .rk li:last-child{border-bottom:0}
+.hm .rk .vl{font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.hm .rk .nm{display:flex;flex-direction:column;min-width:0}.hm .rk svg.mini,.hm .rk .mini{width:56px;height:auto}
+.hscroll{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px max(2px,0px) 14px;margin:0;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+.tcx,.bcx{flex:0 0 clamp(210px,62vw,260px);scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;color:inherit;font:inherit;min-height:170px;transition:transform .3s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .3s}
+.tcx:hover,.bcx:hover{transform:translateY(-6px);border-color:var(--gc,var(--faixa));box-shadow:0 18px 36px rgba(0,0,0,.1)}
+.tcx .ti{width:42px;height:42px;border-radius:12px;background:var(--gc,var(--faixa));color:#000;display:grid;place-items:center}.tcx .ti svg{width:23px;height:23px}
+.tcx b,.bcx b{font-family:"Ubuntu",sans-serif;font-size:18px;line-height:1.2}
+.tcx span:last-child{font-size:13.5px;color:var(--muted);line-height:1.4}
+.bcx{background:var(--surface);border-color:transparent}.bcx .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faixa)}.bcx .m{margin-top:auto;font-size:12.5px;color:var(--muted)}
+.care{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+.ca{display:flex;align-items:center;gap:14px;text-align:left;background:none;border:0;border-bottom:1px solid var(--line);padding:16px 2px;cursor:pointer;color:inherit;font:inherit;transition:padding .25s}
+.ca:hover{padding-left:10px}
+.ca .ci{flex:none;width:38px;height:38px;border-radius:50%;background:var(--placa-soft);color:var(--ciano-ink);display:grid;place-items:center}.ca .ci svg{width:19px;height:19px}
+.ca .ct{display:flex;flex-direction:column;flex:1;min-width:0}.ca .ct b{font-family:"Ubuntu",sans-serif;font-size:17px}.ca .ct span{font-size:13.5px;color:var(--muted)}
+.ca i{font-style:normal;font-size:24px;color:var(--muted);transition:transform .25s}.ca:hover i{transform:translateX(4px)}
+.fp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.fpi{display:flex;flex-direction:column;gap:8px;text-align:left;background:var(--bg);border:1px solid var(--line);border-radius:18px;padding:18px;cursor:pointer;color:inherit;font:inherit;min-height:130px;transition:transform .3s,border-color .3s}
+.fpi:hover{transform:translateY(-4px);border-color:var(--ciano)}
+.fpi .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--ciano-ink)}.fpi b{font-family:"Ubuntu",sans-serif;font-size:17px;line-height:1.25}.fpi .m{margin-top:auto;font-size:12.5px;color:var(--muted);display:flex;gap:6px;align-items:center}.fpi .m svg{width:14px;height:14px}
+.banner{margin:58px 0 0;background:#000;color:#fff;border-radius:24px;padding:clamp(22px,4vw,40px);display:flex;align-items:center;justify-content:space-between;gap:20px;position:relative;overflow:hidden}
+.banner::after{content:"";position:absolute;right:-60px;top:-60px;width:260px;height:260px;border-radius:50%;background:radial-gradient(circle,rgba(0,188,212,.35),transparent 68%);pointer-events:none}
+.banner h2{margin:6px 0 4px;font-family:"Ubuntu",sans-serif;font-size:clamp(24px,4vw,34px)}.banner p{margin:0;color:#C7D0D7;max-width:46ch}
+.banner .btn{flex:none;position:relative;z-index:1}
+@media (max-width:760px){
+  .hero .gauge{width:46vw;right:-8vw;top:6px;opacity:.16}
+  .care{grid-template-columns:1fr}.fp{grid-template-columns:1fr}
+  .hm .rk li{grid-template-columns:34px minmax(0,1fr) auto;gap:10px}.hm .rk li .mini,.hm .rk li svg.mini{display:none}.hm .rk .bar{display:none}
+  .hm-sec{margin-top:40px}.banner{flex-direction:column;align-items:flex-start;margin-top:44px}.banner .btn{width:100%}
+  .hscroll{margin:0 -16px;padding-left:16px;padding-right:16px}
+}
+@media (prefers-reduced-motion:reduce){.gauge .needle,.hero h1,.hero .slogan,.hero .ctas{animation:none}.hero .hv{transform:none}}
+
+/* ===== perfil estilo rede social ===== */
+.hubnav .tema{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;height:38px;line-height:1}
+.ig{max-width:760px}
+.ig-head{display:flex;align-items:center;gap:22px;padding:22px 0 8px}
+.ring{flex:none;padding:3px;border-radius:50%;background:conic-gradient(from 210deg,var(--faixa),var(--ciano),var(--faixa));display:inline-grid;animation:spinring 14s linear infinite}
+.ring .av{border:3px solid var(--bg)}
+@keyframes spinring{to{transform:rotate(360deg)}}.ring .av{animation:spinring 14s linear infinite reverse}
+.ig-main{flex:1;min-width:0}.ig-top h1{margin:0;font-size:24px;line-height:1.15;overflow-wrap:anywhere}
+.ig-st{list-style:none;display:flex;gap:22px;margin:10px 0 0;padding:0}.ig-st li{display:flex;flex-direction:column;font-size:13px;color:var(--muted)}.ig-st b{font-size:20px;color:var(--ink);font-family:"Ubuntu",sans-serif}
+.perfil.ig .bio{margin:8px 0 0}
+.ig-meta{display:flex;flex-wrap:wrap;gap:6px 16px;margin:8px 0 0;color:var(--muted);font-size:14px}.ig-meta span{display:inline-flex;gap:6px;align-items:center}.ig-meta svg{width:16px;height:16px}
+.ig-acts{display:flex;gap:8px;margin:14px 0}.ig-acts .btn{flex:1}
+.ig-dest{display:flex;gap:16px;overflow-x:auto;padding:8px 2px 14px;scrollbar-width:none}.ig-dest::-webkit-scrollbar{display:none}
+.dst{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:inherit;font:inherit;font-size:12.5px;position:relative;width:74px}
+.dst .dc{width:64px;height:64px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;overflow:hidden;background:var(--surface);color:var(--muted);transition:border-color .25s,transform .25s}.dst:hover .dc{border-color:var(--faixa);transform:scale(1.05)}
+.dst .dc img{width:100%;height:100%;object-fit:cover}.dst .dc svg{width:26px;height:26px}.dst i{position:absolute;top:-2px;right:6px;font-style:normal;font-size:11px;font-weight:800;background:var(--faixa);color:#000;border-radius:999px;min-width:19px;height:19px;display:grid;place-items:center;padding:0 5px}
+.ig-tabs{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);margin-top:2px}
+.ig-tabs button{display:flex;align-items:center;justify-content:center;gap:8px;background:none;border:0;border-top:2px solid transparent;margin-top:-1px;padding:12px 4px;font:inherit;font-weight:700;font-size:13px;color:var(--muted);cursor:pointer;transition:color .2s,border-color .2s}
+.ig-tabs button svg{width:19px;height:19px}.ig-tabs button[aria-pressed="true"]{color:var(--ink);border-top-color:var(--ink)}
+.ig-body{padding-top:14px}
+.tgrid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px}
+.tile{position:relative;aspect-ratio:1;padding:0;border:0;overflow:hidden;cursor:pointer;background:var(--surface)}
+.tile img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(.2,.7,.2,1)}.tile:hover img{transform:scale(1.07)}
+.tile .ov{position:absolute;inset:auto 0 0;padding:22px 8px 8px;background:linear-gradient(transparent,rgba(0,0,0,.72));color:#fff;text-align:left;display:flex;flex-direction:column;opacity:0;transition:opacity .3s}
+.tile:hover .ov,.tile:focus-visible .ov{opacity:1}.tile .ov b{font-size:12.5px;line-height:1.2}.tile .ov i{font-style:normal;font-size:11px;opacity:.85}
+.gc .gph{flex:none;width:76px;height:76px;border-radius:12px;overflow:hidden;padding:0;border:0;background:var(--surface);display:grid;place-items:center;cursor:pointer}.gc .gph img{width:100%;height:100%;object-fit:cover}.gc .gph.sil{cursor:default}.gc .gph.sil svg{width:60px;height:auto}
+.gc{align-items:center}.gc>div{flex:1}
+.lightbox .lbimg{width:100%;max-height:68vh;object-fit:contain;border-radius:12px;background:#000;margin-top:8px}
+@media (max-width:560px){.ig-head{gap:16px}.ig-top h1{font-size:21px}.ig-st{gap:16px}}
+
+/* feed estilo rede social + fotos */
+.stories{display:flex;gap:14px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:none}.stories::-webkit-scrollbar{display:none}
+.st{flex:none;display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:inherit;font:inherit;font-size:12px;width:66px}
+.st>span:last-child{max-width:66px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sr1{position:relative;display:inline-grid;place-items:center;padding:2.5px;border-radius:50%;background:var(--line)}.sr1.ring2{background:conic-gradient(var(--faixa),var(--ciano),var(--faixa))}
+.sr1 .av{border:2.5px solid var(--bg)}.sr1.mais{width:63px;height:63px;color:var(--muted);background:var(--surface);border:2px dashed var(--line)}.sr1.mais svg{width:22px;height:22px}
+.st.me .sr1 i{position:absolute;right:-2px;bottom:-2px;width:22px;height:22px;border-radius:50%;background:var(--faixa);color:#000;font-style:normal;font-weight:800;display:grid;place-items:center;border:2px solid var(--bg);font-size:15px;line-height:1}
+.fc .fh{display:flex;margin:-2px 0 10px}.fc .fh .lkp,.fc .fh>*{align-items:center}.fc .fh{align-items:center;gap:10px}
+.fc .fh .lkp{display:flex;gap:10px;text-align:left}.fh .an{display:flex;flex-direction:column;line-height:1.2}.fh .an b{font-size:14.5px}.fh .an .mut{font-size:12px}
+.fph{display:block;width:calc(100% + 0px);max-height:70vh;object-fit:cover;border-radius:14px;margin:0 0 12px;background:var(--surface)}
+.fotobox{display:flex;flex-direction:column;gap:8px;align-items:flex-start}.fotobox img{width:100%;max-height:260px;object-fit:cover;border-radius:12px}.fotobox .btn svg{width:18px;height:18px;margin-right:6px}
+
+.fh .an{align-items:flex-start;text-align:left}.fh .an b,.fh .an .mut{text-align:left}
+.fc .fh .av{flex:none}
 </style>
 </head>
 <body>
@@ -2448,6 +2581,7 @@ const idadeDe=(nasc,hoje=new Date())=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(
 const proxTrocaUsuario=(alt,agora=Date.now())=>{if(!alt)return null;const t=new Date(alt).getTime()+30*864e5;return t>agora?new Date(t):null};
 const usuarioOk=u=>/^[a-z0-9_]{3,20}$/.test(String(u||''));
 const RESERVADOS=['admin','administrador','possantmatch','suporte','moderacao','moderador','mscarros','oficial','root','sistema','equipe'];
+const fotoGrandeOk=f=>f===''||f==null||(typeof f==='string'&&f.length<=180000&&/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(f));
 const fotoOk=f=>f===''||(typeof f==='string'&&f.length<=70000&&/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(f));
 
 /* ---------- Servidor real (Supabase: Auth + REST), só com fetch ---------- */
@@ -2518,8 +2652,8 @@ const Real={
     try{admin=(await this.rpc('sou_admin'))===true}catch(e){}
     try{const m=await this.rest('GET','membros?select=nome,usuario,usuario_alterado,bio,carro,cidade,uf,mostrar_cidade,mostrar_idade,foto&uid=eq.'+encodeURIComponent(this.sess.uid)+'&limit=1');p=(m&&m[0])||{}}catch(e){}
     return {uid:this.sess.uid,email:this.sess.email,admin,nome:p.nome||'',usuario:p.usuario||'',usuarioAlterado:p.usuario_alterado||null,bio:p.bio||'',carro:p.carro||'',cidade:p.cidade||'',uf:p.uf||'',mostrarCidade:!!p.mostrar_cidade,mostrarIdade:!!p.mostrar_idade,foto:p.foto||''}},
-  async garagem(uid){return (await this.rest('GET','garagem?select=id,tipo,carro,apelido,ano,nota&uid=eq.'+encodeURIComponent(uid)+'&order=criado.desc&limit=60'))||[]},
-  addGaragem(o){return this.rest('POST','garagem',{uid:this.sess.uid,tipo:o.tipo,carro:String(o.carro||'').trim(),apelido:String(o.apelido||'').trim(),ano:o.ano||null,nota:String(o.nota||'').trim()},'return=minimal')},
+  async garagem(uid){return (await this.rest('GET','garagem?select=id,tipo,carro,apelido,ano,nota,foto&uid=eq.'+encodeURIComponent(uid)+'&order=criado.desc&limit=60'))||[]},
+  addGaragem(o){return this.rest('POST','garagem',{uid:this.sess.uid,tipo:o.tipo,carro:String(o.carro||'').trim(),apelido:String(o.apelido||'').trim(),ano:o.ano||null,nota:String(o.nota||'').trim(),foto:o.foto||''},'return=minimal')},
   delGaragem(id){return this.rest('DELETE','garagem?id=eq.'+encodeURIComponent(id))},
   async bloqueados(){const a=await this.rest('GET','bloqueios?select=bloqueado&quem=eq.'+this.sess.uid);return new Set((a||[]).map(x=>x.bloqueado))},
   async bloquear(uid,on){if(on)await this.rest('POST','bloqueios',{quem:this.sess.uid,bloqueado:uid},'return=minimal');else await this.rest('DELETE','bloqueios?quem=eq.'+this.sess.uid+'&bloqueado=eq.'+encodeURIComponent(uid))},
@@ -2538,7 +2672,7 @@ const Real={
   async segs(){const a=(await this.rest('GET','seguidores?select=seguidor,seguido&limit=5000'))||[],eu=this.sess.uid;return {sigo:new Set(a.filter(x=>x.seguidor===eu).map(x=>x.seguido)),meSegue:new Set(a.filter(x=>x.seguido===eu).map(x=>x.seguidor))}},
   semearForum(){return this.rpc('semear_forum')},
   async seguir(uid,on){if(on)await this.rest('POST','seguidores',{seguidor:this.sess.uid,seguido:uid},'return=minimal');else await this.rest('DELETE','seguidores?seguidor=eq.'+this.sess.uid+'&seguido=eq.'+encodeURIComponent(uid))},
-  postsDe(uid){return this.rest('GET','posts?select=id,uid,tipo,titulo,texto,opcoes,carros,status,editorial,motivo,criado&uid=eq.'+encodeURIComponent(uid)+'&status=eq.aprovado&order=criado.desc&limit=30')},
+  postsDe(uid){return this.rest('GET','posts?select=id,uid,tipo,titulo,texto,opcoes,carros,status,editorial,motivo,criado,foto&uid=eq.'+encodeURIComponent(uid)+'&status=eq.aprovado&order=criado.desc&limit=30')},
   denunciar(tipo,alvo,motivo){return this.rest('POST','denuncias',{uid:this.sess.uid,tipo,alvo:String(alvo).slice(0,80),motivo:String(motivo||'').slice(0,300)},'return=minimal')},
   denuncias(){return this.rest('GET','denuncias?select=id,uid,tipo,alvo,motivo,criado&order=criado.desc&limit=100')},
   apagarDenuncia(id){return this.rest('DELETE','denuncias?id=eq.'+encodeURIComponent(id))},
@@ -2550,7 +2684,7 @@ const Real={
   delDp(id){return this.rest('DELETE','despesas?id=eq.'+encodeURIComponent(id))},
   setNome(nome){return this.rest('PATCH','membros?uid=eq.'+encodeURIComponent(this.sess.uid),{nome:nomeLimpo(nome)})},
   vitrine(){return this.rest('GET','posts_vitrine?select=id,tipo,titulo,trecho,editorial,criado&order=criado.desc&limit=40')},
-  posts(){return this.rest('GET','posts?select=id,uid,tipo,titulo,texto,opcoes,carros,status,editorial,motivo,criado&order=criado.desc&limit=80')},
+  posts(){return this.rest('GET','posts?select=id,uid,tipo,titulo,texto,opcoes,carros,status,editorial,motivo,criado,foto&order=criado.desc&limit=60')},
   async totais(){
     const [v,c,k,mv,mc]=await Promise.all([
       this.rest('GET','votos_total?select=post_id,opcao,n'),this.rest('GET','curtidas_total?select=post_id,n'),this.rest('GET','comentarios_total?select=post_id,n'),
@@ -2559,7 +2693,7 @@ const Real={
     return {votos,curtidas:Object.fromEntries((c||[]).map(x=>[x.post_id,x.n])),comentarios:Object.fromEntries((k||[]).map(x=>[x.post_id,x.n])),meusVotos:Object.fromEntries((mv||[]).map(x=>[x.post_id,x.opcao])),minhasCurtidas:new Set((mc||[]).map(x=>x.post_id))}},
   async autores(){const a=await this.rest('GET','autores?select=uid,nome');return Object.fromEntries((a||[]).map(x=>[x.uid,x.nome||'']))},
   comentarios(post){return this.rest('GET','comentarios?select=id,uid,texto,criado&post_id=eq.'+encodeURIComponent(post)+'&order=criado.asc&limit=200')},
-  criarPost(p){const b={uid:this.sess.uid,tipo:p.tipo,titulo:p.titulo,texto:p.texto,opcoes:p.opcoes||[],carros:p.carros||[]};if(PM.me&&PM.me.admin){b.status='aprovado';b.editorial=true}return this.rest('POST','posts',b,'return=minimal')},
+  criarPost(p){const b={uid:this.sess.uid,tipo:p.tipo,titulo:p.titulo,texto:p.texto,opcoes:p.opcoes||[],carros:p.carros||[],foto:p.foto||''};if(PM.me&&PM.me.admin){b.status='aprovado';b.editorial=true}return this.rest('POST','posts',b,'return=minimal')},
   votar(post,opcao){return this.rest('POST','votos',{post_id:post,uid:this.sess.uid,opcao},'return=minimal')},
   async curtir(post,on){if(on)await this.rest('POST','curtidas',{post_id:post,uid:this.sess.uid},'return=minimal');else await this.rest('DELETE','curtidas?post_id=eq.'+encodeURIComponent(post)+'&uid=eq.'+this.sess.uid)},
   comentar(post,texto){return this.rest('POST','comentarios',{post_id:post,uid:this.sess.uid,texto},'return=minimal')},
@@ -2629,7 +2763,7 @@ const Demo={
   async garagem(uid){this.need();return (this.st.gars||[]).filter(g=>g.uid===uid).sort((a,b)=>b.criado-a.criado)},
   async addGaragem(o){const u=this.need();this.st.gars=this.st.gars||[];const c=String(o.carro||'').replace(/[\u0000-\u001f<>]/g,'').trim();
     if(!['tenho','tive','proximo','sonho'].includes(o.tipo)||!c||c.length>80||(o.ano&&(o.ano<1950||o.ano>2100))||String(o.apelido||'').length>40||String(o.nota||'').length>200)throw PMErro('generico');
-    if(this.st.gars.filter(g=>g.uid===u.uid).length>=40)throw PMErro('garagem_cheia');this.st.gars.push({id:this.id(),uid:u.uid,tipo:o.tipo,carro:c,apelido:String(o.apelido||'').replace(/[\u0000-\u001f<>]/g,'').trim(),ano:o.ano||null,nota:String(o.nota||'').replace(/[\u0000-\u001f<>]/g,'').trim(),criado:Date.now()});this.gravar()},
+    if(!fotoGrandeOk(o.foto||''))throw PMErro('foto_invalida');if(this.st.gars.filter(g=>g.uid===u.uid).length>=40)throw PMErro('garagem_cheia');this.st.gars.push({id:this.id(),uid:u.uid,foto:o.foto||'',tipo:o.tipo,carro:c,apelido:String(o.apelido||'').replace(/[\u0000-\u001f<>]/g,'').trim(),ano:o.ano||null,nota:String(o.nota||'').replace(/[\u0000-\u001f<>]/g,'').trim(),criado:Date.now()});this.gravar()},
   async delGaragem(id){const u=this.need();this.st.gars=(this.st.gars||[]).filter(g=>!(g.id===id&&g.uid===u.uid));this.gravar()},
   async bloqueados(){const u=this.need();return new Set((this.st.blqs||[]).filter(b=>b.quem===u.uid).map(b=>b.bloqueado))},
   async bloquear(uid,on){const u=this.need();this.st.blqs=this.st.blqs||[];if(uid===u.uid)throw PMErro('generico');const i=this.st.blqs.findIndex(b=>b.quem===u.uid&&b.bloqueado===uid);
@@ -2655,7 +2789,7 @@ const Demo={
   async comentarios(post){this.need();return this.st.coms.filter(c=>c.post===post).sort((a,b)=>a.criado-b.criado).map(c=>({id:c.id,uid:c.uid,texto:c.texto,criado:c.criado}))},
   async criarPost(p){const u=this.need(),adm=u.email===this.admEmail();
     if(this.st.posts.filter(x=>x.uid===u.uid&&Date.now()-x.criado<36e5).length>=5&&!adm)throw PMErro('muitos_posts');
-    this.st.posts.push({id:this.id(),uid:u.uid,tipo:p.tipo,titulo:p.titulo,texto:p.texto,opcoes:p.opcoes||[],carros:p.carros||[],status:adm?'aprovado':'pendente',editorial:adm,motivo:'',criado:Date.now()});this.gravar()},
+    if(!fotoGrandeOk(p.foto||''))throw PMErro('foto_invalida');this.st.posts.push({id:this.id(),uid:u.uid,foto:p.foto||'',tipo:p.tipo,titulo:p.titulo,texto:p.texto,opcoes:p.opcoes||[],carros:p.carros||[],status:adm?'aprovado':'pendente',editorial:adm,motivo:'',criado:Date.now()});this.gravar()},
   async votar(post,o){const u=this.need();const p=this.st.posts.find(x=>x.id===post&&x.status==='aprovado');if(!p||!(p.opcoes||[])[o])throw PMErro('post_indisponivel');
     if(this.st.votos.some(v=>v.post===post&&v.uid===u.uid))throw PMErro('generico');this.st.votos.push({post,uid:u.uid,opcao:o});this.gravar()},
   async curtir(post,on){const u=this.need();const i=this.st.curtidas.findIndex(c=>c.post===post&&c.uid===u.uid);if(on&&i<0)this.st.curtidas.push({post,uid:u.uid});if(!on&&i>=0)this.st.curtidas.splice(i,1);this.gravar()},
@@ -2686,6 +2820,10 @@ const IC={
  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>',
+ feed:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="12" cy="11" r="3.2"/><path d="M6 19c1.2-2.6 3.4-3.8 6-3.8s4.8 1.2 6 3.8"/></svg>',
+ user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.4-4 4.5-6 8-6s6.6 2 8 6"/></svg>',
+ grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
+ camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></svg>',
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>',
  trofeu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/></svg>',
  barras:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
@@ -2693,14 +2831,14 @@ const IC={
  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
  car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l1.6-5A2 2 0 0 1 6.5 8.6h11a2 2 0 0 1 1.9 1.4L21 15v3h-2.2M3 15v3h2.2M3 15h18"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>'
 };
-const NAVTABS=[['home','Início'],['rankings','Rankings'],['vendas','Vendas'],['ferramentas','Ferramentas'],['forum','Fórum'],['discover','Descobrir'],['catalogo','Catálogo']];
+const NAVTABS=[['home','Início'],['rankings','Rankings'],['ferramentas','Ferramentas'],['forum','Feed'],['blog','Blog'],['discover','Descobrir'],['catalogo','Catálogo']];
 function hubnav(cur){
   const b=([k,l])=>`<button data-h="${k}" ${cur===k?'aria-current="page"':''}>${l}</button>`;
   const conta=PM.me?`<button class="acct" data-h="conta" aria-label="Minha conta">${esc(PM.me.nome||PM.me.email.split('@')[0])}</button>`:`<button class="acct go" data-h="entrar">Entrar</button>`;
   const dk=document.documentElement.dataset.theme==='dark';
   const tema=`<button class="tema" data-h="tema" aria-label="${dk?'Mudar para o tema claro':'Mudar para o tema escuro'}" title="${dk?'Tema claro':'Tema escuro'}">${dk?IC.sun:IC.moon}</button>`;
-  const bn=[['home','Início',IC.home],['rankings','Rankings',IC.trofeu],['vendas','Vendas',IC.barras],['ferramentas','Ferramentas',IC.chave],['forum','Fórum',IC.chat]];
-  const bnav=`<nav class="bnav" aria-label="Navegação principal">${bn.map(([k,l,ic])=>`<button data-h="${k}" ${cur===k?'aria-current="page"':''}>${ic}<span>${l}</span></button>`).join('')}</nav>`;
+  const bn=[['home','Início',IC.home],['rankings','Rankings',IC.trofeu],['ferramentas','Ferramentas',IC.chave],['forum','Feed',IC.feed],['meuPerfil','Perfil',IC.user]];
+  const bnav=`<nav class="bnav" aria-label="Navegação principal">${bn.map(([k,l,ic])=>`<button data-h="${k}" ${(cur===k||(k==='meuPerfil'&&cur==='perfil'))?'aria-current="page"':''}>${ic}<span>${l}</span></button>`).join('')}</nav>`;
   return `<header class="hubnav"><div class="in"><button class="brand" data-h="home" aria-label="Início">${PMSVG}<span>Possant<b>Match</b></span></button>${tema}${conta}<nav class="tabs2" aria-label="Seções">${NAVTABS.map(b).join('')}</nav></div></header>${bnav}`;
 }
 const SCREENS={};
@@ -2711,9 +2849,9 @@ function alternaTema(){
   aviso(t==='dark'?'Tema escuro ativado.':'Tema claro ativado.');
   document.querySelectorAll('.tema').forEach(b=>{b.innerHTML=t==='dark'?IC.sun:IC.moon;b.setAttribute('aria-label',t==='dark'?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=t==='dark'?'Tema claro':'Tema escuro'});
 }
-const fsheet=()=>{const el=document.getElementById('fsheet');if(!el)return;el.innerHTML=SH.auth?authSheet():SH.compose?composeSheet():SH.open?replySheet():SH.perfil?perfilSheet():SH.gar?garSheet():SH.den?denSheet():SH.vs?vsDetSheet():SH.conta?contaSheet():'';document.body.classList.toggle('locked',!!(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs));if(SH.auth||SH.compose||SH.perfil||SH.gar||SH.den){const i=el.querySelector&&el.querySelector('input:not([type=hidden]),textarea');if(i)setTimeout(()=>{try{i.focus()}catch(e){}},40)}};
-const SH={auth:null,compose:null,open:null,conta:null,perfil:null,gar:null,den:null,vs:null,volta:null,novo:false};
-const fechaSh=()=>{SH.auth=SH.compose=SH.open=SH.conta=SH.perfil=SH.gar=SH.den=SH.vs=null;SH.novo=false};
+const fsheet=()=>{const el=document.getElementById('fsheet');if(!el)return;el.innerHTML=SH.auth?authSheet():SH.compose?composeSheet():SH.open?replySheet():SH.perfil?perfilSheet():SH.gar?garSheet():SH.den?denSheet():SH.vs?vsDetSheet():SH.ver?verSheet():SH.conta?contaSheet():'';document.body.classList.toggle('locked',!!(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver));if(SH.auth||SH.compose||SH.perfil||SH.gar||SH.den){const i=el.querySelector&&el.querySelector('input:not([type=hidden]),textarea');if(i)setTimeout(()=>{try{i.focus()}catch(e){}},40)}};
+const SH={auth:null,compose:null,open:null,conta:null,perfil:null,gar:null,den:null,vs:null,ver:null,volta:null,novo:false};
+const fechaSh=()=>{SH.auth=SH.compose=SH.open=SH.conta=SH.perfil=SH.gar=SH.den=SH.vs=SH.ver=null;SH.novo=false};
 const aviso=m=>flash(m);
 
 /* ---------- Entrar / Criar conta / Recuperar senha ---------- */
@@ -2811,7 +2949,7 @@ async function enviaAuth(){
 }
 
 /* ---------- Rodapé, privacidade e termos ---------- */
-const FOOT=[['home','Início'],['blog','Blog'],['ferramentas','Ferramentas'],['vendas','Vendas'],['rankings','Rankings'],['catalogo','Catálogo'],['forum','Fórum'],['pessoas','Pessoas'],['discover','Descobrir']];
+const FOOT=[['home','Início'],['rankings','Rankings'],['ferramentas','Ferramentas'],['forum','Feed'],['pessoas','Pessoas'],['blog','Blog'],['catalogo','Catálogo'],['discover','Descobrir']];
 function rodape(){
   return `<footer class="rodape"><div class="in"><div class="rb"><b class="brand-s">${PMSVG}<span>Possant<b>Match</b></span></b><p>Acelere a escolha do seu próximo carro.</p></div>
   <nav aria-label="Rodapé">${FOOT.map(([k,l])=>`<button data-h="${k}">${l}</button>`).join('')}<button data-h="privacidade">Privacidade</button><button data-h="termos">Termos de uso</button><a href="https://www.tiktok.com/@mscarros" target="_blank" rel="noopener noreferrer">TikTok @mscarros</a></nav>
@@ -2923,32 +3061,39 @@ const BLOG=[
 const blogTool={financiamento:['ferramentas','Abrir o simulador'],vistoria:['ferramentas','Abrir o checklist'],etanol:['ferramentas','Abrir a calculadora'],catalogo:['catalogo','Abrir o catálogo']};
 const blogCard=(p,big)=>`<button class="post ${big?'feat':''}" data-h="post" data-id="${p.id}"><span class="k">${p.k}</span><h3>${p.t}</h3><p>${p.lead}</p><span class="m">${p.min} min de leitura</span></button>`;
 
-const tcardMini=([k,t,d,kick,ic],cor)=>`<button class="qk" data-h="tool" data-id="${k}" style="--gc:${cor||'var(--faixa)'}"><span class="ti">${TICON[ic]}</span><b>${t}</b></button>`;
-const dcard=(cls,tit,sub,corpo,rodape)=>`<section class="dc ${cls}"><header><h2>${tit}</h2>${sub?`<p>${sub}</p>`:''}</header>${corpo}<footer>${rodape}</footer></section>`;
+const HM={tab:'vendas'};
+const GAUGE='<svg class="gauge" viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="96" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" opacity=".7"/><path d="M34 160A96 96 0 1 1 186 160" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M150 36A96 96 0 0 1 186 160" fill="none" stroke="var(--faixa)" stroke-width="5" stroke-linecap="round"/><g class="needle"><path d="M110 110L110 38" stroke="var(--faixa)" stroke-width="3" stroke-linecap="round"/><circle cx="110" cy="110" r="8" fill="var(--faixa)"/></g></svg>';
+const vendaLinha=(x,i,mx)=>`<li class="rv"><span class="pos p${Math.min(i+1,4)}">${i+1}</span>${silhouette(SILBODY[x.m.seg]||'hatch',{cor:'var(--faixa)',cls:'mini'})}<span class="nm"><b>${esc(x.m.modelo)}</b><span class="mut">${esc(x.m.marca)}</span></span><span class="bar"><i style="--w:${(x.cur/mx*100).toFixed(1)}%"></i></span><span class="vl" data-n="${x.cur}">${fmtN(x.cur)}</span></li>`;
+function painelRank(){
+  let li='',rot='',link='rankings',kind='vendas';
+  if(HM.tab==='vendas'){const r=vendasConsulta({per:ULT,grupo:'A'}),l=r.l.slice(0,5),mx=l[0]?l[0].cur:1;li=l.map((x,i)=>vendaLinha(x,i,mx)).join('');rot=`Automóveis, ${mesNome(ULT)}. Fonte: Fenabrave.`}
+  else if(HM.tab==='econ'){const l=rankingCat('econ',{n:5})||[],mx=l[0]?l[0].v:1;li=l.map((x,i)=>rkLinha(x,i,x.v/mx*100)).join('');rot='Consumo no ciclo combinado. Fonte: Inmetro.';kind='econ'}
+  else{const l=rankingCat('efic',{n:5})||[],b=l[0]?l[0].v:1;li=l.map((x,i)=>rkLinha(x,i,b/x.v*100)).join('');rot='Elétricos que gastam menos energia. Fonte: Inmetro.';kind='efic'}
+  return `<ol class="rk big">${li}</ol><p class="mut rk-src">${rot}</p><p class="more"><button class="lk" data-h="rkIr" data-id="${kind}">Ver ranking completo →</button></p>`;
+}
+const POPULARES2=['fipe','custo','financiamento','etanol','comparador','ipva','viagem','eletrico'];
 SCREENS.intro=function intro(){
   const started=S.A.uf||S.A.condicao;
   const nov=(Novas.lista||[]).slice(0,1);
   const vit=(FV.vitrine||[]).slice(0,3);
-  const econ=rankingCat('econ',{n:5})||[],emx=econ[0]?econ[0].v:1;
-  const [bf,...br]=BLOG;
-  const match=`<aside class="dc match" aria-label="Escolha seu carro"><div class="sqlogo">${PMSVG}</div><h2>Qual carro combina com você?</h2><p>Responda sobre sua rotina e seu orçamento. Receba 3 carros com parcela, seguro, IPVA e custo anual.</p><ul><li>${STEPS.length} etapas, cerca de 9 minutos</li><li>Do hatch à picape, novos e seminovos</li></ul><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></aside>`;
-  const vendas=dcard('vendas',`Mais vendidos de ${mesNome(ULT)}`,`Fenabrave, ${esc(VENDAS.edicao)}`,`<ol class="rk">${topLista('A',5)}</ol>`,`<button class="lk" data-h="vendas">Ver todas as vendas dos últimos 24 meses →</button>`);
-  const ferr=dcard('ferr','Ferramentas','Grátis e sem cadastro',`<div class="qks">${POPULARES.map(k=>TOOLS.find(t=>t[0]===k)).filter(Boolean).map(t=>tcardMini(t,grupoDe(t[0])[3])).join('')}</div>`,`<button class="lk" data-h="ferramentas">Ver todas as ferramentas →</button>`);
-  const blog=dcard('blog','No blog','Guias curtos para decidir bem',`<button class="post feat" data-h="post" data-id="${bf.id}"><span class="k">${bf.k}</span><h3>${bf.t}</h3><p>${bf.lead}</p><span class="m">${bf.min} min de leitura</span></button><ul class="bl">${br.slice(0,3).map(p=>`<li><button data-h="post" data-id="${p.id}"><span class="k">${p.k}</span>${p.t}</button></li>`).join('')}</ul>`,`<button class="lk" data-h="blog">Ver todos os artigos →</button>`);
-  const eco=dcard('eco','Os mais econômicos','Fonte: Inmetro, PBE Veicular 2026',`<ol class="rk">${econ.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.motor)}</span></span>${barra(x.v,emx)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>`,`<button class="lk" data-h="rankings">Ver todos os rankings →</button>`);
-  const foro=dcard('foro','Agora no fórum','Duelos, dúvidas e opiniões',vit.length?`<ul class="fl">${vit.map(p=>`<li><button data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span>${esc(p.titulo||p.trecho)}</button></li>`).join('')}</ul>`:`<p class="mut">As primeiras conversas estão chegando. Abra um duelo entre dois carros ou faça uma pergunta.</p>`,`<button class="lk" data-h="forum">Abrir o fórum →</button>`);
-  const stats=[[IC.check,'Consumo oficial','Inmetro, PBE Veicular'],[IC.barras,'Vendas mês a mês','Fenabrave'],[IC.eye,'Preços ao vivo','Tabela FIPE'],[IC.heart,'Comunidade','Fórum e garagens']];
-  const hubs=[['rankings',IC.trofeu,'Rankings','Mais econômicos, elétricos e com menos CO₂','var(--faixa)'],['vendas',IC.barras,'Vendas','Os mais vendidos dos últimos 24 meses','var(--ciano)'],['ferramentas',IC.chave,'Ferramentas','Calculadoras para cada decisão','#2BB673'],['catalogo',IC.car,'Catálogo oficial','Todas as versões à venda, uma a uma','#F5B800'],['blog',IC.check,'Aprenda','Guias curtos para comprar, cuidar e economizar','var(--faixa)'],['forum',IC.chat,'Comunidade','Duelos, enquetes e dúvidas entre apaixonados','var(--ciano)'],['discover',IC.eye,'Descobrir','Vídeos e novidades do @mscarros','#2BB673'],['pessoas',IC.heart,'Garagens','Perfis, carros que já teve e os dos sonhos','#F5B800']];
-  const cuidado=[['ipva','IPVA e documentos','Estimativa por estado e prazos'],['manutencao','Revisões','Óleo, filtros, freios e correia'],['luzes','Luzes do painel','O que cada uma significa'],['pneu','Pneus','Medida certa sem errar o velocímetro'],['pontos','Pontos da CNH','Quanto falta para suspender']];
-  return hubnav('home')+`<section class="hero compact"><video class="hv" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="hero.webm" type="video/webm"><source src="hero.mp4" type="video/mp4"></video>
-  <div class="wrap"><div class="herologo">${PMSVG}</div><h1>Possant<span>Match</span></h1><p class="slogan">Acelere a escolha do seu próximo carro</p>
-  <div class="ctas"><button class="btn btn-go" data-h="rankings">Rankings</button><button class="btn btn-ghost on-dark" data-h="ferramentas">Ferramentas</button><button class="btn btn-ghost on-dark" data-go="start">${started?'Continuar meu match':'Escolher meu carro'}</button></div><ul class="stats" aria-label="O PossantMatch em números">${stats.map(([ic,t,f])=>`<li><span class="si">${ic}</span><span class="st"><b>${t}</b><span>${f}</span></span></li>`).join('')}</ul></div><div class="lane"></div></section>
-  <main class="wrap wide dash-wrap">${nov.length?`<p class="novstrip"><b>Novo:</b> ${esc(nov[0].titulo)}. ${esc(nov[0].texto)}</p>`:''}
-  <div class="dash">${vendas}${eco}${ferr}${match}${blog}${foro}</div>
-  <section class="sec cuid" aria-labelledby="cu-h"><h2 id="cu-h">Cuide do seu carro</h2><p class="sub">Documentos, revisões e segurança no dia a dia. Tudo em português claro e sem enrolação.</p>
-   <div class="cuid-grid">${cuidado.map(([k,t,d])=>`<button class="cu" data-h="tool" data-id="${k}"><b>${t}</b><span>${d}</span></button>`).join('')}</div></section>
-  <section class="sec hubs" aria-labelledby="hb-h"><h2 id="hb-h">Tudo sobre carros em um só lugar</h2><p class="sub">Dados oficiais, ferramentas e uma comunidade para decidir, cuidar e aprender.</p>
-   <div class="hub-grid">${hubs.map(([k,ic,t,d,cor])=>`<button class="hb" data-h="${k}" style="--gc:${cor}"><span class="ti">${ic}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div></section></main>`;
+  const cuidado=[['ipva','IPVA e documentos','Estimativa por estado',IC.check],['manutencao','Revisões','Óleo, filtros, freios e correia',IC.chave],['luzes','Luzes do painel','O que cada uma significa',IC.eye],['pneu','Pneus','Medida certa, velocímetro certo',IC.car],['pontos','Pontos da CNH','Quanto falta para suspender',IC.lock]];
+  const tabs=[['vendas','Mais vendidos'],['econ','Mais econômicos'],['ev','Elétricos']];
+  return hubnav('home')+`<section class="hero compact"><video class="hv" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="hero.webm" type="video/webm"><source src="hero.mp4" type="video/mp4"></video>${GAUGE}
+  <div class="wrap hero-in"><span class="kicker on-dark">Hub de cuidado e conhecimento sobre carros</span><h1>Possant<span>Match</span></h1><p class="slogan">Acelere a escolha do seu próximo carro</p>
+  <div class="ctas"><button class="btn btn-go" data-h="rankings">Rankings</button><button class="btn btn-ghost on-dark" data-h="ferramentas">Ferramentas</button><button class="btn btn-ghost on-dark" data-go="start">${started?'Meu match':'Meu carro'}</button></div>
+  <p class="fontes"><span>${IC.check}Inmetro</span><span>${IC.barras}Fenabrave</span><span>${IC.eye}Tabela FIPE</span></p></div><div class="lane"></div></section>
+  <main class="wrap wide hm">${nov.length?`<p class="novstrip"><b>Novo:</b> ${esc(nov[0].titulo)}. ${esc(nov[0].texto)}</p>`:''}
+  <section class="hm-sec" aria-labelledby="hm-r"><div class="hm-head"><div><span class="kicker">Rankings</span><h2 id="hm-r">O que está na frente</h2></div></div>
+   <div class="seg-tabs" role="tablist">${tabs.map(([k,l])=>`<button role="tab" data-h="hmTab" data-id="${k}" aria-pressed="${HM.tab===k}">${l}</button>`).join('')}</div><div id="hm-rank">${painelRank()}</div></section>
+  <section class="hm-sec" aria-labelledby="hm-f"><div class="hm-head"><div><span class="kicker">Ferramentas</span><h2 id="hm-f">Resolva em minutos</h2></div><button class="lk" data-h="ferramentas">Ver todas →</button></div>
+   <div class="hscroll">${POPULARES2.map(k=>TOOLS.find(t=>t[0]===k)).filter(Boolean).map(([k,t,d,kick,ic])=>`<button class="tcx" data-h="tool" data-id="${k}" style="--gc:${grupoDe(k)[3]}"><span class="ti">${TICON[ic]}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div></section>
+  <section class="hm-sec" aria-labelledby="hm-c"><div class="hm-head"><div><span class="kicker">Cuidado</span><h2 id="hm-c">Cuide do seu carro</h2></div></div>
+   <div class="care">${cuidado.map(([k,t,d,ic])=>`<button class="ca" data-h="tool" data-id="${k}"><span class="ci">${ic}</span><span class="ct"><b>${t}</b><span>${d}</span></span><i aria-hidden="true">›</i></button>`).join('')}</div></section>
+  <section class="hm-sec" aria-labelledby="hm-s"><div class="hm-head"><div><span class="kicker">Feed</span><h2 id="hm-s">Gente que gosta de carro</h2></div><button class="lk" data-h="forum">Abrir o feed →</button></div>
+   ${vit.length?`<div class="fp">${vit.map(p=>`<button class="fpi" data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span><b>${esc(p.titulo||p.trecho)}</b><span class="m">${IC.lock} Entre para participar</span></button>`).join('')}</div>`:`<div class="fp"><button class="fpi" data-h="forum"><span class="k">Feed</span><b>Poste fotos do seu carro, abra duelos e tire dúvidas.</b><span class="m">${PM.me?'Abrir o feed':'Crie sua conta para participar'}</span></button></div>`}</section>
+  <section class="banner" aria-label="Escolha seu carro"><div><span class="kicker on-dark">Match</span><h2>Qual carro combina com você?</h2><p>Responda sobre rotina e orçamento. Receba 3 opções com parcela, seguro, IPVA e custo anual.</p></div><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></section>
+  <section class="hm-sec" aria-labelledby="hm-b"><div class="hm-head"><div><span class="kicker">Blog</span><h2 id="hm-b">Aprenda antes de decidir</h2></div><button class="lk" data-h="blog">Ver todos →</button></div>
+   <div class="hscroll">${BLOG.slice(0,6).map(p=>`<button class="bcx" data-h="post" data-id="${p.id}"><span class="k">${p.k}</span><b>${p.t}</b><span class="m">${p.min} min de leitura</span></button>`).join('')}</div></section></main>`;
 };
 SCREENS.blog=function(){return hubnav('home')+`<main class="wrap wide"><section class="sec"><h2>Blog</h2><p class="sub">Guias práticos para escolher, comprar e manter o seu carro.</p><div class="posts big">${BLOG.map(p=>blogCard(p)).join('')}</div></section></main>`};
 SCREENS.post=function(){
@@ -3023,10 +3168,17 @@ function fcard(p,i){
   const tags=(p.carros||[]).length?`<div class="tags">${p.carros.map(c=>`<span class="tag">${esc(c)}</span>`).join('')}</div>`:'';
   return fcardBase(p,i,head+stat,`${p.titulo?`<h3>${esc(p.titulo)}</h3>`:''}${p.texto?`<p class="txt ${p.tipo==='opiniao'?'big':''}">${esc(p.texto)}</p>`:''}${tags}`,'','',false);
 }
+function autorLinha(p){
+  const nome=p.editorial?'PossantMatch':(meus(p)?'Você':perfNome(p.uid));
+  const av=p.editorial?`<span class="av ini" style="width:36px;height:36px;background:#000">${PMSVG}</span>`:avatar(perfOf(p.uid),36);
+  const corpo=`${av}<span class="an"><b>${esc(nome)}</b><span class="mut">${perfUser(p.uid)&&!p.editorial?'@'+esc(perfUser(p.uid))+' · ':''}${ago(tms(p.criado))}</span></span>`;
+  return `<div class="fh">${p.editorial||meus(p)||!perfUser(p.uid)?corpo:`<button class="lkp" data-h="perfil" data-u="${esc(perfUser(p.uid))}">${corpo}</button>`}</div>`;
+}
+const fotoPost=p=>p.foto&&fotoGrandeOk(p.foto)?`<img class="fph" src="${p.foto}" alt="Foto do post" loading="lazy">`:'';
 function fcardBase(p,i,top,main,mid,extra,duel){
   const t=FS.tot,aprov=p.status==='aprovado',lk=t.minhasCurtidas.has(p.id);
-  return `<article class="fc ${p.tipo==='opiniao'?'op':''}" style="animation-delay:${Math.min(i,6)*50}ms"><div class="bd">${top}${main}${duel?'':mid}</div>${duel?mid:''}
-  <div class="ft"><span class="by">${p.editorial||meus(p)?'':avatar(perfOf(p.uid),22)}${p.editorial||meus(p)?esc(who(p)):linkUsuario(p.uid,esc(who(p)))} · ${ago(tms(p.criado))}${extra?' · '+extra:''}</span>
+  return `<article class="fc ${p.tipo==='opiniao'?'op':''} ${p.foto?'comfoto':''}" style="animation-delay:${Math.min(i,6)*50}ms"><div class="bd">${autorLinha(p)}${fotoPost(p)}${top}${main}${duel?'':mid}</div>${duel?mid:''}
+  <div class="ft"><span class="by">${extra||''}</span>
   ${aprov?`<button class="fb" data-h="like" data-id="${esc(p.id)}" aria-pressed="${lk}" aria-label="Curtir">${IC.heart}${t.curtidas[p.id]||''}</button><button class="fb" data-h="open" data-id="${esc(p.id)}" aria-label="Comentários">${IC.chat}${t.comentarios[p.id]||''}</button>`:''}
   ${meus(p)?`<button class="fb" data-h="apagarPost" data-id="${esc(p.id)}" aria-label="Apagar meu post">Apagar</button>`:(aprov&&!p.editorial?`<button class="fb" data-h="denunciar" data-t="post" data-id="${esc(p.id)}" aria-label="Denunciar post">Denunciar</button>`:'')}</div></article>`;
 }
@@ -3048,8 +3200,10 @@ SCREENS.forum=function(){
     feed=list.length?list.map(fcard).join(''):FS.filtro==='seguindo'?`<div class="empty2"><b>Nada de quem você segue</b>Siga pessoas na página Pessoas para ver os posts delas aqui.<br><button class="btn btn-ghost btn-sm" data-h="pessoas">Encontrar pessoas</button></div>`:`<div class="empty2"><b>${FS.posts.length?'Nada nesta aba ainda':'Nenhuma conversa ainda'}</b>Seja a primeira pessoa a postar. Faça uma pergunta, abra um duelo entre dois carros ou crie uma enquete. O administrador aprova antes de publicar.</div>`;
   }
   const n=PM.me?FS.posts.filter(p=>p.status==='aprovado').length:FV.vitrine.length;
-  return hubnav('forum')+`<main class="wrap"><div class="fhead"><h1>Fórum <span>Match</span></h1><span class="live"><i></i>${n} ${plural(n,'conversa','conversas')}</span></div>
-  <div class="trail" role="tablist">${fl.map(([k,l])=>`<button class="chip" data-h="filter" data-f="${k}" aria-pressed="${FS.filtro===k}">${l}</button>`).join('')}</div>
+  const pes=PM.me?[...PF.per.values()].filter(x=>x.uid!==PM.me.uid&&!PF.blo.has(x.uid)).sort((a,b)=>(PF.sigo.has(b.uid)-PF.sigo.has(a.uid))).slice(0,14):[];
+  const stories=PM.me?`<div class="stories" aria-label="Pessoas"><button class="st me" data-h="compose"><span class="sr1">${avatar(PM.me,56)}<i>+</i></span><span>Postar</span></button>${pes.map(x=>`<button class="st" data-h="perfil" data-u="${esc(x.usuario)}"><span class="sr1 ring2">${avatar(x,56)}</span><span>${esc((x.nome||x.usuario).split(' ')[0])}</span></button>`).join('')}<button class="st" data-h="pessoas"><span class="sr1 mais">${IC.plus}</span><span>Mais</span></button></div>`:'';
+  return hubnav('forum')+`<main class="wrap"><div class="fhead"><h1>Feed <span>Match</span></h1><span class="live"><i></i>${n} ${plural(n,'conversa','conversas')}</span></div>
+  ${stories}<div class="trail" role="tablist">${fl.map(([k,l])=>`<button class="chip" data-h="filter" data-f="${k}" aria-pressed="${FS.filtro===k}">${l}</button>`).join('')}</div>
   <div class="feed">${feed}</div></main>${PM.me?`<button class="fab" data-h="compose">${IC.plus}Postar</button>`:''}`;
 };
 function composeSheet(){
@@ -3066,6 +3220,7 @@ function composeSheet(){
   <div class="fform">${dl}${PM.me&&PM.me.admin?'':'<p class="notice info">Seu post fica em análise e só aparece para todos depois que o administrador aprovar.</p>'}<div class="seg">${T.map(([k,l])=>`<button data-h="ctype" data-f="${k}" aria-pressed="${c.t===k}">${l}</button>`).join('')}</div>${f}
   <label>${c.t==='opiniao'?'Sua opinião':'Detalhes (opcional)'}<textarea class="field" id="fc-body" maxlength="1500" placeholder="Conte o contexto: uso, orçamento, o que te preocupa.">${esc(c.body||'')}</textarea></label>
   ${c.t==='pergunta'||c.t==='opiniao'?`<label>Carros citados (opcional, separe por vírgula)<input class="field" id="fc-cars" list="fm" placeholder="Ex.: Toyota Corolla Cross" value="${esc(c.cars||'')}"></label>`:''}
+  <div class="fotobox">${c.foto?`<img src="${c.foto}" alt="Prévia da foto"><button type="button" class="lk" data-h="cfotoX">remover foto</button>`:`<label class="btn btn-ghost" for="fc-foto">${IC.camera} Adicionar foto</label>`}<input id="fc-foto" type="file" accept="image/*" class="sr" data-h="cfoto"></div>
   <p id="fc-err" class="notice" hidden role="alert"></p><button class="btn btn-go" data-h="send">Enviar</button></div></section>`;
 }
 function replySheet(){
@@ -3090,11 +3245,11 @@ async function fAct(h,t){
   }else if(h==='send'){
     const g=id=>{const e=document.getElementById(id);return e?e.value.trim():''},c=SH.compose,er=document.getElementById('fc-err');
     const bad=m=>{er.textContent=m;er.hidden=false};
-    const doc={tipo:c.t,titulo:g('fc-title'),texto:g('fc-body')};
+    const doc={tipo:c.t,titulo:g('fc-title'),texto:g('fc-body'),foto:c.foto||''};
     if(c.t==='duelo'){const a=g('fc-a'),b=g('fc-b');if(!a||!b)return bad('Informe os dois carros.');if(a.toLowerCase()===b.toLowerCase())return bad('Escolha dois carros diferentes.');if(!doc.titulo)return bad('Escreva a pergunta do duelo.');doc.opcoes=[a,b]}
     else if(c.t==='enquete'){const o=[0,1,2,3].map(k=>g('fc-o'+k)).filter(Boolean);if(!doc.titulo)return bad('Escreva a pergunta da enquete.');if(o.length<2)return bad('Informe ao menos duas opções.');doc.opcoes=o}
     else if(c.t==='pergunta'){if(!doc.titulo)return bad('Escreva a sua pergunta.')}
-    else if(!doc.texto&&!doc.titulo)return bad('Escreva a sua opinião.');
+    else if(!doc.texto&&!doc.titulo&&!doc.foto)return bad('Escreva a sua opinião ou escolha uma foto.');
     const cs=g('fc-cars');if(cs)doc.carros=cs.split(',').map(x=>x.trim()).filter(Boolean).slice(0,4);
     t.disabled=true;
     try{await DB.criarPost(doc);SH.compose=null;fsheet();aviso(PM.me.admin?'Publicado.':'Enviado para aprovação. Aparece para todos depois que o administrador aprovar.');await carregaForum();scrollTo(0,0)}catch(e){t.disabled=false;bad(e.message||ERR.generico)}
@@ -3232,28 +3387,44 @@ async function carregaPerfil(usuario){
   if(S.screen==='perfil')render();
 }
 const vazioPerfil=(t,d)=>`<div class="empty2"><b>${t}</b>${d}</div>`;
+PF.tab='grade';
+function fotosGrade(p,g,po,eu){
+  const it=[];
+  g.filter(c=>c.foto&&fotoGrandeOk(c.foto)).forEach(c=>it.push({id:c.id,t:c.carro,s:[(GT.find(x=>x[0]===c.tipo)||[])[2],c.ano].filter(Boolean).join(' · '),f:c.foto,k:'g'}));
+  po.filter(x=>x.foto&&fotoGrandeOk(x.foto)).forEach(x=>it.push({id:x.id,t:x.titulo||(x.texto||'').slice(0,50),s:'Post',f:x.foto,k:'p'}));
+  return it;
+}
 SCREENS.perfil=function(){
-  if(!PM.me)return hubnav('forum')+`<main class="wrap"><div class="gate"><div>${IC.lock}</div><div><b>Perfis são para quem tem conta</b><p>Crie sua conta para ver perfis, seguir pessoas e montar a sua garagem virtual.</p><button class="btn btn-go" data-h="entrar" data-m="criar">Criar conta</button> <button class="btn btn-ghost" data-h="entrar" data-m="entrar">Já tenho conta</button></div></div></main>`;
+  if(!PM.me)return hubnav('perfil')+`<main class="wrap"><div class="gate"><div>${IC.lock}</div><div><b>Perfis são para quem tem conta</b><p>Crie sua conta para ver perfis, seguir pessoas e montar a sua garagem virtual.</p><button class="btn btn-go" data-h="entrar" data-m="criar">Criar conta</button> <button class="btn btn-ghost" data-h="entrar" data-m="entrar">Já tenho conta</button></div></div></main>`;
   const p=[...PF.per.values()].find(x=>x.usuario===S.perfil);
-  if(!PF.carregado)return hubnav('forum')+`<main class="wrap"><div class="empty2"><b>Carregando perfil</b>Um instante.</div></main>`;
-  if(!p)return hubnav('forum')+`<main class="wrap"><button class="back" data-h="pessoas">← Pessoas</button>${vazioPerfil('Perfil não encontrado','Esse nome de usuário não existe ou a pessoa excluiu a conta.')}</main>`;
+  if(!PF.carregado)return hubnav('perfil')+`<main class="wrap"><div class="empty2"><b>Carregando perfil</b>Um instante.</div></main>`;
+  if(!p)return hubnav('perfil')+`<main class="wrap"><button class="back" data-h="pessoas">← Pessoas</button>${vazioPerfil('Perfil não encontrado','Esse nome de usuário não existe ou a pessoa excluiu a conta.')}</main>`;
   const eu=p.uid===PM.me.uid,st=PF.stats[p.uid]||{posts:0,comentarios:0,curtidas:0,seguidores:0,seguindo:0},g=PF.gar[p.uid]||[],po=PF.posts[p.uid]||[];
-  const gcard=(c,own)=>`<article class="gc"><div><b>${esc(c.carro)}</b>${c.apelido?`<span class="ap">“${esc(c.apelido)}”</span>`:''}<span class="mut">${c.ano?esc(String(c.ano)):'Ano não informado'}</span>${c.nota?`<p>${esc(c.nota)}</p>`:''}</div>${own?`<button class="lk" data-h="delGar" data-id="${esc(c.id)}" aria-label="Remover ${esc(c.carro)} da garagem">remover</button>`:''}</article>`;
+  const gcard=(c,own)=>`<article class="gc">${c.foto&&fotoGrandeOk(c.foto)?`<button class="gph" data-h="verFoto" data-id="${esc(c.id)}" aria-label="Ver foto de ${esc(c.carro)}"><img src="${c.foto}" alt="${esc(c.carro)}" loading="lazy"></button>`:`<span class="gph sil">${silDeModelo(c.carro,'mini')}</span>`}<div><b>${esc(c.carro)}</b>${c.apelido?`<span class="ap">“${esc(c.apelido)}”</span>`:''}<span class="mut">${c.ano?esc(String(c.ano)):'Ano não informado'}</span>${c.nota?`<p>${esc(c.nota)}</p>`:''}</div>${own?`<button class="lk" data-h="delGar" data-id="${esc(c.id)}" aria-label="Remover ${esc(c.carro)} da garagem">remover</button>`:''}</article>`;
   const bloqueado=PF.blo.has(p.uid);
-  const acoes=eu?`<button class="btn btn-go btn-sm" data-h="editaPerfil">Editar perfil</button><button class="btn btn-ghost btn-sm" data-h="mensagens">Minhas mensagens</button>`
+  const acoes=eu?`<button class="btn btn-ghost btn-sm" data-h="editaPerfil">Editar perfil</button><button class="btn btn-go btn-sm" data-h="addGar" data-tipo="tenho">+ Carro</button>`
    :`<button class="btn ${PF.sigo.has(p.uid)?'btn-ghost':'btn-go'} btn-sm" data-h="seguir" data-id="${esc(p.uid)}" aria-pressed="${PF.sigo.has(p.uid)}">${PF.sigo.has(p.uid)?'Seguindo':(PF.meSegue.has(p.uid)?'Seguir de volta':'Seguir')}</button>
-   <button class="btn btn-ghost btn-sm" data-h="msgAbrir" data-id="${esc(p.uid)}" ${mutuo(p.uid)&&!bloqueado?'':'disabled'} title="${mutuo(p.uid)?'':'Vocês dois precisam se seguir para trocar mensagens'}">Enviar mensagem</button>`;
-  return hubnav('forum')+`<main class="wrap wide perfil"><button class="back" data-h="pessoas">← Pessoas</button>
-  <section class="phead"><div class="pcap"></div><div class="pin">${avatar(p,96)}<div class="pid"><h1>${esc(p.nome||'@'+p.usuario)}</h1><span class="mut">@${esc(p.usuario)}${PF.meSegue.has(p.uid)&&!eu?' · segue você':''}</span>
-   ${(p.cidade||p.uf||p.idade)?`<span class="mut">${[p.cidade&&p.uf?`${esc(p.cidade)}, ${esc(p.uf)}`:esc(p.cidade||p.uf),p.idade?`${p.idade} anos`:''].filter(Boolean).join(' · ')}</span>`:''}</div><div class="pac">${acoes}</div></div>
-   ${p.bio?`<p class="bio">${esc(p.bio)}</p>`:eu?'<p class="bio mut">Conte um pouco sobre você e o seu jeito de gostar de carro. Toque em Editar perfil.</p>':''}
-   ${p.carro?`<p class="carrodomomento">${IC.car} ${esc(p.carro)}</p>`:''}
-   <ul class="pst"><li><b>${st.posts}</b>posts</li><li><b>${st.seguidores}</b>seguidores</li><li><b>${st.seguindo}</b>seguindo</li><li><b>${st.curtidas}</b>curtidas recebidas</li></ul></section>
-  <section class="sec"><h2>Garagem virtual</h2>
-   <div class="gcols">${GT.map(([k,tit,,,vz1,vz2,vz3,vz4])=>{const l=g.filter(x=>x.tipo===k);return `<div><h3>${tit} ${eu?`<button class="btn btn-ghost btn-sm" data-h="addGar" data-tipo="${k}">Adicionar</button>`:''}</h3>${l.length?l.map(c=>gcard(c,eu)).join(''):vazioPerfil(eu?vz1:vz3,eu?vz2:vz4)}</div>`}).join('')}</div></section>
-  <section class="sec"><h2>Posts no fórum</h2>${po.length?`<div class="posts">${po.map(x=>`<button class="post" data-h="forum"><span class="k">${FT[x.tipo]||'Post'}</span><h3>${esc(x.titulo||(x.texto||'').slice(0,80))}</h3><p>${esc((x.texto||'').slice(0,110))}</p><span class="m">${ago(tms(x.criado))}</span></button>`).join('')}</div>`:vazioPerfil('Nenhum post publicado','Os posts aprovados aparecem aqui.')}</section>
-  ${eu?'':`<p class="more"><button class="lk" data-h="denunciar" data-t="perfil" data-id="${esc(p.uid)}">Denunciar perfil</button> · <button class="lk" data-h="bloquear" data-id="${esc(p.uid)}">${bloqueado?'Desbloquear':'Bloquear'} esta pessoa</button></p>`}</main>`;
+   <button class="btn btn-ghost btn-sm" data-h="msgAbrir" data-id="${esc(p.uid)}" ${mutuo(p.uid)&&!bloqueado?'':'disabled'} title="${mutuo(p.uid)?'':'Vocês dois precisam se seguir para trocar mensagens'}">Mensagem</button>`;
+  const tab=PF.tab,tl=fotosGrade(p,g,po,eu);
+  let corpo='';
+  if(tab==='grade')corpo=tl.length?`<div class="tgrid3">${tl.map(t=>`<button class="tile" data-h="verFoto" data-id="${esc(t.id)}" data-k="${t.k}" aria-label="${esc(t.t)}"><img src="${t.f}" alt="${esc(t.t)}" loading="lazy"><span class="ov"><b>${esc(t.t)}</b><i>${esc(t.s)}</i></span></button>`).join('')}</div>`:vazioPerfil(eu?'Mostre o seu carro':'Nenhuma foto ainda',eu?'Adicione um carro da sua garagem com foto ou poste no feed.':'Essa pessoa ainda não postou fotos.')+(eu?`<p class="more"><button class="btn btn-go" data-h="addGar" data-tipo="tenho">Adicionar carro com foto</button></p>`:'');
+  else if(tab==='garagem')corpo=`<div class="gcols">${GT.map(([k,tit,,,vz1,vz2,vz3,vz4])=>{const l=g.filter(x=>x.tipo===k);return `<div id="gt-${k}"><h3>${tit} ${eu?`<button class="btn btn-ghost btn-sm" data-h="addGar" data-tipo="${k}">Adicionar</button>`:''}</h3>${l.length?l.map(c=>gcard(c,eu)).join(''):vazioPerfil(eu?vz1:vz3,eu?vz2:vz4)}</div>`}).join('')}</div>`;
+  else corpo=po.length?`<div class="posts">${po.map(x=>`<button class="post" data-h="forum"><span class="k">${FT[x.tipo]||'Post'}</span><h3>${esc(x.titulo||(x.texto||'').slice(0,80))}</h3><p>${esc((x.texto||'').slice(0,110))}</p><span class="m">${ago(tms(x.criado))}</span></button>`).join('')}</div>`:vazioPerfil('Nenhum post publicado','Os posts aprovados aparecem aqui.');
+  const dest=GT.map(([k,tit,rot])=>({k,rot,n:g.filter(x=>x.tipo===k).length,f:(g.find(x=>x.tipo===k&&x.foto)||{}).foto}));
+  return hubnav('perfil')+`<main class="wrap perfil ig"><section class="ig-head"><span class="ring">${avatar(p,92)}</span><div class="ig-main"><div class="ig-top"><h1>${esc(p.nome||'@'+p.usuario)}</h1><span class="mut">@${esc(p.usuario)}${PF.meSegue.has(p.uid)&&!eu?' · segue você':''}</span></div>
+   <ul class="ig-st"><li><b>${st.posts}</b>posts</li><li><b>${st.seguidores}</b>seguidores</li><li><b>${st.seguindo}</b>seguindo</li></ul></div></section>
+   ${p.bio?`<p class="bio">${esc(p.bio)}</p>`:eu?'<p class="bio mut">Conte um pouco sobre você e o seu jeito de gostar de carro.</p>':''}
+   ${(p.cidade||p.uf||p.idade||p.carro)?`<p class="ig-meta">${p.carro?`<span>${IC.car} ${esc(p.carro)}</span>`:''}${(p.cidade||p.uf)?`<span>${IC.eye} ${p.cidade&&p.uf?`${esc(p.cidade)}, ${esc(p.uf)}`:esc(p.cidade||p.uf)}</span>`:''}${p.idade?`<span>${p.idade} anos</span>`:''}</p>`:''}
+   <div class="ig-acts">${acoes}</div>
+   <div class="ig-dest" role="tablist" aria-label="Garagem">${dest.map(d=>`<button class="dst" data-h="pfTab" data-id="garagem" data-k="${d.k}"><span class="dc">${d.f?`<img src="${d.f}" alt="">`:IC.car}</span><span>${d.rot.replace(/^Os (que )?/,'').replace(/^Meu /,'')}</span><i>${d.n}</i></button>`).join('')}</div>
+   <div class="ig-tabs" role="tablist"><button role="tab" data-h="pfTab" data-id="grade" aria-pressed="${tab==='grade'}" aria-label="Grade de fotos">${IC.grid}<span>Fotos</span></button><button role="tab" data-h="pfTab" data-id="garagem" aria-pressed="${tab==='garagem'}" aria-label="Garagem">${IC.car}<span>Garagem</span></button><button role="tab" data-h="pfTab" data-id="posts" aria-pressed="${tab==='posts'}" aria-label="Posts">${IC.chat}<span>Posts</span></button></div>
+   <section class="ig-body">${corpo}</section>
+   ${eu?'':`<p class="more"><button class="lk" data-h="denunciar" data-t="perfil" data-id="${esc(p.uid)}">Denunciar perfil</button> · <button class="lk" data-h="bloquear" data-id="${esc(p.uid)}">${bloqueado?'Desbloquear':'Bloquear'} esta pessoa</button></p>`}</main>`;
 };
+function verSheet(){
+  const v=SH.ver;if(!v)return '';
+  return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet lightbox" role="dialog" aria-modal="true" aria-label="${esc(v.t)}"><div class="sh-h"><div><p class="sh-k">${esc(v.s||'')}</p><h3 style="margin:2px 0 0">${esc(v.t)}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div><img class="lbimg" src="${v.f}" alt="${esc(v.t)}">${v.n?`<p class="mut">${esc(v.n)}</p>`:''}</section>`;
+}
 const filtroPessoa=(p,q,uf)=>{const t=String(q||'').trim().toLowerCase().replace(/^@/,'');return (!t||(p.usuario||'').includes(t)||String(p.nome||'').toLowerCase().includes(t)||String(p.carro||'').toLowerCase().includes(t))&&(!uf||p.uf===uf)};
 SCREENS.pessoas=function(){
   if(!PM.me)return hubnav('forum')+`<main class="wrap"><div class="gate"><div>${IC.lock}</div><div><b>Conheça outros apaixonados por carro</b><p>Crie sua conta para ver quem está no PossantMatch, seguir pessoas e trocar ideias.</p><button class="btn btn-go" data-h="entrar" data-m="criar">Criar conta</button></div></div></main>`;
@@ -3319,14 +3490,17 @@ function perfilSheet(){
 function garSheet(){
   const g=SH.gar;if(!g)return '';
   const anos=[];for(let a=new Date().getFullYear()+1;a>=1950;a--)anos.push(a);
-  const nova=g.outro;
+  const nova=g.outro,mods=g.m?FROTA.modelos(g.m):[];
+  const op=(arr,sel)=>arr.map(x=>`<option value="${esc(x)}" ${x===sel?'selected':''}>${esc(x)}</option>`).join('');
   return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet" role="dialog" aria-modal="true" aria-label="Adicionar carro"><div class="sh-h"><div><p class="sh-k">Garagem virtual</p><h3 style="margin:2px 0 0">${(GT.find(x=>x[0]===g.tipo)||GT[0])[3]}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>
   <form class="fform" id="gar-form" novalidate>
    <div class="seg">${GT.map(x=>`<button type="button" data-h="garTipo" data-tipo="${x[0]}" aria-pressed="${g.tipo===x[0]}">${x[2]}</button>`).join('')}</div>
-   ${nova?`<label>Qual carro?<input class="field" id="gr-livre" maxlength="80" placeholder="Marca, modelo e versão" value="${esc(g.livre||'')}"></label>`:carPicker('gar',{rotulo:'Escolha o carro',versao:false})}
+   ${nova?`<label>Qual carro?<input class="field" id="gr-livre" maxlength="80" placeholder="Marca, modelo e versão" value="${esc(g.livre||'')}"></label>`
+   :`<div class="two2"><label>Marca<select class="field" id="gr-m" data-h="gm"><option value="">Escolha</option>${op(FROTA.marcas,g.m)}</select></label><label>Modelo<select class="field" id="gr-mod" data-h="gmod" ${g.m?'':'disabled'}><option value="">${g.m?'Escolha':'Antes, a marca'}</option>${op(mods,g.mod)}</select></label></div>`}
    <label class="chk"><input type="checkbox" id="gr-outro" data-h="garOutro" ${nova?'checked':''}> Meu carro não está na lista</label>
    <div class="two2"><label>Ano <span class="mut">(opcional)</span><select class="field" id="gr-ano"><option value="">—</option>${anos.map(a=>`<option>${a}</option>`).join('')}</select></label><label>Apelido <span class="mut">(opcional)</span><input class="field" id="gr-apelido" maxlength="40"></label></div>
    <label>Uma frase sobre ele <span class="mut">(opcional)</span><textarea class="field" id="gr-nota" maxlength="200"></textarea></label>
+   <div class="fotobox">${g.foto?`<img src="${g.foto}" alt="Prévia da foto"><button type="button" class="lk" data-h="gfotoX">remover foto</button>`:`<label class="btn btn-ghost" for="gr-foto">${IC.camera} Adicionar foto</label>`}<input id="gr-foto" type="file" accept="image/*" class="sr" data-h="gfoto"><span class="mut">Foto do carro, em JPG ou PNG. É reduzida automaticamente.</span></div>
    <p id="gr-err" class="notice" hidden role="alert"></p><button class="btn btn-go" type="submit">Adicionar à garagem</button></form></section>`;
 }
 const MOTIVOS=[['ofensivo','Ofensivo ou desrespeitoso'],['spam','Propaganda ou spam'],['falso','Informação falsa'],['assedio','Assédio ou incômodo'],['perigoso','Conteúdo perigoso ou ilegal'],['outro','Outro motivo']];
@@ -3348,6 +3522,18 @@ function processaFoto(file){
       im.onload=()=>{try{const lado=Math.min(im.width,im.height),sx=(im.width-lado)/2,sy=(im.height-lado)/2,c=document.createElement('canvas');c.width=c.height=256;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,256,256);x.drawImage(im,sx,sy,lado,lado,0,0,256,256);
         let q=.85,d=c.toDataURL('image/jpeg',q);while(d.length>60000&&q>.4){q-=.1;d=c.toDataURL('image/jpeg',q)}
         fotoOk(d)?ok(d):err(PMErro('foto_invalida'))}catch(e){err(PMErro('foto_invalida'))}};im.src=rd.result};
+    rd.readAsDataURL(file);
+  });
+}
+/* Foto de post ou de carro: lado maior até 960 px, JPEG, até ~110 mil caracteres. */
+function processaFotoGrande(file){
+  return new Promise((ok,err)=>{
+    if(!file||!/^image\/(jpeg|png|webp)$/.test(file.type)||file.size>15*1024*1024)return err(PMErro('foto_invalida'));
+    const rd=new FileReader();rd.onerror=()=>err(PMErro('foto_invalida'));
+    rd.onload=()=>{const im=new Image();im.onerror=()=>err(PMErro('foto_invalida'));
+      im.onload=()=>{try{const k=Math.min(1,960/Math.max(im.width,im.height)),w=Math.max(1,Math.round(im.width*k)),h=Math.max(1,Math.round(im.height*k)),c=document.createElement('canvas');c.width=w;c.height=h;const x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,w,h);x.drawImage(im,0,0,w,h);
+        let q=.82,d=c.toDataURL('image/jpeg',q);while(d.length>110000&&q>.35){q-=.07;d=c.toDataURL('image/jpeg',q)}
+        fotoGrandeOk(d)&&d.length<=170000?ok(d):err(PMErro('foto_invalida'))}catch(e){err(PMErro('foto_invalida'))}};im.src=rd.result};
     rd.readAsDataURL(file);
   });
 }
@@ -3848,7 +4034,7 @@ function destaqueVendas(){
   <div class="dv"><div><h3>Automóveis</h3><ol class="rk">${topLista('A',5)}</ol></div><div><h3>Comerciais leves</h3><ol class="rk">${topLista('C',5)}</ol></div></div>
   <p class="more"><button class="btn btn-ghost" data-h="vendas">Ver todas as vendas dos últimos 24 meses</button></p></section>`;
 }
-SCREENS.vendas=function(){
+function vendasCorpo(){
   const opts=[...VENDAS.meses].reverse().map(m=>[m,mesNome(m)]);
   const r=vendasConsulta(VS),marcas=[...new Set(VENDAS.modelos.map(m=>m.marca))].sort((a,b)=>a.localeCompare(b,'pt'));
   const sel=(id,k,rot,arr,val)=>`<label>${rot}<select class="field" id="${id}" data-h="vsSet" data-k="${k}">${arr.map(([a,b])=>`<option value="${esc(a)}" ${String(a)===String(val)?'selected':''}>${esc(b)}</option>`).join('')}</select></label>`;
@@ -3863,14 +4049,13 @@ SCREENS.vendas=function(){
     corpo=`<div class="vtab"><table><thead><tr><th>#</th><th>Modelo</th><th>Segmento</th><th class="n">Vendas</th><th class="n">Variação${r.p.ant?'':' (sem comparação)'}</th><th class="n">Parte do segmento</th><th>24 meses</th></tr></thead><tbody>${r.l.slice(0,VS.n).map((x,i)=>`<tr data-h="vsDet" data-id="${esc(x.m.id)}" tabindex="0" role="button" aria-label="Ver os 24 meses de ${esc(x.m.modelo)}"><td>${i+1}º</td><td><span class="ml">${silhouette(SILBODY[x.m.seg]||'hatch',{cor:'var(--faixa)',cls:'mini'})}<span><b>${esc(x.m.modelo)}</b><span class="mut">${esc(x.m.marca)}</span></span></span></td><td>${esc(VENDAS.segmentos[x.m.seg])}</td><td class="n"><b>${fmtN(x.cur)}</b>${barra(x.cur,mx)}</td><td class="n ${x.var==null?'':x.var>=0?'up':'dn'}">${x.var==null?'—':(x.var>=0?'+':'')+n1(x.var)+'%'}</td><td class="n">${n1(x.share)}%</td><td>${spark(x.m.s)}</td></tr>`).join('')}</tbody></table></div>
     ${r.l.length>VS.n?`<p class="more"><button class="btn btn-ghost" data-h="vsMais">Mostrar mais (${r.l.length-VS.n})</button></p>`:''}${r.l.length?'':'<div class="empty2"><b>Nada encontrado</b>Mude os filtros ou a busca.</div>'}`;
   }
-  return hubnav('vendas')+`<main class="wrap wide"><section class="sec"><h2>Vendas de carros no Brasil</h2><p class="sub">Emplacamentos por modelo nos últimos 24 meses, direto dos informativos oficiais da Fenabrave. ${esc(VENDAS.edicao)}.</p></section>
-  ${destaqueVendas()}
-  <section class="sec"><h2>Explore os números</h2>
+  return `<p class="mut rk-src">Emplacamentos por modelo, direto dos informativos da Fenabrave (${esc(VENDAS.edicao)}).</p>
+  <section class="sec rk-vendas">
   <div class="trail static" role="tablist"><button class="chip" data-h="vsAba" data-id="modelos" aria-pressed="${VS.aba==='modelos'}">Por modelo</button><button class="chip" data-h="vsAba" data-id="marcas" aria-pressed="${VS.aba==='marcas'}">Por marca</button></div>
   <div class="tf vf">${sel('vs-per','per','Período',per,VS.per)}${sel('vs-grupo','grupo','Tipo',[['','Todos'],['A','Automóveis'],['C','Comerciais leves']],VS.grupo)}${sel('vs-seg','seg','Segmento',segs,VS.seg)}${sel('vs-marca','marca','Marca',[['','Todas as marcas'],...marcas.map(m=>[m,m])],VS.marca)}
    <label>Buscar modelo<input class="field" id="vs-q" data-h="vsBusca" placeholder="Ex.: Strada, Dolphin" value="${esc(VS.q)}" autocomplete="off"></label>${VS.aba==='modelos'?sel('vs-ord','ord','Ordenar por',[['vendas','Mais vendidos'],['var','Maior variação'],['nome','Nome']],VS.ord):''}</div>
   ${r?`<p class="mut" role="status">${esc(r.p.rot)}${r.p.ant?` · variação contra ${esc(r.p.antRot)}`:''} · ${r.l.length} ${plural(r.l.length,'modelo','modelos')} · ${fmtN(r.total)} emplacamentos nos modelos listados.</p>`:''}
-  ${corpo}<p class="foot">Fonte: Fenabrave, Informativo de Emplacamentos. Os números são de emplacamentos (registros de veículos novos), não de unidades produzidas. A Fenabrave lista os modelos mais emplacados de cada segmento, então a soma dos modelos fica entre 93% e 98% do total oficial de cada mês. Valores de meses anteriores seguem a revisão publicada pela própria Fenabrave na edição seguinte.</p></section></main>`;
+  ${corpo}<p class="foot">Fonte: Fenabrave, Informativo de Emplacamentos. Os números são de emplacamentos (registros de veículos novos), não de unidades produzidas. A Fenabrave lista os modelos mais emplacados de cada segmento, então a soma dos modelos fica entre 93% e 98% do total oficial de cada mês. Valores de meses anteriores seguem a revisão publicada pela própria Fenabrave na edição seguinte.</p></section>`;
 };
 function vsDetSheet(){
   const m=VENDAS.modelos.find(x=>x.id===VS.det);if(!m)return '';
@@ -3890,6 +4075,11 @@ const RK_TIPOS={
  co2:['Menos CO₂ por km','gramas de CO₂ por quilômetro, carros a combustão e híbridos'],plugin:['Plug-in: maior autonomia elétrica','km só na bateria']
 };
 const catKey=r=>[r.marca,r.modelo,r.motor,r.cambio].join('|');
+const catCurta=c=>String(c||'').replace(/^Utilit[aá]rio Esportivo\s*/i,'SUV ').replace(/^Extra Grande$/i,'Extra grande').trim().replace(/^SUV (.)/,(m,x)=>'SUV '+x.toLowerCase());
+const MODBASE=m=>String(m||'').replace(/\b(HEV|Hybrid|Hybrida|Híbrido|Comfortline|Highline|Plus|Sedan|Cross)\b/gi,'').replace(/\s+/g,' ').trim().toLowerCase();
+const tituloCarro=r=>`${r.marca} ${r.modelo}`.replace(/\s+/g,' ').trim();
+const subCarro=r=>{const v=String(r.versao||'').trim(),mt=String(r.motor||'').replace(/\s*-\s*/g,' ').trim();const vv=v&&mt&&v.replace(/-/g,' ').includes(mt)?v:[v,mt].filter(x=>x&&!/^(Elétrico|HEV)$/i.test(x)).join(' · ');return vv};
+const tipoRot=r=>r.tipo==='Elétrico'?'Elétrico':r.tipo==='Híbrido'?'Híbrido':r.tipo==='Plug-in'?'Plug-in':r.comb==='Flex'?'Flex':'';
 function rankingCat(kind,{cat='',n=10}={}){
   const f=cat?CAT.filter(r=>r.cat===cat):CAT;let l=[],val,fmt,asc=false;
   if(kind==='econ'){l=f.filter(r=>(r.tipo==='Combustão'||r.tipo==='Híbrido')&&r.cg&&r.cg[2]>0);val=r=>r.cg[2];fmt=v=>n1(v)+' km/l'}
@@ -3901,27 +4091,30 @@ function rankingCat(kind,{cat='',n=10}={}){
   else return null;
   const seen=new Set(),out=[];
   l.sort((a,b)=>asc?val(a)-val(b):val(b)-val(a));
-  for(const r of l){const k=catKey(r);if(seen.has(k))continue;seen.add(k);out.push({r,v:val(r),txt:fmt(val(r))});if(out.length>=n)break}
+  for(const r of l){const k=catKey(r),k2=r.marca+'|'+MODBASE(r.modelo)+'|'+val(r);if(seen.has(k)||seen.has(k2))continue;seen.add(k);seen.add(k2);out.push({r,v:val(r),txt:fmt(val(r))});if(out.length>=n)break}
   return out;
 }
-const RS={kind:'econ',cat:''};
+const RS={kind:'vendas',cat:''};
+const posBadge=i=>`<span class="pos p${i+1}">P${i+1}</span>`;
+const rkLinha=(x,i,pct)=>`<li class="rv"><span class="pos p${Math.min(i+1,4)}">${i+1}</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(tituloCarro(x.r))}</b><span class="mut">${[tipoRot(x.r),esc(subCarro(x.r))].filter(Boolean).join(' · ')}</span></span><span class="bar"><i style="--w:${pct.toFixed(1)}%"></i></span><span class="vl">${esc(x.txt)}</span></li>`;
 const rkItem=(x,i,mx,asc)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)} · ${esc(x.r.cat)}</span></span>${barra(asc?mx/x.v:x.v,asc?mx/Math.min(...[x.v]):mx)}<span class="vl">${esc(x.txt)}</span></li>`;
 function miniRanking(n=5){
   const l=rankingCat('econ',{n});if(!l||!l.length)return '';const mx=l[0].v;
-  return `<section class="sec" aria-labelledby="mr-h"><h2 id="mr-h">Os mais econômicos de 2026</h2><p class="sub">Consumo oficial do Inmetro, no ciclo combinado, entre os carros à venda.</p>
-  <ol class="rk">${l.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)}</span></span>${barra(x.v,mx)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>
-  <p class="more"><button class="btn btn-ghost" data-h="rankings">Ver todos os rankings</button></p></section>`;
+  return `<ol class="rk">${l.map((x,i)=>rkLinha(x,i,x.v/mx*100)).join('')}</ol>`;
 }
+SCREENS.vendas=function(){RS.kind='vendas';return SCREENS.rankings()};
 SCREENS.rankings=function(){
+  const vend=RS.kind==='vendas';
   const cats=[...new Set(CAT.map(r=>r.cat))].sort();const asc=RS.kind==='efic'||RS.kind==='co2';
-  const l=rankingCat(RS.kind,{cat:RS.cat,n:15})||[];const best=l[0]?l[0].v:1;
-  const usaCat=!['autonomia','efic','plugin'].includes(RS.kind);
-  return hubnav('rankings')+`<main class="wrap wide"><section class="sec"><h2>Rankings do Inmetro</h2><p class="sub">Consumo, autonomia e emissões medidos pelo Inmetro (Tabela PBE Veicular 2026), sem estimativa.</p></section>
-  <div class="trail static" role="tablist">${Object.entries(RK_TIPOS).map(([k,[t]])=>`<button class="chip" data-h="rkTipo" data-id="${k}" aria-pressed="${RS.kind===k}">${t}</button>`).join('')}</div>
-  <div class="tf">${usaCat?`<label>Categoria<select class="field" id="rk-cat" data-h="rkCat"><option value="">Todas as categorias</option>${cats.map(c=>`<option ${RS.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label>`:''}</div>
-  <p class="mut">${esc(RK_TIPOS[RS.kind][1])}. Mostra a melhor versão de cada modelo e motor.</p>
-  ${l.length?`<ol class="rk big">${l.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)} · ${esc(x.r.cat)}${x.r.pbe?` · nota ${esc(x.r.pbe)}`:''}${x.r.conpet?' · selo Conpet':''}</span></span>${barra(asc?best/x.v:x.v,asc?1:best)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>`:'<div class="empty2"><b>Nada nesta combinação</b>Escolha outra categoria.</div>'}
-  <p class="foot">Fonte: Tabela PBE Veicular 2026 (Inmetro/Conpet). O consumo do Inmetro é medido em laboratório e costuma ser mais favorável que o uso real.</p></main>`;
+  const l=vend?[]:(rankingCat(RS.kind,{cat:RS.cat,n:15})||[]);const best=l[0]?l[0].v:1;
+  const usaCat=!vend&&!['autonomia','efic','plugin'].includes(RS.kind);
+  const chips=[['vendas','Mais vendidos'],...Object.entries(RK_TIPOS).map(([k,[t]])=>[k,t])];
+  return hubnav('rankings')+`<main class="wrap wide"><section class="sec rk-head"><span class="kicker">Rankings</span><h1>${vend?'Mais vendidos do Brasil':RK_TIPOS[RS.kind][0]}</h1></section>
+  <div class="trail static rk-tabs" role="tablist" aria-label="Tipo de ranking">${chips.map(([k,t])=>`<button class="chip" role="tab" data-h="rkTipo" data-id="${k}" aria-pressed="${RS.kind===k}">${t}</button>`).join('')}</div>
+  ${vend?vendasCorpo():`<div class="tf">${usaCat?`<label>Categoria<select class="field" id="rk-cat" data-h="rkCat"><option value="">Todas as categorias</option>${cats.map(c=>`<option ${RS.cat===c?'selected':''}>${esc(catCurta(c))}</option>`.replace('<option ','<option value="'+esc(c)+'" ')).join('')}</select></label>`:''}</div>
+  <p class="mut rk-src">${esc(RK_TIPOS[RS.kind][1])}. Mostra a melhor versão de cada modelo e motor.</p>
+  ${l.length?`<ol class="rk big">${l.map((x,i)=>rkLinha(x,i,asc?best/x.v*100:x.v/best*100)).join('')}</ol>`:'<div class="empty2"><b>Nada nesta combinação</b>Escolha outra categoria.</div>'}
+  <p class="foot">Fonte: Tabela PBE Veicular 2026 (Inmetro/Conpet). O consumo do Inmetro é medido em laboratório e costuma ser mais favorável que o uso real.</p>`}</main>`;
 };
 
 /* ===================== FROTA COMPLETA PARA A GARAGEM (atuais, antigos e clássicos) ===================== */
@@ -4068,7 +4261,7 @@ async function admAct(h,t){
 
 /* ===================== LIGAÇÃO: telas, rotas, cliques e carga inicial ===================== */
 const ROTAS={intro:'',blog:'blog',discover:'descobrir',forum:'forum',ferramentas:'ferramentas',catalogo:'catalogo',garagem:'garagem',admin:'admin',privacidade:'privacidade',termos:'termos',vendas:'vendas',rankings:'rankings',pessoas:'pessoas',mensagens:'mensagens',q:'match',resumo:'match',res:'match'};
-const NOMES={blog:'Blog',discover:'Descobrir',forum:'Fórum',ferramentas:'Ferramentas',catalogo:'Catálogo oficial',garagem:'Carros salvos',vendas:'Vendas de carros',rankings:'Rankings do Inmetro',pessoas:'Pessoas',mensagens:'Mensagens',admin:'Painel do administrador',privacidade:'Política de privacidade',termos:'Termos de uso',q:'Match de carros',resumo:'Match de carros',res:'Seus carros'};
+const NOMES={blog:'Blog',discover:'Descobrir',forum:'Feed',ferramentas:'Ferramentas',catalogo:'Catálogo oficial',garagem:'Carros salvos',vendas:'Vendas de carros',rankings:'Rankings do Inmetro',pessoas:'Pessoas',mensagens:'Mensagens',admin:'Painel do administrador',privacidade:'Política de privacidade',termos:'Termos de uso',q:'Match de carros',resumo:'Match de carros',res:'Seus carros'};
 function rotaAtual(){
   if(S.screen==='post')return 'blog/'+S.post;
   if(S.screen==='perfil')return '@'+S.perfil;
@@ -4083,17 +4276,28 @@ function tituloAtual(){
 }
 /* Chamada ao fim de cada render: ajusta título e endereço (o botão Voltar do navegador passa a funcionar). */
 function aposRender(){
-  if(S.screen==='intro')contaNumeros();
+  animaTela();
   try{document.title=tituloAtual()}catch(e){}
   const r=rotaAtual(),h=r?'#/'+r:'';
   if((location.hash||'')!==h&&!(r===''&&!location.hash)){try{history.pushState(null,'',location.pathname+h)}catch(e){}}
 }
-function contaNumeros(){
-  if(window.__contou||typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
-  const els=document.querySelectorAll('.stats b[data-n]');if(!els.length||typeof requestAnimationFrame!=='function')return;window.__contou=true;
-  const t0=Date.now(),D=900;
-  const f=()=>{const k=Math.min(1,(Date.now()-t0)/D),e=1-Math.pow(1-k,3);document.querySelectorAll('.stats b[data-n]').forEach(x=>{x.textContent=fmtN(+x.dataset.n*e)});if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f);
+const REDUZ=()=>{try{return typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}};
+function contaValor(el){const n=+el.dataset.n;if(!(n>0)||REDUZ()||typeof requestAnimationFrame!=='function')return;const t0=Date.now(),D=900;const f=()=>{const k=Math.min(1,(Date.now()-t0)/D),e=1-Math.pow(1-k,3);el.textContent=fmtN(n*e);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+let IO=null;
+function animaTela(){
+  try{
+    const root=document.documentElement;if(!root.classList)return;
+    const alvos=document.querySelectorAll('#app .hm-sec,#app .tcx,#app .bcx,#app .ca,#app .fpi,#app .banner,#app .rk li,#app .tc,#app .gc,#app .fc,#app .post,#app .th-grupo,#app .tile,#app .cr');
+    if(REDUZ()||typeof IntersectionObserver!=='function'){alvos.forEach(e=>e.classList.add('in'));return}
+    root.classList.add('rvon');if(IO)IO.disconnect();
+    IO=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('in');IO.unobserve(en.target);en.target.querySelectorAll&&en.target.querySelectorAll('.vl[data-n]').forEach(contaValor);if(en.target.matches&&en.target.matches('li')){const v=en.target.querySelector('.vl[data-n]');v&&contaValor(v)}}}),{threshold:.1,rootMargin:'0px 0px -5% 0px'});
+    alvos.forEach((e,i)=>{if(!e.classList.contains('rv'))e.classList.add('rv');e.style.setProperty('--d',((i%5)*70)+'ms');IO.observe(e)});
+    setTimeout(()=>{document.querySelectorAll('.rv:not(.in)').forEach(e=>e.classList.add('in'))},2800);
+  }catch(e){}
 }
+let parY=0,parT=false;
+function parallax(){parT=false;const h=document.querySelector('.hero .hv'),w=document.querySelector('.hero-in'),g=document.querySelector('.hero .gauge');if(!h)return;const y=Math.min(parY,700);h.style.transform=`translate3d(0,${y*.22}px,0) scale(1.08)`;if(w){w.style.transform=`translate3d(0,${y*.1}px,0)`;w.style.opacity=String(Math.max(0,1-y/520))}if(g)g.style.transform=`translate3d(0,${y*.35}px,0) rotate(${y*.06}deg)`}
+if(typeof window!=='undefined'&&window.addEventListener&&!REDUZ())window.addEventListener('scroll',()=>{parY=scrollY||0;const hb=document.querySelector('.hubnav');if(hb&&hb.classList)hb.classList.toggle('scrolled',parY>24);if(!parT&&typeof requestAnimationFrame==='function'){parT=true;requestAnimationFrame(parallax)}},{passive:true});
 function telaDaRota(hash){
   const r=String(hash||'').replace(/^#\/?/,'').split('/'),a=r[0]||'',b=r[1]||'';
   if(a==='blog'&&b&&BLOG.some(x=>x.id===b)){S.post=b;return 'post'}
@@ -4123,6 +4327,8 @@ document.addEventListener('click',e=>{
   const simple={home:'intro',blog:'blog',discover:'descobrir',forum:'forum',ferramentas:'ferramentas',catalogo:'catalogo',garagem:'garagem',admin:'admin',privacidade:'privacidade',termos:'termos'};
   const tela={home:'intro',blog:'blog',discover:'discover',forum:'forum',ferramentas:'ferramentas',catalogo:'catalogo',garagem:'garagem',admin:'admin',privacidade:'privacidade',termos:'termos',vendas:'vendas',rankings:'rankings',pessoas:'pessoas',mensagens:'mensagens'};
   if(h==='ferramentas')T.hub=true;
+  if(h==='vendas'){RS.kind='vendas';return ir('rankings')}
+  if(h==='meuPerfil'){if(!PM.me){abreAuth('entrar','Entre para ver o seu perfil.');return}S.perfil=PM.me.usuario;return ir('perfil')}
   if(tela[h])return ir(tela[h]);
   switch(h){
     case 'post':S.post=t.dataset.id;return ir('post');
@@ -4166,7 +4372,7 @@ document.addEventListener('click',e=>{
     case 'seguir':return seguirAct(t.dataset.id);
     case 'bloquear':return bloquearAct(t.dataset.id);
     case 'denunciar':if(!exigeConta('Crie sua conta para denunciar.'))return;SH.den={t:t.dataset.t,id:t.dataset.id};return fsheet();
-    case 'addGar':SH.gar={tipo:t.dataset.tipo||'tenho',outro:false};T.pk.gar={m:'',mod:'',id:''};return fsheet();
+    case 'addGar':SH.gar={tipo:t.dataset.tipo||'tenho',outro:false,m:'',mod:'',foto:''};return fsheet();
     case 'garTipo':{const sn=gSnap();SH.gar={...SH.gar,tipo:t.dataset.tipo};fsheet();return gRest(sn)}
     case 'delGar':return DB.delGaragem(t.dataset.id).then(()=>{PF.gar[PM.me.uid]=(PF.gar[PM.me.uid]||[]).filter(x=>x.id!==t.dataset.id);render()}).catch(x=>aviso(x.message||ERR.generico));
     case 'msgAbrir':return abreConversa(t.dataset.id);
@@ -4175,6 +4381,12 @@ document.addEventListener('click',e=>{
     case 'vsMais':VS.n+=30;return render();
     case 'vsDet':VS.det=t.dataset.id;SH.vs=true;return fsheet();
     case 'rkTipo':RS.kind=t.dataset.id;return render();
+    case 'pfTab':{PF.tab=t.dataset.id;render();if(t.dataset.k){const e=document.getElementById('gt-'+t.dataset.k);e&&e.scrollIntoView&&e.scrollIntoView({behavior:'smooth',block:'start'})}return}
+    case 'verFoto':{const id=t.dataset.id,uid=(perfOf([...PF.per.values()].find(x=>x.usuario===S.perfil)?.uid)||{}).uid;const g=(PF.gar[uid]||[]).find(x=>x.id===id),po=(PF.posts[uid]||[]).find(x=>x.id===id);const o=g?{f:g.foto,t:g.carro,s:(GT.find(x=>x[0]===g.tipo)||[])[2],n:g.nota}:po?{f:po.foto,t:po.titulo||'Post',s:'Post',n:po.texto}:null;if(o&&o.f){SH.ver=o;fsheet()}return}
+    case 'gfotoX':{const sn=gSnap();SH.gar={...SH.gar,foto:''};fsheet();return gRest(sn)}
+    case 'cfotoX':SH.compose={...snapCompose(),foto:''};return fsheet();
+    case 'hmTab':HM.tab=t.dataset.id;return render();
+    case 'rkIr':RS.kind=t.dataset.id;return ir('rankings');
     case 'tema':return alternaTema();
   }
 });
@@ -4201,6 +4413,10 @@ document.addEventListener('change',e=>{
   else if(h==='vsSet'){VS[t.dataset.k]=t.value;if(t.dataset.k==='grupo'&&VS.seg&&(VS.grupo==='C'?!/picape|furgao/.test(VS.seg):VS.grupo==='A'&&/picape|furgao/.test(VS.seg)))VS.seg='';VS.n=30;render()}
   else if(h==='rkCat'){RS.cat=t.value;render()}
   else if(h==='garOutro'){const sn=gSnap();SH.gar={...SH.gar,outro:t.checked};fsheet();gRest(sn)}
+  else if(h==='gm'){const sn=gSnap();SH.gar={...SH.gar,m:t.value,mod:''};fsheet();gRest(sn)}
+  else if(h==='gmod'){const sn=gSnap();SH.gar={...SH.gar,mod:t.value};fsheet();gRest(sn)}
+  else if(h==='gfoto'){const f=t.files&&t.files[0];if(!f)return;const sn=gSnap();processaFotoGrande(f).then(d=>{SH.gar={...SH.gar,foto:d};fsheet();gRest(sn)}).catch(x=>{const er=document.getElementById('gr-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
+  else if(h==='cfoto'){const f=t.files&&t.files[0];if(!f)return;const c=snapCompose();processaFotoGrande(f).then(d=>{SH.compose={...c,foto:d};fsheet()}).catch(x=>{const er=document.getElementById('fc-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
   else if(h==='foto'){const f=t.files&&t.files[0];if(!f)return;const atual=lePerfilForm();processaFoto(f).then(d=>{SH.perfil={...atual,foto:d};fsheet()}).catch(x=>{const er=document.getElementById('pf-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
 });
 document.addEventListener('submit',e=>{const id=e.target&&e.target.id;if(!id)return;
@@ -4211,9 +4427,10 @@ document.addEventListener('submit',e=>{const id=e.target&&e.target.id;if(!id)ret
   else if(id==='msg-form'){e.preventDefault();enviaMsg()}
 });
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target&&e.target.dataset&&e.target.dataset.h==='vsDet'){e.preventDefault();e.target.click()}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs)){fechaSh();fsheet()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver)){fechaSh();fsheet()}});
 window.addEventListener('hashchange',()=>{const t=telaDaRota(location.hash);if(t!==S.screen||t==='post'||t==='ferramentas'){S.screen=t;fechaSh();fsheet();render();scrollTo(0,0);entrou(t)}});
 setInterval(()=>{if(S.screen==='forum'&&!SH.open&&!SH.compose&&!SH.auth&&!document.hidden)carregaForum()},30000);
+const snapCompose=()=>{const g=id=>{const x=document.getElementById(id);return x?x.value:''};const c=SH.compose||{};return {...c,title:g('fc-title'),body:g('fc-body'),a:g('fc-a'),b:g('fc-b'),o:[0,1,2,3].map(k=>g('fc-o'+k)),cars:g('fc-cars')}};
 const gSnap=()=>{const g=id=>(document.getElementById(id)||{}).value||'';return {ano:g('gr-ano'),apelido:g('gr-apelido'),nota:g('gr-nota'),livre:g('gr-livre')}};
 const gRest=sn=>{for(const [k,id] of [['ano','gr-ano'],['apelido','gr-apelido'],['nota','gr-nota'],['livre','gr-livre']]){const e=document.getElementById(id);if(e&&sn[k])e.value=sn[k]}};
 function refoca(id){render();const i=document.getElementById(id);if(i){i.focus();try{i.setSelectionRange(i.value.length,i.value.length)}catch(e){}}}
@@ -4229,11 +4446,11 @@ async function salvaPerfilForm(){
 }
 async function salvaGarForm(){
   const g=SH.gar,er=document.getElementById('gr-err'),bad=m=>{er.textContent=m;er.hidden=false},v=id=>((document.getElementById(id)||{}).value||'').trim();
-  let carro='';if(g.outro)carro=v('gr-livre');else{const c=pkCarro('gar'),s=pkEstado('gar');carro=c?`${c.m} ${c.mod}`:(s.m&&s.mod?`${s.m} ${s.mod}`:'')}
+  const carro=g.outro?v('gr-livre'):(g.m&&g.mod?`${g.m} ${g.mod}`:'');
   if(!carro)return bad(g.outro?'Escreva qual é o carro.':'Escolha a marca e o modelo do carro.');
   const ano=+v('gr-ano')||null;
   const bt=document.querySelector('#gar-form button[type=submit]');if(bt)bt.disabled=true;
-  try{await DB.addGaragem({tipo:g.tipo,carro,apelido:v('gr-apelido'),ano,nota:v('gr-nota')});PF.gar[PM.me.uid]=await DB.garagem(PM.me.uid);SH.gar=null;fsheet();render();aviso('Carro adicionado à garagem.')}
+  try{await DB.addGaragem({tipo:g.tipo,carro,apelido:v('gr-apelido'),ano,nota:v('gr-nota'),foto:g.foto||''});PF.gar[PM.me.uid]=await DB.garagem(PM.me.uid);SH.gar=null;fsheet();render();aviso('Carro adicionado à garagem.')}
   catch(e){if(bt)bt.disabled=false;bad(e.message||ERR.generico)}
 }
 async function enviaDen(){
