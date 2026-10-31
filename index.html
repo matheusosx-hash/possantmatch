@@ -926,6 +926,32 @@ label .pw{display:flex;align-items:stretch}
 
 .fh .an{align-items:flex-start;text-align:left}.fh .an b,.fh .an .mut{text-align:left}
 .fc .fh .av{flex:none}
+/* ===== celular primeiro: linhas de ranking e filtros ===== */
+.rk.big li{display:grid;grid-template-columns:38px 56px minmax(0,1.3fr) minmax(70px,1fr) auto;align-items:center;gap:12px;padding:12px 0;margin:0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;box-shadow:none}
+.rk.big{list-style:none;margin:0;padding:0}.rk.big li:last-child{border-bottom:0}
+.rk.big .nm{display:flex;flex-direction:column;min-width:0}.rk.big .vl{white-space:nowrap;font-weight:800}
+.rk.big svg.mini,.rk.big .mini{width:56px;height:auto}
+.kicker{font-size:11.5px}
+@media (max-width:760px){
+  .rk.big li{grid-template-columns:34px minmax(0,1fr) auto;gap:10px;padding:11px 0}
+  .rk.big li .mini,.rk.big li svg.mini,.rk.big li .bar{display:none}
+  .kicker.on-dark{letter-spacing:.08em;font-size:11px}
+  .tf.vf{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .tf.vf label:first-child,.tf.vf label:nth-child(5),.tf.vf label:nth-child(6){grid-column:1/-1}
+  .rk-head h1{font-size:27px}.rk-tabs{margin-top:2px}
+  .vtab{margin:0 -16px;padding:0 16px}
+  .hero .slogan{font-size:19px}
+}
+
+.vlist{display:none}
+.filtros{margin:6px 0 12px;border:1px solid var(--line);border-radius:14px;padding:0 14px}
+.filtros summary{cursor:pointer;font-weight:800;padding:13px 0;list-style:none;display:flex;justify-content:space-between;align-items:center}
+.filtros summary::-webkit-details-marker{display:none}.filtros summary::after{content:"+";font-size:20px;color:var(--faixa);transition:transform .25s}
+.filtros[open] summary::after{transform:rotate(45deg)}.filtros .tf{padding-bottom:14px}
+.vl2{display:flex;flex-direction:column;align-items:flex-end;line-height:1.2}.vl2 b{font-variant-numeric:tabular-nums}.vl2 i{font-style:normal;font-size:12.5px;font-weight:800}.vl2 i.up{color:#1F9D63}.vl2 i.dn{color:#D6452B}
+.vf1{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.vtab{display:none}.vlist{display:block}.vf1{grid-template-columns:1fr}.vlist li{cursor:pointer}}
+.vf1 .field,.vf .field{width:100%}.vf1 label{display:block}
 </style>
 </head>
 <body>
@@ -4047,13 +4073,14 @@ function vendasCorpo(){
   }else if(r){
     const mx=r.l[0]?r.l[0].cur:0;
     corpo=`<div class="vtab"><table><thead><tr><th>#</th><th>Modelo</th><th>Segmento</th><th class="n">Vendas</th><th class="n">Variação${r.p.ant?'':' (sem comparação)'}</th><th class="n">Parte do segmento</th><th>24 meses</th></tr></thead><tbody>${r.l.slice(0,VS.n).map((x,i)=>`<tr data-h="vsDet" data-id="${esc(x.m.id)}" tabindex="0" role="button" aria-label="Ver os 24 meses de ${esc(x.m.modelo)}"><td>${i+1}º</td><td><span class="ml">${silhouette(SILBODY[x.m.seg]||'hatch',{cor:'var(--faixa)',cls:'mini'})}<span><b>${esc(x.m.modelo)}</b><span class="mut">${esc(x.m.marca)}</span></span></span></td><td>${esc(VENDAS.segmentos[x.m.seg])}</td><td class="n"><b>${fmtN(x.cur)}</b>${barra(x.cur,mx)}</td><td class="n ${x.var==null?'':x.var>=0?'up':'dn'}">${x.var==null?'—':(x.var>=0?'+':'')+n1(x.var)+'%'}</td><td class="n">${n1(x.share)}%</td><td>${spark(x.m.s)}</td></tr>`).join('')}</tbody></table></div>
+    <ol class="rk big vlist">${r.l.slice(0,VS.n).map((x,i)=>`<li class="rv" data-h="vsDet" data-id="${esc(x.m.id)}" tabindex="0" role="button" aria-label="Ver os 24 meses de ${esc(x.m.modelo)}"><span class="pos p${Math.min(i+1,4)}">${i+1}</span><span class="nm"><b>${esc(x.m.modelo)}</b><span class="mut">${esc(x.m.marca)} · ${esc(VENDAS.segmentos[x.m.seg])}</span></span><span class="vl2"><b>${fmtN(x.cur)}</b><i class="${x.var==null?'':x.var>=0?'up':'dn'}">${x.var==null?'':(x.var>=0?'+':'')+n1(x.var)+'%'}</i></span></li>`).join('')}</ol>
     ${r.l.length>VS.n?`<p class="more"><button class="btn btn-ghost" data-h="vsMais">Mostrar mais (${r.l.length-VS.n})</button></p>`:''}${r.l.length?'':'<div class="empty2"><b>Nada encontrado</b>Mude os filtros ou a busca.</div>'}`;
   }
   return `<p class="mut rk-src">Emplacamentos por modelo, direto dos informativos da Fenabrave (${esc(VENDAS.edicao)}).</p>
   <section class="sec rk-vendas">
   <div class="trail static" role="tablist"><button class="chip" data-h="vsAba" data-id="modelos" aria-pressed="${VS.aba==='modelos'}">Por modelo</button><button class="chip" data-h="vsAba" data-id="marcas" aria-pressed="${VS.aba==='marcas'}">Por marca</button></div>
-  <div class="tf vf">${sel('vs-per','per','Período',per,VS.per)}${sel('vs-grupo','grupo','Tipo',[['','Todos'],['A','Automóveis'],['C','Comerciais leves']],VS.grupo)}${sel('vs-seg','seg','Segmento',segs,VS.seg)}${sel('vs-marca','marca','Marca',[['','Todas as marcas'],...marcas.map(m=>[m,m])],VS.marca)}
-   <label>Buscar modelo<input class="field" id="vs-q" data-h="vsBusca" placeholder="Ex.: Strada, Dolphin" value="${esc(VS.q)}" autocomplete="off"></label>${VS.aba==='modelos'?sel('vs-ord','ord','Ordenar por',[['vendas','Mais vendidos'],['var','Maior variação'],['nome','Nome']],VS.ord):''}</div>
+  <div class="tf vf vf1">${sel('vs-per','per','Período',per,VS.per)}<label>Buscar modelo<input class="field" id="vs-q" data-h="vsBusca" placeholder="Ex.: Strada, Dolphin" value="${esc(VS.q)}" autocomplete="off"></label></div>
+  <details class="filtros" ${(typeof matchMedia==='function'&&matchMedia('(max-width:760px)').matches)?'':'open'}><summary>Mais filtros</summary><div class="tf vf">${sel('vs-grupo','grupo','Tipo',[['','Todos'],['A','Automóveis'],['C','Comerciais leves']],VS.grupo)}${sel('vs-seg','seg','Segmento',segs,VS.seg)}${sel('vs-marca','marca','Marca',[['','Todas as marcas'],...marcas.map(m=>[m,m])],VS.marca)}${VS.aba==='modelos'?sel('vs-ord','ord','Ordenar por',[['vendas','Mais vendidos'],['var','Maior variação'],['nome','Nome']],VS.ord):''}</div></details>
   ${r?`<p class="mut" role="status">${esc(r.p.rot)}${r.p.ant?` · variação contra ${esc(r.p.antRot)}`:''} · ${r.l.length} ${plural(r.l.length,'modelo','modelos')} · ${fmtN(r.total)} emplacamentos nos modelos listados.</p>`:''}
   ${corpo}<p class="foot">Fonte: Fenabrave, Informativo de Emplacamentos. Os números são de emplacamentos (registros de veículos novos), não de unidades produzidas. A Fenabrave lista os modelos mais emplacados de cada segmento, então a soma dos modelos fica entre 93% e 98% do total oficial de cada mês. Valores de meses anteriores seguem a revisão publicada pela própria Fenabrave na edição seguinte.</p></section>`;
 };
