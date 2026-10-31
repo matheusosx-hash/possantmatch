@@ -952,10 +952,129 @@ label .pw{display:flex;align-items:stretch}
 .vf1{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media (max-width:760px){.vtab{display:none}.vlist{display:block}.vf1{grid-template-columns:1fr}.vlist li{cursor:pointer}}
 .vf1 .field,.vf .field{width:100%}.vf1 label{display:block}
+
+/* ===== busca em um botão só (informação primeiro) ===== */
+.fbar{display:flex;align-items:center;gap:10px;margin:6px 0 14px;min-width:0}
+.fbtn{flex:none;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--bg);border:0;border-radius:999px;padding:0 16px;height:44px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;transition:transform .2s,background .2s}
+.fbtn svg{width:18px;height:18px}.fbtn b{background:var(--faixa);color:#000;border-radius:999px;min-width:20px;height:20px;display:grid;place-items:center;font-size:12px;padding:0 5px}
+.fbtn:active{transform:scale(.95)}
+.fpills{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;min-width:0;flex:1}.fpills::-webkit-scrollbar{display:none}
+.fpill{flex:none;background:var(--surface);border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:7px 12px;font-size:13px;font-weight:600;white-space:nowrap}
+.fsheet.filtro .fform{gap:14px}
+/* ===== ferramentas no celular ===== */
+.toolbox.rf{display:flex;flex-direction:column;gap:10px}
+.toolbox.rf>h3{order:-3}.toolbox.rf>h3+.mut{order:-2}.toolbox.rf>.res-fipe{order:-1;margin:2px 0 6px}
+.toolbox.rf>.tf{order:0}.toolbox.rf>.pkset,.toolbox.rf>.cmpsel{order:1}.toolbox.rf>.cmp{order:2}
+.toolbox.rf>.tf::before{content:"Ajuste os valores";grid-column:1/-1;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.res-fipe .big{animation:popn .45s cubic-bezier(.2,.7,.2,1)}
+@keyframes popn{from{opacity:.4;transform:translateY(6px) scale(.97)}to{opacity:1;transform:none}}
+@media (max-width:760px){
+  .toolbox{padding:14px;border-radius:18px;margin:4px -4px 28px}
+  .toolbox h3{font-size:21px;line-height:1.2;overflow-wrap:break-word;hyphens:auto}
+  .toolbox .tf{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:8px 0}
+  .toolbox .tf:has(select),.toolbox .pkset .tf,.toolbox .cmpsel .tf{grid-template-columns:minmax(0,1fr)}
+  .toolbox .tf label{font-size:13px;gap:4px;line-height:1.25;min-width:0;overflow-wrap:anywhere}
+  .toolbox .tf label .mut,.toolbox .tf label small{font-weight:500;font-size:11.5px;line-height:1.2}
+  .toolbox .field{width:100%;min-width:0;padding:11px 12px;font-size:16px}
+  .toolbox .res-fipe{padding:14px;border-radius:14px}.toolbox .res-fipe h3{font-size:19px}
+  .res-fipe .big{font-size:clamp(26px,9vw,34px);overflow-wrap:anywhere}
+  .res-fipe p{font-size:14.5px;line-height:1.45;overflow-wrap:break-word}
+  .toolbox .cmp{overflow-x:auto;margin:0 -6px;padding:0 6px}.toolbox .cmp table{min-width:0;width:100%;font-size:13px}
+  .toolbox .cmp th,.toolbox .cmp td{padding:8px 6px}
+  .toolbox .btn{min-height:46px}
+  .toolbox p.mut{font-size:13.5px;line-height:1.45}
+  .toolbox .trail.static{margin:0 -4px}
+}
+/* ===== movimento: transição de tela, progresso, sheets, toques ===== */
+#prog{position:fixed;left:0;right:0;top:env(safe-area-inset-top,0px);height:3px;z-index:40;background:linear-gradient(90deg,var(--ciano),var(--faixa));transform:scaleX(0);transform-origin:0 50%;pointer-events:none;transition:transform .12s linear}
+#app.pgin>*:not(.hubnav):not(.bnav){animation:pgin .5s cubic-bezier(.2,.7,.2,1) both}
+@keyframes pgin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.fsheet-bg{animation:fadein .3s ease both}.fsheet{animation:sheetup .42s cubic-bezier(.2,.8,.2,1) both}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes sheetup{from{opacity:0;transform:translate(-50%,40px)}to{opacity:1;transform:translate(-50%,0)}}
+@media (min-width:800px){@keyframes sheetup{from{opacity:0;transform:translate(-50%,-46%)}to{opacity:1;transform:translate(-50%,-50%)}}}
+.tcx,.tc,.fpi,.bcx,.tile,.hb{transform:perspective(800px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .25s ease,border-color .3s,box-shadow .3s}
+.rvon .tcx.rv,.rvon .tc.rv,.rvon .fpi.rv,.rvon .bcx.rv,.rvon .tile.rv{transition:opacity .7s ease var(--d,0ms),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0ms),border-color .3s,box-shadow .3s}
+.tcx:active,.tc:active,.fpi:active,.bcx:active,.btn:active,.ca:active,.bnav button:active,.chip:active,.seg-tabs button:active{transform:scale(.96)}
+.bnav button{transition:background .3s,color .3s,transform .15s}.bnav button svg{transition:transform .35s cubic-bezier(.3,1.6,.5,1)}.bnav button[aria-current="page"] svg{transform:translateY(-2px) scale(1.12)}
+.rk .bar i{position:relative;overflow:hidden}
+.rk .bar i::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,.55),transparent);transform:translateX(-100%);animation:shine 3.2s ease-in-out 1.2s infinite}
+@keyframes shine{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+.rk .pos.p1{animation:glow 3.4s ease-in-out infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(255,87,34,0)}50%{box-shadow:0 0 14px 2px rgba(255,87,34,.45)}}
+.rvon .hm-sec .kicker::before{width:0;transition:width .7s .15s cubic-bezier(.2,.7,.2,1)}.rvon .hm-sec.in .kicker::before{width:14px}
+.hero h1 span{background:linear-gradient(100deg,var(--faixa) 20%,#ffb28c 45%,var(--faixa) 70%);background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 5s ease-in-out infinite}
+@keyframes sheen{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.ring{animation-duration:10s}
+.seg-tabs button,.chip{transition:background .3s,color .3s,transform .15s,border-color .3s}
+.hubnav .tabs2 button{transition:background .3s,color .3s}
+@media (prefers-reduced-motion:reduce){#prog,.rk .bar i::after,.rk .pos.p1,.hero h1 span,.ring,.fsheet,.fsheet-bg,#app.pgin>*{animation:none!important}.tcx,.tc,.fpi,.bcx,.tile,.hb{transform:none!important}}
+
+/* ===== expandir na mesma tela ===== */
+.xp{display:grid;grid-template-rows:0fr;opacity:0;transition:grid-template-rows .55s cubic-bezier(.2,.7,.2,1),opacity .4s ease}
+.xp.open{grid-template-rows:1fr;opacity:1}
+.xp>.xp-in{overflow:hidden;min-height:0}
+.xp.open>.xp-in>*>*{animation:xin .5s cubic-bezier(.2,.7,.2,1) both;animation-delay:var(--xd,0ms)}
+@keyframes xin{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.xrow{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:8px;flex-wrap:wrap}
+.xpb{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--line);color:var(--ink);border-radius:999px;padding:0 16px;height:42px;font:inherit;font-weight:800;font-size:14px;cursor:pointer;transition:background .25s,transform .15s}
+.xpb:hover{background:var(--placa-soft)}.xpb svg{width:18px;height:18px;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.xpb[aria-expanded="true"] svg{transform:rotate(180deg)}
+.xp .rk.big li{opacity:1}
+.xp .th-grid{padding-top:8px}
+.th-grupo .xrow{margin-top:8px}
+/* ===== animações da capa e das trocas ===== */
+.hero h1 .lt{display:inline-block;font-style:normal;opacity:0;transform:translateY(60%) rotate(4deg);filter:blur(8px);animation:ltin .8s cubic-bezier(.2,.7,.2,1) forwards;animation-delay:calc(var(--i)*45ms + 120ms)}
+@keyframes ltin{to{opacity:1;transform:none;filter:none}}
+.hero h1 .w2{background:none;color:var(--faixa);animation:none}
+.hero h1 .w2 .lt{background:linear-gradient(100deg,var(--faixa) 20%,#ffb28c 45%,var(--faixa) 70%);background-size:300% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:ltin .8s cubic-bezier(.2,.7,.2,1) forwards,sheen 5s ease-in-out 1.4s infinite;animation-delay:calc(var(--i)*45ms + 120ms),0s}
+.hero h1 span{animation:none}
+.hero .kicker.on-dark{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}
+.hero .ctas .btn{animation:pop .6s cubic-bezier(.3,1.5,.5,1) both}.hero .ctas .btn:nth-child(1){animation-delay:.55s}.hero .ctas .btn:nth-child(2){animation-delay:.65s}.hero .ctas .btn:nth-child(3){animation-delay:.75s}
+@keyframes pop{from{opacity:0;transform:translateY(16px) scale(.9)}to{opacity:1;transform:none}}
+.hero .fontes span{animation:rise .7s cubic-bezier(.2,.7,.2,1) both}.hero .fontes span:nth-child(1){animation-delay:.9s}.hero .fontes span:nth-child(2){animation-delay:1s}.hero .fontes span:nth-child(3){animation-delay:1.1s}
+.btn-go{position:relative;overflow:hidden}.btn-go::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.45) 50%,transparent 70%);transform:translateX(-120%);transition:transform .7s}
+.btn-go:hover::after{transform:translateX(120%)}
+#hm-rank.swap .rk li{animation:swapin .5s cubic-bezier(.2,.7,.2,1) both}
+#hm-rank.swap .rk li:nth-child(2){animation-delay:.06s}#hm-rank.swap .rk li:nth-child(3){animation-delay:.12s}
+@keyframes swapin{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+.hscroll .tcx.rv,.hscroll .bcx.rv{transform:translateX(34px) scale(.96)}
+.rvon .hscroll .tcx.rv.in,.rvon .hscroll .bcx.rv.in{transform:none}
+.rvon .banner.rv{transform:scale(.95)}.rvon .banner.rv.in{transform:none}
+.rvon .ca.rv{transform:translateX(-22px)}.rvon .ca.rv.in{transform:none}
+html{scroll-behavior:smooth}
+::view-transition-old(root){animation:vtout .28s ease both}::view-transition-new(root){animation:vtin .45s cubic-bezier(.2,.7,.2,1) both}
+@keyframes vtout{to{opacity:0;transform:translateY(-8px)}}@keyframes vtin{from{opacity:0;transform:translateY(16px)}}
+.ig .tgrid3 .tile.rv{transform:scale(.9)}.rvon .ig .tgrid3 .tile.rv.in{transform:none}
+.dst .dc{animation:none}.dst:nth-child(odd) .dc{transition-delay:.02s}
+@media (prefers-reduced-motion:reduce){.hero h1 .lt{opacity:1;transform:none;filter:none;animation:none!important}.hero .ctas .btn,.hero .fontes span,.hero .kicker.on-dark,.xp.open>.xp-in>*>*{animation:none!important}.xp{transition:none}::view-transition-old(root),::view-transition-new(root){animation:none}html{scroll-behavior:auto}}
+.hero h1 .w1,.hero h1 .w2{background:none!important;-webkit-background-clip:border-box!important;background-clip:border-box!important;animation:none!important}
+.hero h1 .w1{color:#fff!important}.hero h1 .w2{color:var(--faixa)!important}
+
+/* ===== elétrico x combustão lado a lado ===== */
+.vpicks{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:8px 0}
+.vcar{display:flex;flex-direction:column;align-items:flex-start;gap:3px;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:12px;cursor:pointer;color:inherit;font:inherit;min-width:0;transition:border-color .25s,transform .15s}
+.vcar.on,.vcar:hover{border-color:var(--ciano)}.vcar:active{transform:scale(.97)}
+.vcar .vk{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--faixa)}
+.vcar b{font-family:"Ubuntu",sans-serif;font-size:16px;line-height:1.2;overflow-wrap:anywhere}
+.vcar .vsub{font-size:12px;color:var(--muted);line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vt{font-style:normal;font-size:11px;font-weight:800;border-radius:999px;padding:3px 9px;margin-top:4px}.vt.ev{background:var(--placa-soft);color:var(--ciano-ink)}.vt.ice{background:#FFE3D6;color:#B23B0F}
+.vbox{padding:6px 0 10px}.vbox .tf{grid-template-columns:minmax(0,1fr)}
+table.vtbl{width:100%;border-collapse:collapse;table-layout:fixed;font-size:14px}
+table.vtbl th,table.vtbl td{padding:10px 8px;border-bottom:1px solid var(--line);vertical-align:top;text-align:left;overflow-wrap:anywhere;line-height:1.3}
+table.vtbl thead th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+table.vtbl tbody th{width:34%;font-weight:700;color:var(--muted);font-size:13px}
+table.vtbl td.win{color:#14804A;font-weight:800;background:rgba(43,182,115,.1)}
+.vtbl-n{font-size:13px;line-height:1.5}
+.ult{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;padding:8px 0 4px}.ult label{font-size:12.5px;font-weight:700;display:grid;gap:4px}
+@media (max-width:760px){.vcar{padding:10px}.ult{grid-template-columns:1fr}table.vtbl{font-size:13px}table.vtbl th,table.vtbl td{padding:8px 5px}}
+table.vtbl th,table.vtbl td{white-space:normal!important;word-break:normal}
+table.vtbl tbody th{padding-right:6px}
+.res-fipe h3{hyphens:none!important;overflow-wrap:break-word}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="prog" aria-hidden="true"></div><div id="app"></div>
 <div id="sheet"></div>
 <div id="fsheet"></div>
 <div class="flash" id="flash" role="alert"></div>
@@ -2850,6 +2969,9 @@ const IC={
  user:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c1.4-4 4.5-6 8-6s6.6 2 8 6"/></svg>',
  grid:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>',
  camera:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><circle cx="12" cy="13" r="3.6"/></svg>',
+ filtro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"/></svg>',
+ busca:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg>',
+ chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>',
  home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>',
  trofeu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/></svg>',
  barras:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
@@ -2868,6 +2990,10 @@ function hubnav(cur){
   return `<header class="hubnav"><div class="in"><button class="brand" data-h="home" aria-label="Início">${PMSVG}<span>Possant<b>Match</b></span></button>${tema}${conta}<nav class="tabs2" aria-label="Seções">${NAVTABS.map(b).join('')}</nav></div></header>${bnav}`;
 }
 const SCREENS={};
+/* Expandir na mesma tela: o resumo fica visível e o resto abre com animação. */
+const HX={};
+const xp=(id,html)=>`<div class="xp ${HX[id]?'open':''}" id="xp-${id}"><div class="xp-in">${html}</div></div>`;
+const xpBtn=(id,rot='Ver mais')=>`<button class="xpb" data-h="xp" data-id="${id}" data-r="${esc(rot)}" aria-expanded="${!!HX[id]}"><span>${HX[id]?'Mostrar menos':esc(rot)}</span>${IC.chev}</button>`;
 function alternaTema(){
   const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
   document.documentElement.dataset.theme=t;try{localStorage.setItem('pm-tema',t)}catch(e){}
@@ -2875,9 +3001,9 @@ function alternaTema(){
   aviso(t==='dark'?'Tema escuro ativado.':'Tema claro ativado.');
   document.querySelectorAll('.tema').forEach(b=>{b.innerHTML=t==='dark'?IC.sun:IC.moon;b.setAttribute('aria-label',t==='dark'?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=t==='dark'?'Tema claro':'Tema escuro'});
 }
-const fsheet=()=>{const el=document.getElementById('fsheet');if(!el)return;el.innerHTML=SH.auth?authSheet():SH.compose?composeSheet():SH.open?replySheet():SH.perfil?perfilSheet():SH.gar?garSheet():SH.den?denSheet():SH.vs?vsDetSheet():SH.ver?verSheet():SH.conta?contaSheet():'';document.body.classList.toggle('locked',!!(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver));if(SH.auth||SH.compose||SH.perfil||SH.gar||SH.den){const i=el.querySelector&&el.querySelector('input:not([type=hidden]),textarea');if(i)setTimeout(()=>{try{i.focus()}catch(e){}},40)}};
-const SH={auth:null,compose:null,open:null,conta:null,perfil:null,gar:null,den:null,vs:null,ver:null,volta:null,novo:false};
-const fechaSh=()=>{SH.auth=SH.compose=SH.open=SH.conta=SH.perfil=SH.gar=SH.den=SH.vs=SH.ver=null;SH.novo=false};
+const fsheet=()=>{const el=document.getElementById('fsheet');if(!el)return;el.innerHTML=SH.auth?authSheet():SH.compose?composeSheet():SH.open?replySheet():SH.perfil?perfilSheet():SH.gar?garSheet():SH.den?denSheet():SH.vs?vsDetSheet():SH.ver?verSheet():SH.filtro?filtroSheet():SH.conta?contaSheet():'';document.body.classList.toggle('locked',!!(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver||SH.filtro));if(SH.auth||SH.compose||SH.perfil||SH.gar||SH.den){const i=el.querySelector&&el.querySelector('input:not([type=hidden]),textarea');if(i)setTimeout(()=>{try{i.focus()}catch(e){}},40)}};
+const SH={auth:null,compose:null,open:null,conta:null,perfil:null,gar:null,den:null,vs:null,ver:null,filtro:null,volta:null,novo:false};
+const fechaSh=()=>{SH.auth=SH.compose=SH.open=SH.conta=SH.perfil=SH.gar=SH.den=SH.vs=SH.ver=SH.filtro=null;SH.novo=false};
 const aviso=m=>flash(m);
 
 /* ---------- Entrar / Criar conta / Recuperar senha ---------- */
@@ -3091,35 +3217,35 @@ const HM={tab:'vendas'};
 const GAUGE='<svg class="gauge" viewBox="0 0 220 220" aria-hidden="true"><circle cx="110" cy="110" r="96" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="2 9" opacity=".7"/><path d="M34 160A96 96 0 1 1 186 160" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" opacity=".55"/><path d="M150 36A96 96 0 0 1 186 160" fill="none" stroke="var(--faixa)" stroke-width="5" stroke-linecap="round"/><g class="needle"><path d="M110 110L110 38" stroke="var(--faixa)" stroke-width="3" stroke-linecap="round"/><circle cx="110" cy="110" r="8" fill="var(--faixa)"/></g></svg>';
 const vendaLinha=(x,i,mx)=>`<li class="rv"><span class="pos p${Math.min(i+1,4)}">${i+1}</span>${silhouette(SILBODY[x.m.seg]||'hatch',{cor:'var(--faixa)',cls:'mini'})}<span class="nm"><b>${esc(x.m.modelo)}</b><span class="mut">${esc(x.m.marca)}</span></span><span class="bar"><i style="--w:${(x.cur/mx*100).toFixed(1)}%"></i></span><span class="vl" data-n="${x.cur}">${fmtN(x.cur)}</span></li>`;
 function painelRank(){
-  let li='',rot='',link='rankings',kind='vendas';
-  if(HM.tab==='vendas'){const r=vendasConsulta({per:ULT,grupo:'A'}),l=r.l.slice(0,5),mx=l[0]?l[0].cur:1;li=l.map((x,i)=>vendaLinha(x,i,mx)).join('');rot=`Automóveis, ${mesNome(ULT)}. Fonte: Fenabrave.`}
-  else if(HM.tab==='econ'){const l=rankingCat('econ',{n:5})||[],mx=l[0]?l[0].v:1;li=l.map((x,i)=>rkLinha(x,i,x.v/mx*100)).join('');rot='Consumo no ciclo combinado. Fonte: Inmetro.';kind='econ'}
-  else{const l=rankingCat('efic',{n:5})||[],b=l[0]?l[0].v:1;li=l.map((x,i)=>rkLinha(x,i,b/x.v*100)).join('');rot='Elétricos que gastam menos energia. Fonte: Inmetro.';kind='efic'}
-  return `<ol class="rk big">${li}</ol><p class="mut rk-src">${rot}</p><p class="more"><button class="lk" data-h="rkIr" data-id="${kind}">Ver ranking completo →</button></p>`;
+  let rows=[],rot='',kind='vendas';
+  if(HM.tab==='vendas'){const r=vendasConsulta({per:ULT,grupo:'A'}),l=r.l.slice(0,10),mx=l[0]?l[0].cur:1;rows=l.map((x,i)=>vendaLinha(x,i,mx));rot=`Automóveis, ${mesNome(ULT)}. Fonte: Fenabrave.`}
+  else if(HM.tab==='econ'){const l=rankingCat('econ',{n:10})||[],mx=l[0]?l[0].v:1;rows=l.map((x,i)=>rkLinha(x,i,x.v/mx*100));rot='Consumo no ciclo combinado. Fonte: Inmetro.';kind='econ'}
+  else{const l=rankingCat('efic',{n:10})||[],b=l[0]?l[0].v:1;rows=l.map((x,i)=>rkLinha(x,i,b/x.v*100));rot='Elétricos que gastam menos energia. Fonte: Inmetro.';kind='efic'}
+  return `<ol class="rk big">${rows.slice(0,3).join('')}</ol>${xp('rank','<ol class="rk big">'+rows.slice(3).join('')+'</ol>')}<div class="xrow">${xpBtn('rank','Ver os 10 primeiros')}<button class="lk" data-h="rkIr" data-id="${kind}">Abrir ranking →</button></div><p class="mut rk-src">${rot}</p>`;
 }
 const POPULARES2=['fipe','custo','financiamento','etanol','comparador','ipva','viagem','eletrico'];
 SCREENS.intro=function intro(){
   const started=S.A.uf||S.A.condicao;
   const nov=(Novas.lista||[]).slice(0,1);
-  const vit=(FV.vitrine||[]).slice(0,3);
+  const vit=(FV.vitrine||[]).slice(0,4);
   const cuidado=[['ipva','IPVA e documentos','Estimativa por estado',IC.check],['manutencao','Revisões','Óleo, filtros, freios e correia',IC.chave],['luzes','Luzes do painel','O que cada uma significa',IC.eye],['pneu','Pneus','Medida certa, velocímetro certo',IC.car],['pontos','Pontos da CNH','Quanto falta para suspender',IC.lock]];
+  const care=c=>`<button class="ca" data-h="tool" data-id="${c[0]}"><span class="ci">${c[3]}</span><span class="ct"><b>${c[1]}</b><span>${c[2]}</span></span><i aria-hidden="true">›</i></button>`;
   const tabs=[['vendas','Mais vendidos'],['econ','Mais econômicos'],['ev','Elétricos']];
+  const letras=(t,c)=>[...t].map((ch,i)=>`<i class="lt" style="--i:${i+c}">${ch}</i>`).join('');
+  const fp=p=>`<button class="fpi" data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span><b>${esc(p.titulo||p.trecho)}</b><span class="m">${IC.lock} Entre para participar</span></button>`;
+  const todas=TOOLS.map(t=>`<button class="qk" data-h="tool" data-id="${t[0]}" style="--gc:${grupoDe(t[0])[3]}"><span class="ti">${TICON[t[4]]}</span><b>${t[1]}</b></button>`).join('');
+  const sec=(id,kick,tit,acao,corpo)=>`<section class="hm-sec" aria-labelledby="hm-${id}"><div class="hm-head"><div><span class="kicker">${kick}</span><h2 id="hm-${id}">${tit}</h2></div>${acao}</div>${corpo}</section>`;
   return hubnav('home')+`<section class="hero compact"><video class="hv" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="hero.webm" type="video/webm"><source src="hero.mp4" type="video/mp4"></video>${GAUGE}
-  <div class="wrap hero-in"><span class="kicker on-dark">Hub de cuidado e conhecimento sobre carros</span><h1>Possant<span>Match</span></h1><p class="slogan">Acelere a escolha do seu próximo carro</p>
+  <div class="wrap hero-in"><span class="kicker on-dark">Hub de cuidado e conhecimento sobre carros</span><h1 aria-label="PossantMatch"><span class="w1" aria-hidden="true">${letras('Possant',0)}</span><span class="w2" aria-hidden="true">${letras('Match',7)}</span></h1><p class="slogan">Acelere a escolha do seu próximo carro</p>
   <div class="ctas"><button class="btn btn-go" data-h="rankings">Rankings</button><button class="btn btn-ghost on-dark" data-h="ferramentas">Ferramentas</button><button class="btn btn-ghost on-dark" data-go="start">${started?'Meu match':'Meu carro'}</button></div>
   <p class="fontes"><span>${IC.check}Inmetro</span><span>${IC.barras}Fenabrave</span><span>${IC.eye}Tabela FIPE</span></p></div><div class="lane"></div></section>
   <main class="wrap wide hm">${nov.length?`<p class="novstrip"><b>Novo:</b> ${esc(nov[0].titulo)}. ${esc(nov[0].texto)}</p>`:''}
-  <section class="hm-sec" aria-labelledby="hm-r"><div class="hm-head"><div><span class="kicker">Rankings</span><h2 id="hm-r">O que está na frente</h2></div></div>
-   <div class="seg-tabs" role="tablist">${tabs.map(([k,l])=>`<button role="tab" data-h="hmTab" data-id="${k}" aria-pressed="${HM.tab===k}">${l}</button>`).join('')}</div><div id="hm-rank">${painelRank()}</div></section>
-  <section class="hm-sec" aria-labelledby="hm-f"><div class="hm-head"><div><span class="kicker">Ferramentas</span><h2 id="hm-f">Resolva em minutos</h2></div><button class="lk" data-h="ferramentas">Ver todas →</button></div>
-   <div class="hscroll">${POPULARES2.map(k=>TOOLS.find(t=>t[0]===k)).filter(Boolean).map(([k,t,d,kick,ic])=>`<button class="tcx" data-h="tool" data-id="${k}" style="--gc:${grupoDe(k)[3]}"><span class="ti">${TICON[ic]}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div></section>
-  <section class="hm-sec" aria-labelledby="hm-c"><div class="hm-head"><div><span class="kicker">Cuidado</span><h2 id="hm-c">Cuide do seu carro</h2></div></div>
-   <div class="care">${cuidado.map(([k,t,d,ic])=>`<button class="ca" data-h="tool" data-id="${k}"><span class="ci">${ic}</span><span class="ct"><b>${t}</b><span>${d}</span></span><i aria-hidden="true">›</i></button>`).join('')}</div></section>
-  <section class="hm-sec" aria-labelledby="hm-s"><div class="hm-head"><div><span class="kicker">Feed</span><h2 id="hm-s">Gente que gosta de carro</h2></div><button class="lk" data-h="forum">Abrir o feed →</button></div>
-   ${vit.length?`<div class="fp">${vit.map(p=>`<button class="fpi" data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span><b>${esc(p.titulo||p.trecho)}</b><span class="m">${IC.lock} Entre para participar</span></button>`).join('')}</div>`:`<div class="fp"><button class="fpi" data-h="forum"><span class="k">Feed</span><b>Poste fotos do seu carro, abra duelos e tire dúvidas.</b><span class="m">${PM.me?'Abrir o feed':'Crie sua conta para participar'}</span></button></div>`}</section>
-  <section class="banner" aria-label="Escolha seu carro"><div><span class="kicker on-dark">Match</span><h2>Qual carro combina com você?</h2><p>Responda sobre rotina e orçamento. Receba 3 opções com parcela, seguro, IPVA e custo anual.</p></div><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></section>
-  <section class="hm-sec" aria-labelledby="hm-b"><div class="hm-head"><div><span class="kicker">Blog</span><h2 id="hm-b">Aprenda antes de decidir</h2></div><button class="lk" data-h="blog">Ver todos →</button></div>
-   <div class="hscroll">${BLOG.slice(0,6).map(p=>`<button class="bcx" data-h="post" data-id="${p.id}"><span class="k">${p.k}</span><b>${p.t}</b><span class="m">${p.min} min de leitura</span></button>`).join('')}</div></section></main>`;
+  ${sec('r','Rankings','O que está na frente','',`<div class="seg-tabs" role="tablist">${tabs.map(([k,l])=>`<button role="tab" data-h="hmTab" data-id="${k}" aria-pressed="${HM.tab===k}">${l}</button>`).join('')}</div><div id="hm-rank">${painelRank()}</div>`)}
+  ${sec('f','Ferramentas','Resolva em minutos',`<button class="lk" data-h="ferramentas">Abrir →</button>`,`<div class="hscroll">${POPULARES2.map(k=>TOOLS.find(t=>t[0]===k)).filter(Boolean).map(([k,t,d,kick,ic])=>`<button class="tcx" data-h="tool" data-id="${k}" style="--gc:${grupoDe(k)[3]}"><span class="ti">${TICON[ic]}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div>${xp('ferr',`<div class="qks">${todas}</div>`)}<div class="xrow">${xpBtn('ferr','Ver todas as ferramentas')}</div>`)}
+  ${sec('c','Cuidado','Cuide do seu carro','',`<div class="care">${cuidado.slice(0,3).map(care).join('')}</div>${xp('care',`<div class="care">${cuidado.slice(3).map(care).join('')}</div>`)}<div class="xrow">${xpBtn('care','Ver mais cuidados')}</div>`)}
+  ${sec('s','Feed','Gente que gosta de carro',`<button class="lk" data-h="forum">Abrir →</button>`,vit.length?`<div class="fp">${fp(vit[0])}</div>${vit.length>1?xp('feed',`<div class="fp">${vit.slice(1).map(fp).join('')}</div>`)+`<div class="xrow">${xpBtn('feed','Ver mais posts')}</div>`:''}`:`<div class="fp"><button class="fpi" data-h="forum"><span class="k">Feed</span><b>Poste fotos do seu carro, abra duelos e tire dúvidas.</b><span class="m">${PM.me?'Abrir o feed':'Crie sua conta para participar'}</span></button></div>`)}
+  <section class="banner" aria-label="Escolha seu carro"><div><span class="kicker on-dark">Match</span><h2>Qual carro combina com você?</h2><p>Responda sobre rotina e orçamento e receba 3 opções.</p></div><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></section>
+  ${sec('b','Blog','Aprenda antes de decidir',`<button class="lk" data-h="blog">Abrir →</button>`,`<div class="hscroll">${BLOG.slice(0,4).map(p=>`<button class="bcx" data-h="post" data-id="${p.id}"><span class="k">${p.k}</span><b>${p.t}</b><span class="m">${p.min} min de leitura</span></button>`).join('')}</div>${xp('blog',`<ul class="bl">${BLOG.slice(4).map(p=>`<li><button data-h="post" data-id="${p.id}"><span class="k">${p.k}</span>${p.t}</button></li>`).join('')}</ul>`)}<div class="xrow">${xpBtn('blog','Ver mais artigos')}</div>`)}</main>`;
 };
 SCREENS.blog=function(){return hubnav('home')+`<main class="wrap wide"><section class="sec"><h2>Blog</h2><p class="sub">Guias práticos para escolher, comprar e manter o seu carro.</p><div class="posts big">${BLOG.map(p=>blogCard(p)).join('')}</div></section></main>`};
 SCREENS.post=function(){
@@ -3456,7 +3582,7 @@ SCREENS.pessoas=function(){
   if(!PM.me)return hubnav('forum')+`<main class="wrap"><div class="gate"><div>${IC.lock}</div><div><b>Conheça outros apaixonados por carro</b><p>Crie sua conta para ver quem está no PossantMatch, seguir pessoas e trocar ideias.</p><button class="btn btn-go" data-h="entrar" data-m="criar">Criar conta</button></div></div></main>`;
   const l=[...PF.per.values()].filter(p=>p.uid!==PM.me.uid&&!PF.blo.has(p.uid)&&filtroPessoa(p,PF.busca,PF.uf)).sort((a,b)=>(PF.sigo.has(b.uid)-PF.sigo.has(a.uid))||String(a.nome||a.usuario).localeCompare(String(b.nome||b.usuario),'pt'));
   return hubnav('forum')+`<main class="wrap wide"><section class="sec"><h2>Pessoas</h2><p class="sub">Siga quem gosta do mesmo que você. Quando duas pessoas se seguem, podem trocar mensagens privadas.</p></section>
-  <div class="catf pes"><input class="field" id="ps-q" data-h="pessoaBusca" placeholder="Buscar por nome, @usuário ou carro" value="${esc(PF.busca)}" aria-label="Buscar pessoas"><select class="field" id="ps-uf" data-h="pessoaUf" aria-label="Estado"><option value="">Qualquer estado</option>${UFS.map(u=>`<option ${PF.uf===u?'selected':''}>${u}</option>`).join('')}</select></div>
+  ${fbarPes()}
   <div class="crs" id="ps-lista">${l.length?l.map(p=>`<article class="cr pp"><button class="lkp" data-h="perfil" data-u="${esc(p.usuario)}">${avatar(p,48)}<span class="pn"><b>${esc(p.nome||'@'+p.usuario)}</b><span class="mut">@${esc(p.usuario)}${p.uf?` · ${esc(p.uf)}`:''}${p.carro?` · ${esc(p.carro)}`:''}</span></span></button><button class="btn ${PF.sigo.has(p.uid)?'btn-ghost':'btn-go'} btn-sm" data-h="seguir" data-id="${esc(p.uid)}">${PF.sigo.has(p.uid)?'Seguindo':(PF.meSegue.has(p.uid)?'Seguir de volta':'Seguir')}</button></article>`).join(''):vazioPerfil('Ninguém encontrado','Mude a busca ou o estado. Convide amigos para entrar no PossantMatch.')}</div></main>`;
 };
 
@@ -3516,13 +3642,15 @@ function perfilSheet(){
 function garSheet(){
   const g=SH.gar;if(!g)return '';
   const anos=[];for(let a=new Date().getFullYear()+1;a>=1950;a--)anos.push(a);
-  const nova=g.outro,mods=g.m?FROTA.modelos(g.m):[];
+  const nova=g.outro,mods=g.m?FROTA.modelos(g.m):[],vers=g.m&&g.mod?FROTA.versoes(g.m,g.mod):[];
   const op=(arr,sel)=>arr.map(x=>`<option value="${esc(x)}" ${x===sel?'selected':''}>${esc(x)}</option>`).join('');
   return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet" role="dialog" aria-modal="true" aria-label="Adicionar carro"><div class="sh-h"><div><p class="sh-k">Garagem virtual</p><h3 style="margin:2px 0 0">${(GT.find(x=>x[0]===g.tipo)||GT[0])[3]}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>
   <form class="fform" id="gar-form" novalidate>
    <div class="seg">${GT.map(x=>`<button type="button" data-h="garTipo" data-tipo="${x[0]}" aria-pressed="${g.tipo===x[0]}">${x[2]}</button>`).join('')}</div>
    ${nova?`<label>Qual carro?<input class="field" id="gr-livre" maxlength="80" placeholder="Marca, modelo e versão" value="${esc(g.livre||'')}"></label>`
-   :`<div class="two2"><label>Marca<select class="field" id="gr-m" data-h="gm"><option value="">Escolha</option>${op(FROTA.marcas,g.m)}</select></label><label>Modelo<select class="field" id="gr-mod" data-h="gmod" ${g.m?'':'disabled'}><option value="">${g.m?'Escolha':'Antes, a marca'}</option>${op(mods,g.mod)}</select></label></div>`}
+   :`<div class="two2"><label>Marca<select class="field" id="gr-m" data-h="gm"><option value="">Escolha</option>${op(FROTA.marcas,g.m)}</select></label><label>Modelo<select class="field" id="gr-mod" data-h="gmod" ${g.m?'':'disabled'}><option value="">${g.m?'Escolha':'Antes, a marca'}</option>${op(mods,g.mod)}</select></label></div>
+   <label>Versão <span class="mut">(opcional)</span><select class="field" id="gr-v" data-h="gv" ${g.mod?'':'disabled'}><option value="">${g.mod?'Não sei / sem versão':'Antes, o modelo'}</option>${op(vers,g.v)}<option value="__outra__" ${g.v==='__outra__'?'selected':''}>Outra versão (digitar)</option></select></label>
+   ${g.v==='__outra__'?`<label>Qual versão?<input class="field" id="gr-vlivre" maxlength="40" placeholder="Ex.: 1.6 16V Highline" value="${esc(g.vlivre||'')}"></label>`:''}`}
    <label class="chk"><input type="checkbox" id="gr-outro" data-h="garOutro" ${nova?'checked':''}> Meu carro não está na lista</label>
    <div class="two2"><label>Ano <span class="mut">(opcional)</span><select class="field" id="gr-ano"><option value="">—</option>${anos.map(a=>`<option>${a}</option>`).join('')}</select></label><label>Apelido <span class="mut">(opcional)</span><input class="field" id="gr-apelido" maxlength="40"></label></div>
    <label>Uma frase sobre ele <span class="mut">(opcional)</span><textarea class="field" id="gr-nota" maxlength="200"></textarea></label>
@@ -3753,6 +3881,7 @@ const TGRUPOS=[
  ['comb','Combustível e viagem','Abasteça e viaje com a conta feita','#2BB673',['etanol','combustivel','viagem','consumo']],
  ['manut','Manutenção e trânsito','Cuide do carro e evite dor de cabeça','#F5B800',['manutencao','pneu','luzes','pontos']]
 ];
+const RESFIRST=['aplicativo','consorcio','custo','financiamento','ipva','pneu','pontos','trocar','viagem','combustivel','etanol'];
 const grupoDe=id=>TGRUPOS.find(g=>g[4].includes(id))||TGRUPOS[0];
 const POPULARES=['fipe','custo','financiamento','etanol','comparador','ipva'];
 const semAcento=x=>String(x||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
@@ -3767,7 +3896,7 @@ SCREENS.ferramentas=function(){
   const irmas=g[4].filter(x=>x!==t[0]).map(x=>TOOLS.find(y=>y[0]===x)).filter(Boolean);
   return hubnav('ferramentas')+`<main class="wrap wide"><button class="back" data-h="ferrHub">← Todas as ferramentas</button>
   <div class="th-top" style="--gc:${g[3]}"><span class="gb">${g[1]}</span></div>
-  <section class="toolbox" id="toolbox" aria-live="polite">${toolHtml()}</section>
+  <section class="toolbox ${RESFIRST.includes(T.tool)?'rf':''}" id="toolbox" aria-live="polite">${toolHtml()}</section>
   <section class="sec th-more"><h2>Outras em “${g[1]}”</h2><div class="th-grid">${irmas.map(x=>toolCard(x,g[3])).join('')}</div><p class="more"><button class="btn btn-ghost" data-h="ferrHub">Ver todas as ferramentas</button></p></section></main>`;
 };
 function hubFerramentas(){
@@ -3775,11 +3904,10 @@ function hubFerramentas(){
   const casa=t=>!q||semAcento(t[1]+' '+t[2]+' '+t[3]).includes(q);
   const grupos=TGRUPOS.filter(g=>!T.g||g[0]===T.g).map(g=>[g,g[4].map(id=>TOOLS.find(t=>t[0]===id)).filter(t=>t&&casa(t))]).filter(([g,l])=>l.length);
   const total=grupos.reduce((a,[,l])=>a+l.length,0);
-  return hubnav('ferramentas')+`<main class="wrap wide th-hub"><section class="sec th-head"><h2>Ferramentas</h2><p class="sub">Ferramentas gratuitas e sem cadastro. Escolha pelo que você quer resolver.</p>
-  <label class="th-search"><span class="sr">Buscar ferramenta</span><input class="field" id="th-q" data-h="thBusca" type="search" placeholder="O que você quer resolver? Ex.: parcela, IPVA, etanol" value="${esc(T.q)}" autocomplete="off"></label>
-  <div class="trail static" role="tablist" aria-label="Grupos"><button class="chip" data-h="thGrupo" data-id="" aria-pressed="${!T.g}">Todas</button>${TGRUPOS.map(g=>`<button class="chip" data-h="thGrupo" data-id="${g[0]}" aria-pressed="${T.g===g[0]}">${g[1]}</button>`).join('')}</div></section>
+  return hubnav('ferramentas')+`<main class="wrap wide th-hub"><section class="sec th-head"><h2>Ferramentas</h2><p class="sub">Grátis e sem cadastro. Toque na que resolve o seu caso.</p>
+  ${fbarFerr()}</section>
   ${!q&&!T.g&&uso.length?`<section class="sec th-rec"><h3>Continue de onde parou</h3><div class="th-grid">${uso.map(id=>TOOLS.find(t=>t[0]===id)).map(t=>toolCard(t,grupoDe(t[0])[3])).join('')}</div></section>`:''}
-  ${grupos.map(([g,l])=>`<section class="th-grupo" style="--gc:${g[3]}"><div class="gh"><span class="dot"></span><div><h3>${g[1]}</h3><p>${g[2]}</p></div></div><div class="th-grid">${l.map(t=>toolCard(t,g[3])).join('')}</div></section>`).join('')||`<div class="empty2"><b>Nenhuma ferramenta encontrada</b>Tente outra palavra, como “parcela”, “combustível” ou “seguro”.<br><button class="btn btn-ghost btn-sm" data-h="thGrupo" data-id="">Limpar busca</button></div>`}
+  ${grupos.map(([g,l])=>{const filt=!!(q||T.g),vis=filt?l:l.slice(0,2),res=filt?[]:l.slice(2);return `<section class="th-grupo" style="--gc:${g[3]}"><div class="gh"><span class="dot"></span><div><h3>${g[1]}</h3><p>${g[2]}</p></div></div><div class="th-grid">${vis.map(t=>toolCard(t,g[3])).join('')}</div>${res.length?xp('tg-'+g[0],`<div class="th-grid">${res.map(t=>toolCard(t,g[3])).join('')}</div>`)+`<div class="xrow">${xpBtn('tg-'+g[0],`Ver as ${l.length} ferramentas`)}</div>`:''}</section>`}).join('')||`<div class="empty2"><b>Nenhuma ferramenta encontrada</b>Tente outra palavra, como “parcela”, “combustível” ou “seguro”.<br><button class="btn btn-ghost btn-sm" data-h="thGrupo" data-id="">Limpar busca</button></div>`}
   <section class="th-dados"><h3>Dados oficiais</h3><div class="th-grid"><button class="tc" data-h="catalogo" style="--gc:var(--ciano)"><span class="ti">${IC.car}</span><span class="tx"><b>Catálogo do Inmetro</b><span>Consumo, autonomia e nota de cada versão.</span></span><i class="ar" aria-hidden="true">→</i></button><button class="tc" data-h="rankings" style="--gc:#2BB673"><span class="ti">${IC.check}</span><span class="tx"><b>Rankings de consumo</b><span>Os mais econômicos, elétricos e com menos CO₂.</span></span><i class="ar" aria-hidden="true">→</i></button><button class="tc" data-h="vendas" style="--gc:var(--faixa)"><span class="ti">${IC.plus}</span><span class="tx"><b>Vendas no Brasil</b><span>Mais vendidos dos últimos 24 meses.</span></span><i class="ar" aria-hidden="true">→</i></button></div></section></main>`;
 }
 function toolHtml(){const t=TOOLS.find(x=>x[0]===T.tool)||TOOLS[0];const f=TOOLFN[t[0]];return `<h3>${t[1]}</h3>`+(f?f():'')}
@@ -3807,11 +3935,10 @@ const catRow=r=>{
 };
 SCREENS.catalogo=function(){
   const l=catLista(),cats=[...new Set(CAT.map(r=>r.cat))].sort(),sel=(k,a,t)=>`<select class="field" id="ct-${k}" data-h="catSet" data-k="${k}" aria-label="${t}"><option value="">${t}</option>${a.map(x=>`<option ${CT[k]===x?'selected':''}>${esc(x)}</option>`).join('')}</select>`;
-  return hubnav('catalogo')+`<main class="wrap wide"><section class="sec"><h2>Catálogo oficial</h2><p class="sub">Carros à venda em 2026, com consumo medido pelo Inmetro. Fonte: ${esc(CATALOGO.fonte)}. Consumo em km/l, cidade / estrada. A letra colorida é a nota PBE do carro na categoria, de A (mais eficiente) a E.</p></section>
-  <div class="catf"><input class="field" id="ct-q" data-h="catSet" data-k="q" placeholder="Buscar marca, modelo ou versão" value="${esc(CT.q)}" aria-label="Buscar">${sel('tipo',['Combustão','Híbrido','Plug-in','Elétrico'],'Qualquer motor')}${sel('pbe',['A','B','C','D','E'],'Qualquer nota PBE')}${sel('cat',cats,'Qualquer categoria')}
-  <select class="field" id="ct-ord" data-h="catSet" data-k="ord" aria-label="Ordenar"><option value="marca" ${CT.ord==='marca'?'selected':''}>Marca A–Z</option><option value="cons" ${CT.ord==='cons'?'selected':''}>Maior km/l na estrada</option><option value="aut" ${CT.ord==='aut'?'selected':''}>Maior autonomia (elétricos)</option></select></div>
+  return hubnav('catalogo')+`<main class="wrap wide"><section class="sec"><h2>Catálogo oficial</h2><p class="sub">Carros à venda em 2026, com consumo medido pelo Inmetro.</p></section>
+  ${fbarCat()}
   <p class="mut" id="ct-n">${l.length} ${plural(l.length,'resultado','resultados')}</p><div class="crs" id="crs">${l.slice(0,CT.n).map(catRow).join('')||'<div class="empty2"><b>Nada encontrado</b>Mude a busca ou os filtros.</div>'}</div>
-  ${l.length>CT.n?`<p class="more"><button class="btn btn-ghost" data-h="catMais">Mostrar mais</button></p>`:''}</main>`;
+  ${l.length>CT.n?`<p class="more"><button class="btn btn-ghost" data-h="catMais">Mostrar mais</button></p>`:''}<p class="foot">Fonte: ${esc(CATALOGO.fonte)}. Consumo em km/l, cidade / estrada. A letra colorida é a nota PBE do carro na categoria, de A (mais eficiente) a E.</p></main>`;
 };
 function pintaCat(){
   if(S.screen!=='catalogo')return;const l=catLista(),c=document.getElementById('crs');if(!c)return;
@@ -4000,14 +4127,14 @@ TOOLS.push(
  ['custo','Custo real do carro','Some seguro, IPVA, combustível, revisões e desvalorização e veja quanto o carro custa por mês.','Orçamento','calc'],
  ['trocar','Trocar ou manter','Compare o custo por ano de ficar com o carro atual e de trocar por outro.','Decisão','cols'],
  ['viagem','Custo da viagem','Combustível, pedágios e a divisão por pessoa, para planejar a estrada.','Viagem','fuel'],
- ['eletrico','Elétrico ou combustão','Descubra quanto você economiza por mês e em quanto tempo o elétrico se paga.','Economia','fuel'],
+ ['eletrico','Elétrico ou combustão','Dois carros lado a lado: kWh, gasolina e etanol equivalentes, custo por km e por ano.','Comparar','fuel'],
  ['consorcio','Consórcio ou financiamento','Parcela, custo total e a comparação com o financiamento do mesmo valor.','Financiar','calc'],
  ['aplicativo','Carro ou aplicativo','Quantas corridas de aplicativo cabem no custo do seu carro.','Decisão','tag'],
  ['ipva','IPVA por estado','Estimativa do IPVA anual com a alíquota do seu estado.','Impostos','tag'],
  ['combustivel','Gasto com combustível','Quanto você gasta por mês e por quilômetro, com o consumo do seu carro.','Combustível','fuel'],
  ['pontos','Pontos da CNH','Some as multas e veja o quanto falta para o limite de suspensão.','Trânsito','list'],
  ['pneu','Equivalência de pneus','Veja se uma medida nova de pneu mantém o velocímetro certo.','Pneus','cols'],
- ['manutencao','Revisões do carro','Lembrete dos intervalos típicos de óleo, filtros, freios e correia.','Manutenção','list'],
+ ['manutencao','Revisões do carro','Itens e prazos para combustão, híbrido ou elétrico, conforme o seu carro.','Manutenção','list'],
  ['consumo','Conversor de consumo','Converta km/l, litros por 100 km, mpg e km/kWh.','Conversor','calc'],
  ['luzes','Luzes do painel','O que cada luz acesa significa e o que fazer.','Segurança','list']
 );
@@ -4060,6 +4187,29 @@ function destaqueVendas(){
   <div class="dv"><div><h3>Automóveis</h3><ol class="rk">${topLista('A',5)}</ol></div><div><h3>Comerciais leves</h3><ol class="rk">${topLista('C',5)}</ol></div></div>
   <p class="more"><button class="btn btn-ghost" data-h="vendas">Ver todas as vendas dos últimos 24 meses</button></p></section>`;
 }
+const fbarHtml=(id,rot,pills,n)=>`<div class="fbar"><button class="fbtn" data-h="abreFiltro" data-id="${id}" aria-haspopup="dialog">${IC.filtro}<span>${rot}</span>${n?`<b>${n}</b>`:''}</button><div class="fpills">${pills.map(p=>`<span class="fpill">${esc(p)}</span>`).join('')}</div></div>`;
+function vendasOpts(){
+  const opts=[...VENDAS.meses].reverse().map(m=>[m,mesNome(m)]);
+  const marcas=[...new Set(VENDAS.modelos.map(m=>m.marca))].sort((a,b)=>a.localeCompare(b,'pt'));
+  const per=[['m3','Últimos 3 meses'],['m6','Últimos 6 meses'],['m12','Últimos 12 meses'],['m24','Últimos 24 meses'],['ano26','Acumulado de 2026'],['ano25','Acumulado de 2025'],...opts.map(([a,b])=>[a,'Mês: '+b])];
+  const segs=[['','Todos os segmentos'],...Object.entries(VENDAS.segmentos).filter(([k])=>!VS.grupo||(VS.grupo==='C'?/picape|furgao/.test(k):!/picape|furgao/.test(k)))];
+  return {marcas,per,segs};
+}
+function vendasControles(){
+  const {marcas,per,segs}=vendasOpts();
+  const sel=(id,k,rot,arr,val)=>`<label>${rot}<select class="field" id="${id}" data-h="vsSet" data-k="${k}">${arr.map(([a,b])=>`<option value="${esc(a)}" ${String(a)===String(val)?'selected':''}>${esc(b)}</option>`).join('')}</select></label>`;
+  return `<div class="tf vf">${sel('vs-per','per','Período',per,VS.per)}<label>Buscar modelo<input class="field" id="vs-q" data-h="vsBusca" placeholder="Ex.: Strada, Dolphin" value="${esc(VS.q)}" autocomplete="off"></label>${sel('vs-grupo','grupo','Tipo',[['','Todos'],['A','Automóveis'],['C','Comerciais leves']],VS.grupo)}${sel('vs-seg','seg','Segmento',segs,VS.seg)}${sel('vs-marca','marca','Marca',[['','Todas as marcas'],...marcas.map(m=>[m,m])],VS.marca)}${VS.aba==='modelos'?sel('vs-ord','ord','Ordenar por',[['vendas','Mais vendidos'],['var','Maior variação'],['nome','Nome']],VS.ord):''}</div>`;
+}
+function fbarVendas(){
+  const {per,segs}=vendasOpts(),pills=[(per.find(x=>x[0]===VS.per)||[0,''])[1].replace('Mês: ','')];
+  let n=0;if(VS.grupo){pills.push(VS.grupo==='A'?'Automóveis':'Comerciais leves');n++}if(VS.seg){pills.push((segs.find(x=>x[0]===VS.seg)||[0,VS.seg])[1]);n++}if(VS.marca){pills.push(VS.marca);n++}if(VS.q.trim()){pills.push('“'+VS.q.trim()+'”');n++}
+  return fbarHtml('rank','Filtros',pills,n);
+}
+function rankControles(){
+  if(RS.kind==='vendas')return vendasControles();
+  const cats=[...new Set(CAT.map(r=>r.cat))].sort();
+  return `<div class="tf"><label>Categoria<select class="field" id="rk-cat" data-h="rkCat"><option value="">Todas as categorias</option>${cats.map(c=>`<option value="${esc(c)}" ${RS.cat===c?'selected':''}>${esc(catCurta(c))}</option>`).join('')}</select></label></div>`;
+}
 function vendasCorpo(){
   const opts=[...VENDAS.meses].reverse().map(m=>[m,mesNome(m)]);
   const r=vendasConsulta(VS),marcas=[...new Set(VENDAS.modelos.map(m=>m.marca))].sort((a,b)=>a.localeCompare(b,'pt'));
@@ -4079,8 +4229,7 @@ function vendasCorpo(){
   return `<p class="mut rk-src">Emplacamentos por modelo, direto dos informativos da Fenabrave (${esc(VENDAS.edicao)}).</p>
   <section class="sec rk-vendas">
   <div class="trail static" role="tablist"><button class="chip" data-h="vsAba" data-id="modelos" aria-pressed="${VS.aba==='modelos'}">Por modelo</button><button class="chip" data-h="vsAba" data-id="marcas" aria-pressed="${VS.aba==='marcas'}">Por marca</button></div>
-  <div class="tf vf vf1">${sel('vs-per','per','Período',per,VS.per)}<label>Buscar modelo<input class="field" id="vs-q" data-h="vsBusca" placeholder="Ex.: Strada, Dolphin" value="${esc(VS.q)}" autocomplete="off"></label></div>
-  <details class="filtros" ${(typeof matchMedia==='function'&&matchMedia('(max-width:760px)').matches)?'':'open'}><summary>Mais filtros</summary><div class="tf vf">${sel('vs-grupo','grupo','Tipo',[['','Todos'],['A','Automóveis'],['C','Comerciais leves']],VS.grupo)}${sel('vs-seg','seg','Segmento',segs,VS.seg)}${sel('vs-marca','marca','Marca',[['','Todas as marcas'],...marcas.map(m=>[m,m])],VS.marca)}${VS.aba==='modelos'?sel('vs-ord','ord','Ordenar por',[['vendas','Mais vendidos'],['var','Maior variação'],['nome','Nome']],VS.ord):''}</div></details>
+  ${fbarVendas()}
   ${r?`<p class="mut" role="status">${esc(r.p.rot)}${r.p.ant?` · variação contra ${esc(r.p.antRot)}`:''} · ${r.l.length} ${plural(r.l.length,'modelo','modelos')} · ${fmtN(r.total)} emplacamentos nos modelos listados.</p>`:''}
   ${corpo}<p class="foot">Fonte: Fenabrave, Informativo de Emplacamentos. Os números são de emplacamentos (registros de veículos novos), não de unidades produzidas. A Fenabrave lista os modelos mais emplacados de cada segmento, então a soma dos modelos fica entre 93% e 98% do total oficial de cada mês. Valores de meses anteriores seguem a revisão publicada pela própria Fenabrave na edição seguinte.</p></section>`;
 };
@@ -4138,11 +4287,27 @@ SCREENS.rankings=function(){
   const chips=[['vendas','Mais vendidos'],...Object.entries(RK_TIPOS).map(([k,[t]])=>[k,t])];
   return hubnav('rankings')+`<main class="wrap wide"><section class="sec rk-head"><span class="kicker">Rankings</span><h1>${vend?'Mais vendidos do Brasil':RK_TIPOS[RS.kind][0]}</h1></section>
   <div class="trail static rk-tabs" role="tablist" aria-label="Tipo de ranking">${chips.map(([k,t])=>`<button class="chip" role="tab" data-h="rkTipo" data-id="${k}" aria-pressed="${RS.kind===k}">${t}</button>`).join('')}</div>
-  ${vend?vendasCorpo():`<div class="tf">${usaCat?`<label>Categoria<select class="field" id="rk-cat" data-h="rkCat"><option value="">Todas as categorias</option>${cats.map(c=>`<option ${RS.cat===c?'selected':''}>${esc(catCurta(c))}</option>`.replace('<option ','<option value="'+esc(c)+'" ')).join('')}</select></label>`:''}</div>
+  ${vend?vendasCorpo():`${usaCat?fbarHtml('rank','Categoria',RS.cat?[catCurta(RS.cat)]:['Todas'],RS.cat?1:0):''}
   <p class="mut rk-src">${esc(RK_TIPOS[RS.kind][1])}. Mostra a melhor versão de cada modelo e motor.</p>
-  ${l.length?`<ol class="rk big">${l.map((x,i)=>rkLinha(x,i,asc?best/x.v*100:x.v/best*100)).join('')}</ol>`:'<div class="empty2"><b>Nada nesta combinação</b>Escolha outra categoria.</div>'}
+  ${l.length?`<ol class="rk big">${l.slice(0,5).map((x,i)=>rkLinha(x,i,asc?best/x.v*100:x.v/best*100)).join('')}</ol>${l.length>5?xp('rk-'+RS.kind,'<ol class="rk big">'+l.slice(5).map((x,i)=>rkLinha(x,i+5,asc?best/x.v*100:x.v/best*100)).join('')+'</ol>')+'<div class="xrow">'+xpBtn('rk-'+RS.kind,'Ver os 15 primeiros')+'</div>':''}`:'<div class="empty2"><b>Nada nesta combinação</b>Escolha outra categoria.</div>'}
   <p class="foot">Fonte: Tabela PBE Veicular 2026 (Inmetro/Conpet). O consumo do Inmetro é medido em laboratório e costuma ser mais favorável que o uso real.</p>`}</main>`;
 };
+
+function catControles(){
+  const cats=[...new Set(CAT.map(r=>r.cat))].sort(),sel=(k,a,t)=>`<select class="field" id="ct-${k}" data-h="catSet" data-k="${k}" aria-label="${t}"><option value="">${t}</option>${a.map(x=>`<option ${CT[k]===x?'selected':''}>${esc(x)}</option>`).join('')}</select>`;
+  return `<div class="catf"><input class="field" id="ct-q" data-h="catSet" data-k="q" placeholder="Buscar marca, modelo ou versão" value="${esc(CT.q)}" aria-label="Buscar">${sel('tipo',['Combustão','Híbrido','Plug-in','Elétrico'],'Qualquer motor')}${sel('pbe',['A','B','C','D','E'],'Qualquer nota PBE')}${sel('cat',cats,'Qualquer categoria')}
+  <select class="field" id="ct-ord" data-h="catSet" data-k="ord" aria-label="Ordenar"><option value="marca" ${CT.ord==='marca'?'selected':''}>Marca A–Z</option><option value="cons" ${CT.ord==='cons'?'selected':''}>Maior km/l na estrada</option><option value="aut" ${CT.ord==='aut'?'selected':''}>Maior autonomia (elétricos)</option></select></div>`;
+}
+function fbarCat(){const p=[],n=[CT.q.trim(),CT.tipo,CT.pbe,CT.cat].filter(Boolean);if(CT.q.trim())p.push('“'+CT.q.trim()+'”');if(CT.tipo)p.push(CT.tipo);if(CT.pbe)p.push('Nota '+CT.pbe);if(CT.cat)p.push(catCurta(CT.cat));return fbarHtml('cat','Buscar e filtrar',p.length?p:['Todos os carros'],n.length)}
+function pesControles(){return `<div class="tf"><label>Buscar pessoa<input class="field" id="ps-q" data-h="pessoaBusca" placeholder="Nome, @usuário ou carro" value="${esc(PF.busca)}"></label><label>Estado<select class="field" id="ps-uf" data-h="pessoaUf"><option value="">Qualquer estado</option>${UFS.map(u=>`<option ${PF.uf===u?'selected':''}>${u}</option>`).join('')}</select></label></div>`}
+function fbarPes(){const p=[],n=[PF.busca.trim(),PF.uf].filter(Boolean);if(PF.busca.trim())p.push('“'+PF.busca.trim()+'”');if(PF.uf)p.push(PF.uf);return fbarHtml('pes','Buscar',p.length?p:['Todas as pessoas'],n.length)}
+function ferrControles(){return `<label>O que você quer resolver?<input class="field" id="th-q" data-h="thBusca" type="search" placeholder="Ex.: parcela, IPVA, etanol" value="${esc(T.q)}" autocomplete="off"></label><div class="trail static" role="tablist" aria-label="Grupos"><button class="chip" data-h="thGrupo" data-id="" aria-pressed="${!T.g}">Todas</button>${TGRUPOS.map(g=>`<button class="chip" data-h="thGrupo" data-id="${g[0]}" aria-pressed="${T.g===g[0]}">${g[1]}</button>`).join('')}</div>`}
+function fbarFerr(){const p=[],n=[T.q.trim(),T.g].filter(Boolean);if(T.q.trim())p.push('“'+T.q.trim()+'”');if(T.g)p.push((TGRUPOS.find(g=>g[0]===T.g)||[0,''])[1]);return fbarHtml('ferr','Buscar',p.length?p:['Todas as ferramentas'],n.length)}
+function filtroSheet(){
+  const k=SH.filtro,tit={ferr:'Buscar ferramentas',rank:'Filtros',cat:'Buscar e filtrar',pes:'Buscar pessoas'}[k]||'Filtros';
+  const corpo=k==='ferr'?ferrControles():k==='rank'?rankControles():k==='cat'?catControles():k==='pes'?pesControles():'';
+  return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet filtro" role="dialog" aria-modal="true" aria-label="${tit}"><div class="sh-h"><div><p class="sh-k">Refinar</p><h3 style="margin:2px 0 0">${tit}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div><div class="fform">${corpo}<button class="btn btn-go" data-h="fclose">Ver resultados</button><button class="lk" data-h="limpaFiltro" data-id="${k}">Limpar tudo</button></div></section>`;
+}
 
 /* ===================== FROTA COMPLETA PARA A GARAGEM (atuais, antigos e clássicos) ===================== */
 /* Nomes de modelos que rodaram (ou rodam) no Brasil. Servem só para a pessoa escolher em lista; não trazem dados técnicos. */
@@ -4227,10 +4392,11 @@ const FROTA=(()=>{
   const m=new Map();
   const add=(marca,mod)=>{marca=String(marca||'').trim();mod=String(mod||'').trim();if(!marca||!mod)return;if(!m.has(marca))m.set(marca,new Set());m.get(marca).add(mod)};
   FROTA_EXTRA.split('\n').forEach(l=>{const i=l.indexOf(':');if(i<0)return;const marca=l.slice(0,i);l.slice(i+1).split(',').forEach(x=>add(marca,x))});
-  CARS.forEach(c=>add(c.m,c.mod));
-  CAT.forEach(r=>add(r.marca,r.modelo));
+  const vs=new Map();const addV=(ma,mo,v)=>{v=String(v||'').replace(/\s+/g,' ').trim();if(!ma||!mo||!v)return;const k=ma+'|'+mo;if(!vs.has(k))vs.set(k,new Set());vs.get(k).add(v)};
+  CARS.forEach(c=>{add(c.m,c.mod);addV(c.m,c.mod,c.ver)});
+  CAT.forEach(r=>{add(r.marca,r.modelo);addV(r.marca,r.modelo,r.versao)});
   const nomes=[...m.keys()].filter(k=>m.get(k).size>=1&&!/^(Land|Land Rover Série|Kia Motors|Ford Caminhões|Volkswagen Caminhões|Renault Trucks|Fiat Professional|Iveco|Scania|DAF|SEAT|Rover|Effa|Opel|Triumph)$/.test(k)||k==='Land Rover').sort((a,b)=>a.localeCompare(b,'pt'));
-  return {marcas:nomes,modelos:marca=>[...(m.get(marca)||[])].sort((a,b)=>a.localeCompare(b,'pt',{numeric:true}))};
+  return {marcas:nomes,modelos:marca=>[...(m.get(marca)||[])].sort((a,b)=>a.localeCompare(b,'pt',{numeric:true})),versoes:(marca,mod)=>[...(vs.get(marca+'|'+mod)||[])].sort((a,b)=>a.localeCompare(b,'pt',{numeric:true}))};
 })();
 
 /* ===================== SELETOR DE CARRO (listas, sem digitar) ===================== */
@@ -4253,6 +4419,115 @@ function carPicker(id,{rotulo='Carro',filtro=null,versao=true}={}){
   return `<fieldset class="pkset"><legend>${esc(rotulo)}</legend><div class="tf">${sl('m','Marca','Escolha a marca',op(marcas,s.m),false)}${sl('mod','Modelo','Escolha o modelo',op(mods,s.mod),!s.m)}${versao?sl('id','Versão','Escolha a versão',op(vers,s.id,c=>`${c.ver} · ${brl(c.p||c.pf)}`,c=>c.id),!s.mod):''}</div></fieldset>`;
 }
 const pkCarro=id=>{const s=pkEstado(id);return s.id?CARS.find(c=>c.id===s.id)||null:null};
+
+/* ===================== ELÉTRICO x COMBUSTÃO (lado a lado) e REVISÕES POR TIPO DE CARRO ===================== */
+const KWH_GAS=8.8,KWH_ETA=5.9; /* energia por litro (poder calorífico): gasolina ~8,8 kWh/L, etanol ~5,9 kWh/L */
+Object.assign(CALC,{
+  /* Custo e energia de UM carro. lado: {ev, kwh100, kmlG, kmlE}; p: {tarifa, pub, tarifaPub, gas, eta, kmMes} */
+  versus(l,p){
+    if(!l||!pos(p.kmMes)||!(p.tarifa>=0)||!pos(p.gas))return null;
+    const pub=Math.min(100,Math.max(0,p.pub||0)),tEf=p.tarifa*(1-pub/100)+(p.tarifaPub||0)*pub/100;
+    let custoKm=null,energia=null,fonte='',eqG=null,eqE=null,kwhEq=null;
+    if(l.ev){if(!pos(l.kwh100))return null;custoKm=l.kwh100/100*tEf;energia=l.kwh100;fonte='kWh';eqG=l.kwh100/KWH_GAS;eqE=l.kwh100/KWH_ETA;kwhEq=l.kwh100}
+    else{
+      const g=pos(l.kmlG)?p.gas/l.kmlG:null,e=pos(l.kmlE)&&pos(p.eta)?p.eta/l.kmlE:null;
+      if(g==null&&e==null)return null;
+      if(e!=null&&(g==null||e<g)){custoKm=e;fonte='etanol'}else{custoKm=g;fonte='gasolina'}
+      eqG=pos(l.kmlG)?100/l.kmlG:null;eqE=pos(l.kmlE)?100/l.kmlE:null;
+      kwhEq=fonte==='etanol'?100/l.kmlE*KWH_ETA:100/l.kmlG*KWH_GAS;
+      energia=null;
+      var custoGas=g,custoEta=e;
+    }
+    return {custoKm,mes:custoKm*p.kmMes,ano:custoKm*p.kmMes*12,fonte,eqG,eqE,kwhEq,custoGas:custoGas==null?null:custoGas,custoEta:custoEta==null?null:custoEta,tEf};
+  },
+  /* Preço do kWh em que o elétrico empata com o outro carro no custo por km. */
+  kwhEmpate(kwh100,custoKmOutro){return pos(kwh100)&&pos(custoKmOutro)?custoKmOutro/(kwh100/100):null}
+});
+const VS2={a:{m:'',mod:'',i:'',manual:false},b:{m:'',mod:'',i:'',manual:false},init:false};
+function vsIniciar(){
+  if(VS2.init)return;VS2.init=true;
+  const pick=(f)=>{const i=CAT.findIndex(f);return i<0?null:i};
+  const ia=pick(r=>r.tipo==='Elétrico'&&/Dolphin Mini/i.test(r.modelo))??pick(r=>r.tipo==='Elétrico'),ib=pick(r=>/^(Volkswagen)$/.test(r.marca)&&/^Polo$/i.test(r.modelo)&&r.tipo==='Combustão'&&r.cg&&r.cg[2]>0)??pick(r=>r.tipo==='Combustão'&&r.cg&&r.cg[2]>0);
+  [[ 'a',ia],['b',ib]].forEach(([k,i])=>{if(i!=null){const r=CAT[i];VS2[k]={m:r.marca,mod:r.modelo,i:String(i),manual:false}}});
+}
+F0.versus={kmMes:'1200',tarifa:'0,95',pub:'0',tarifaPub:'2,50',gas:'6,39',eta:'4,39',dif:'0',a_tipo:'ev',a_kwh:'15',a_kml:'',a_kmle:'',b_tipo:'ice',b_kml:'11',b_kmle:'',b_kwh:''};
+const catModelos=m=>[...new Set(CAT.filter(r=>r.marca===m).map(r=>r.modelo))].sort((a,b)=>a.localeCompare(b,'pt',{numeric:true}));
+const catMarcas=()=>[...new Set(CAT.map(r=>r.marca))].sort((a,b)=>a.localeCompare(b,'pt'));
+const catVersoes=(m,mod)=>CAT.map((r,i)=>[i,r]).filter(([i,r])=>r.marca===m&&r.modelo===mod);
+function ladoDe(s){
+  vsIniciar();const v=VS2[s];
+  if(v.manual){const ev=fget('versus',s+'_tipo')==='ev';return {nome:'Meu carro',sub:ev?'Elétrico (digitado)':'Combustão (digitado)',ev,kwh100:fnum('versus',s+'_kwh'),kmlG:fnum('versus',s+'_kml'),kmlE:fnum('versus',s+'_kmle'),co2:null,aut:null,manual:true}}
+  const r=v.i!==''?CAT[+v.i]:null;if(!r)return null;
+  const ev=r.tipo==='Elétrico';
+  return {nome:`${r.marca} ${r.modelo}`,sub:`${r.versao}${r.motor&&!/^(Elétrico)$/i.test(r.motor)?' · '+r.motor:''}`,ev,tipo:r.tipo,kwh100:ev&&r.mj>0?r.mj/3.6*100:null,kmlG:!ev&&r.cg&&r.cg[2]>0?r.cg[2]:null,kmlE:!ev&&r.ce&&r.ce[2]>0?r.ce[2]:null,co2:r.co2t>0?r.co2t:(ev?0:null),aut:ev&&r.aut>0?r.aut:null};
+}
+function vsPicker(s){
+  vsIniciar();const v=VS2[s],rot=s==='a'?'Carro A':'Carro B';
+  const op=(arr,sel)=>arr.map(x=>`<option value="${esc(x)}" ${x===sel?'selected':''}>${esc(x)}</option>`).join('');
+  if(v.manual)return `<div class="tf">${campo('versus',s+'_tipo','Tipo',{opts:[['ev','Elétrico'],['ice','Combustão ou híbrido']]})}${fget('versus',s+'_tipo')==='ev'?campo('versus',s+'_kwh','Consumo',{suf:'kWh/100 km'}):campo('versus',s+'_kml','Gasolina',{suf:'km/l'})+campo('versus',s+'_kmle','Etanol (se flex)',{suf:'km/l'})}</div><label class="chk"><input type="checkbox" data-h="vman" data-s="${s}" checked> Digitar os números do consumo</label>`;
+  const vers=v.m&&v.mod?catVersoes(v.m,v.mod):[];
+  return `<div class="tf"><label>Marca<select class="field" data-h="vsel" data-s="${s}" data-n="m"><option value="">Escolha</option>${op(catMarcas(),v.m)}</select></label><label>Modelo<select class="field" data-h="vsel" data-s="${s}" data-n="mod" ${v.m?'':'disabled'}><option value="">${v.m?'Escolha':'Antes, a marca'}</option>${op(v.m?catModelos(v.m):[],v.mod)}</select></label><label>Versão<select class="field" data-h="vsel" data-s="${s}" data-n="i" ${v.mod?'':'disabled'}><option value="">${v.mod?'Escolha':'Antes, o modelo'}</option>${vers.map(([i,r])=>`<option value="${i}" ${String(i)===String(v.i)?'selected':''}>${esc(r.versao)}${r.motor?' · '+esc(r.motor):''}${r.cambio?' · '+esc(r.cambio):''}</option>`).join('')}</select></label></div><label class="chk"><input type="checkbox" data-h="vman" data-s="${s}"> Meu carro não está na lista (digitar o consumo)</label>`;
+}
+function toolEletrico(){
+  vsIniciar();
+  const A=ladoDe('a'),B=ladoDe('b');
+  const p={kmMes:fnum('versus','kmMes'),tarifa:fnum('versus','tarifa'),pub:fnum('versus','pub')||0,tarifaPub:fnum('versus','tarifaPub')||0,gas:fnum('versus','gas'),eta:fnum('versus','eta')};
+  const ra=A?CALC.versus(A,p):null,rb=B?CALC.versus(B,p):null;
+  const card=(s,L)=>`<button class="vcar ${HX['vp-'+s]?'on':''}" data-h="xp" data-id="vp-${s}" data-r="${s==='a'?'Carro A':'Carro B'}" aria-expanded="${!!HX['vp-'+s]}"><span class="vk">${s==='a'?'Carro A':'Carro B'}</span><b>${L?esc(L.nome):'Escolher'}</b><span class="vsub">${L?esc(L.sub):'Toque para escolher'}</span>${L?`<i class="vt ${L.ev?'ev':'ice'}">${L.ev?'Elétrico':(L.tipo||'Combustão')}</i>`:''}</button>`;
+  const fm=(x,d=2)=>x==null||!Number.isFinite(x)?'—':x.toLocaleString('pt-BR',{minimumFractionDigits:d,maximumFractionDigits:d});
+  const win=(x,y,menor=true)=>x==null||y==null||x===y?['','']:((menor?x<y:x>y)?['win','']:['','win']);
+  let res='';
+  if(ra&&rb){
+    const [w1a,w1b]=win(ra.custoKm,rb.custoKm),[w2a,w2b]=win(ra.kwhEq,rb.kwhEq),[w3a,w3b]=win(A.co2,B.co2);
+    const dif=rb.mes-ra.mes,melhor=dif>=0?'A':'B',pior=melhor==='A'?'B':'A';
+    const evSide=A.ev?{L:A,r:ra}:B.ev?{L:B,r:rb}:null,outro=evSide?(evSide.L===A?rb:ra):null;
+    const emp=evSide&&outro&&evSide.L.kwh100?CALC.kwhEmpate(evSide.L.kwh100,outro.custoKm):null;
+    const linha=(rot,a,b,ca='',cb='')=>`<tr><th scope="row">${rot}</th><td class="${ca}">${a}</td><td class="${cb}">${b}</td></tr>`;
+    const consumo=L=>L.ev?`${fm(L.kwh100,1)} kWh/100 km`:[L.kmlG?`${fm(L.kmlG,1)} km/l gasolina`:'',L.kmlE?`${fm(L.kmlE,1)} km/l etanol`:''].filter(Boolean).join('<br>')||'—';
+    res=`<div class="res-fipe"><span class="mut">Lado a lado, ${fm(p.kmMes,0)} km por mês</span><h3>${Math.abs(dif)<1?'Custo praticamente igual':`O Carro ${melhor} gasta ${R2(Math.abs(dif))} a menos por mês`}</h3><p>Em um ano a diferença é de <b>${R2(Math.abs(dif)*12)}</b> a favor do Carro ${melhor}${Math.abs(dif)<1?'':'; o Carro '+pior+' custa mais para rodar'}.</p></div>
+    <div class="cmp vtbl-wrap"><table class="vtbl"><thead><tr><th></th><th>Carro A</th><th>Carro B</th></tr></thead><tbody>
+     ${linha('Consumo',consumo(A),consumo(B))}
+     ${linha('Energia em kWh por 100 km',fm(ra.kwhEq,1),fm(rb.kwhEq,1),w2a,w2b)}
+     ${linha('Equivale a gasolina',ra.eqG!=null?fm(ra.eqG,1)+' L/100 km':'—',rb.eqG!=null?fm(rb.eqG,1)+' L/100 km':'—')}
+     ${linha('Equivale a etanol',ra.eqE!=null?fm(ra.eqE,1)+' L/100 km':'—',rb.eqE!=null?fm(rb.eqE,1)+' L/100 km':'—')}
+     ${linha('Custo por km',R2(ra.custoKm),R2(rb.custoKm),w1a,w1b)}
+     ${linha('Custo por mês',R2(ra.mes),R2(rb.mes),w1a,w1b)}
+     ${linha('Custo por ano',R2(ra.ano),R2(rb.ano),w1a,w1b)}
+     ${linha('Abastece com',A.ev?'Energia elétrica':ra.fonte==='etanol'?'Etanol (mais barato)':'Gasolina',B.ev?'Energia elétrica':rb.fonte==='etanol'?'Etanol (mais barato)':'Gasolina')}
+     ${linha('CO₂ no escapamento',A.co2==null?'—':fm(A.co2,0)+' g/km',B.co2==null?'—':fm(B.co2,0)+' g/km',w3a,w3b)}
+     ${linha('Autonomia elétrica',A.aut?fm(A.aut,0)+' km':'—',B.aut?fm(B.aut,0)+' km':'—')}
+    </tbody></table></div>
+    <p class="mut vtbl-n">${emp?`O elétrico empata com o outro carro quando o kWh custa até <b>${R2(emp)}</b> (hoje você usa ${R2(ra.tEf&&evSide.L===A?ra.tEf:rb.tEf)}). `:''}Preço da energia por kWh: gasolina ${R2(p.gas/KWH_GAS)}${pos(p.eta)?' · etanol '+R2(p.eta/KWH_ETA):''} · eletricidade ${R2(evSide?(evSide.L===A?ra.tEf:rb.tEf):p.tarifa)}. Consumo do Inmetro; o uso real varia. Equivalência energética: 1 L de gasolina ≈ ${KWH_GAS.toString().replace('.',',')} kWh e 1 L de etanol ≈ ${KWH_ETA.toString().replace('.',',')} kWh.</p>`;
+  }else res=`<p class="notice">Escolha o Carro A e o Carro B (ou digite o consumo) para comparar.</p>`;
+  const par=`<div class="tf">${campo('versus','kmMes','Quilômetros por mês',{suf:'km'})}${campo('versus','gas','Gasolina',{suf:'R$/litro'})}${campo('versus','eta','Etanol',{suf:'R$/litro'})}${campo('versus','tarifa','Energia em casa',{suf:'R$/kWh'})}${campo('versus','pub','Carga em local público',{suf:'% do uso'})}${campo('versus','tarifaPub','Preço no carregador público',{suf:'R$/kWh'})}</div>`;
+  return `<p class="mut">Compare dois carros lado a lado. Já vêm dois exemplos: troque por qualquer carro da tabela do Inmetro (elétrico, híbrido ou a combustão).</p>
+  <div class="vpicks">${card('a',A)}${card('b',B)}</div>
+  ${xp('vp-a',`<div class="vbox">${vsPicker('a')}</div>`)}${xp('vp-b',`<div class="vbox">${vsPicker('b')}</div>`)}
+  ${res}
+  <div class="xrow">${xpBtn('vpar','Ajustar preços e uso')}</div>${xp('vpar',par)}`;
+}
+const MANUT_EV=[
+ ['Filtro de ar-condicionado (cabine)','10.000 a 15.000 km ou 12 meses',10000],['Rodízio e balanceamento dos pneus','10.000 km (elétricos gastam pneu mais rápido)',10000],['Alinhamento da direção','10.000 km ou após batida forte',10000],
+ ['Pastilhas e discos de freio (inspeção)','Dura mais (freio regenerativo): inspeção a cada 20.000 km',20000],['Suspensão e buchas (inspeção)','20.000 km: o carro é mais pesado',20000],['Fluido de freio','24 meses',null],
+ ['Líquido de arrefecimento da bateria e do motor','Conforme o manual: costuma ser de 4 a 5 anos ou 100.000 km',null],['Bateria de 12 V','3 a 5 anos (teste anual)',null],['Inspeção da bateria de tração (saúde)','Anual ou conforme o manual; garantia costuma ser de 8 anos',null],['Óleo do redutor','Varia por marca: veja o manual (muitas só pedem acima de 100.000 km)',100000]
+];
+const MANUT_HIB=[...MANUT,['Pastilhas e discos (freio regenerativo ajuda)','Inspeção a cada 20.000 km',20000],['Inspeção da bateria de tração (saúde)','Anual ou conforme o manual',null],['Líquido de arrefecimento do inversor','Conforme o manual: costuma ser de 4 a 5 anos',null]];
+const MANUT_TIPOS={ice:['Combustão',MANUT,'Carro a combustão: óleo, filtros, velas e correia entram na conta.'],hib:['Híbrido',MANUT_HIB,'Híbrido tem tudo do carro a combustão e mais o sistema elétrico: confira também a bateria de tração.'],ev:['Elétrico',MANUT_EV,'Elétrico não tem óleo do motor, velas, filtros de ar e combustível, nem correia dentada. Em compensação, pneus e suspensão pedem mais atenção e a bateria merece inspeção.']};
+function toolManutencao(){
+  T.pkAlvo=T.pkAlvo||{};T.pkAlvo.man=()=>{const c=pkCarro('man');if(c){const t=c.fuel==='ev'?'ev':/hib/.test(String(c.fuel))?'hib':'ice';T.f.manutencao={...(T.f.manutencao||F0.manutencao),tipo:t}}};
+  const tipo=fget('manutencao','tipo')||'ice',cfg=MANUT_TIPOS[tipo]||MANUT_TIPOS.ice,lista=cfg[1];
+  const km=fnum('manutencao','km');const okKm=pos(km);
+  const car=pkCarro('man');
+  const linhas=okKm?`<div class="cmp"><table><thead><tr><th>Item</th><th>Intervalo típico</th><th>Próxima</th></tr></thead><tbody>${lista.map(([n,i,iv],k)=>{const u=num2(fget('manutencao','u'+k));const prox=iv&&fin1(u)?u+iv:null;const st=prox==null?'':prox<=km?'atrasado':prox-km<=1500?'em breve':'em dia';return `<tr><th scope="row">${esc(n)}</th><td>${esc(i)}</td><td>${prox!=null?`${prox.toLocaleString('pt-BR')} km <span class="tag ${st==='atrasado'?'tg-bad':st==='em breve'?'tg-warn':'tg-ok'}">${st}</span>`:iv?'registre a última troca':'confira a data'}</td></tr>`}).join('')}</tbody></table></div>`:'<p class="notice">Informe a quilometragem atual para ver a lista.</p>';
+  const ult=`<div class="ult">${lista.map(([n,i,iv],k)=>iv?`<label>${esc(n)}<input class="field" id="f-manutencao-u${k}" data-h="fld" data-t="manutencao" data-k="u${k}" inputmode="numeric" value="${esc(fget('manutencao','u'+k))}" placeholder="km da última troca" aria-label="Última troca de ${esc(n)}"></label>`:'').join('')}</div>`;
+  return `<p class="mut">Os intervalos mudam conforme o tipo de carro. Escolha o tipo (ou o seu carro) e a quilometragem atual.</p>
+  <div class="tf">${campo('manutencao','tipo','Tipo do carro',{opts:Object.entries(MANUT_TIPOS).map(([k,v])=>[k,v[0]])})}${campo('manutencao','km','Quilometragem atual',{suf:'km'})}</div>
+  <div class="xrow">${xpBtn('mcar',car?`Meu carro: ${car.m} ${car.mod}`:'Escolher o meu carro (opcional)')}${xpBtn('mult','Registrar últimas trocas')}</div>
+  ${xp('mcar',`<div class="vbox">${carPicker('man',{rotulo:'Meu carro',versao:true})}</div>`)}${xp('mult',ult)}
+  <p class="notice info">${cfg[2]}</p>${linhas}
+  <p class="mut">O manual do seu carro manda. Esta lista é só um lembrete dos intervalos típicos.</p>`;
+}
+TOOLFN.eletrico=toolEletrico;TOOLFN.manutencao=toolManutencao;
 
 /* ===================== PAINEL DO ADMINISTRADOR ===================== */
 const AD={pend:null,nov:[],vagas:null,dens:[],erro:''};
@@ -4303,13 +4578,23 @@ function tituloAtual(){
 }
 /* Chamada ao fim de cada render: ajusta título e endereço (o botão Voltar do navegador passa a funcionar). */
 function aposRender(){
-  animaTela();
+  try{parY=scrollY||0;if(typeof parallax==='function')parallax()}catch(e){}
+  animaTela();transicaoTela();
   try{document.title=tituloAtual()}catch(e){}
   const r=rotaAtual(),h=r?'#/'+r:'';
   if((location.hash||'')!==h&&!(r===''&&!location.hash)){try{history.pushState(null,'',location.pathname+h)}catch(e){}}
 }
 const REDUZ=()=>{try{return typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches}catch(e){return false}};
 function contaValor(el){const n=+el.dataset.n;if(!(n>0)||REDUZ()||typeof requestAnimationFrame!=='function')return;const t0=Date.now(),D=900;const f=()=>{const k=Math.min(1,(Date.now()-t0)/D),e=1-Math.pow(1-k,3);el.textContent=fmtN(n*e);if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f)}
+let ULTTELA=null;
+function transicaoTela(){
+  try{const k=S.screen+(S.screen==='perfil'?':'+S.perfil:'')+(S.screen==='ferramentas'?':'+(T.hub?'hub':T.tool):'');if(ULTTELA!==null&&k!==ULTTELA&&!REDUZ()){const a=document.getElementById('app');if(a&&a.classList){a.classList.remove('pgin');void a.offsetWidth;a.classList.add('pgin')}}ULTTELA=k}catch(e){}
+}
+function progressoScroll(){const el=document.getElementById('prog');if(!el)return;const h=document.documentElement.scrollHeight-innerHeight;el.style.transform='scaleX('+(h>0?Math.min(1,(scrollY||0)/h):0)+')'}
+if(typeof document!=='undefined'&&document.addEventListener&&!REDUZ()){
+  document.addEventListener('pointermove',e=>{if(e.pointerType&&e.pointerType!=='mouse')return;const c=e.target&&e.target.closest&&e.target.closest('.tcx,.tc,.fpi,.bcx,.tile,.hb');if(!c)return;const r=c.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;c.style.setProperty('--rx',(-y*5).toFixed(2)+'deg');c.style.setProperty('--ry',(x*7).toFixed(2)+'deg')},{passive:true});
+  document.addEventListener('pointerout',e=>{const c=e.target&&e.target.closest&&e.target.closest('.tcx,.tc,.fpi,.bcx,.tile,.hb');if(c){c.style.removeProperty('--rx');c.style.removeProperty('--ry')}},{passive:true});
+}
 let IO=null;
 function animaTela(){
   try{
@@ -4324,7 +4609,7 @@ function animaTela(){
 }
 let parY=0,parT=false;
 function parallax(){parT=false;const h=document.querySelector('.hero .hv'),w=document.querySelector('.hero-in'),g=document.querySelector('.hero .gauge');if(!h)return;const y=Math.min(parY,700);h.style.transform=`translate3d(0,${y*.22}px,0) scale(1.08)`;if(w){w.style.transform=`translate3d(0,${y*.1}px,0)`;w.style.opacity=String(Math.max(0,1-y/520))}if(g)g.style.transform=`translate3d(0,${y*.35}px,0) rotate(${y*.06}deg)`}
-if(typeof window!=='undefined'&&window.addEventListener&&!REDUZ())window.addEventListener('scroll',()=>{parY=scrollY||0;const hb=document.querySelector('.hubnav');if(hb&&hb.classList)hb.classList.toggle('scrolled',parY>24);if(!parT&&typeof requestAnimationFrame==='function'){parT=true;requestAnimationFrame(parallax)}},{passive:true});
+if(typeof window!=='undefined'&&window.addEventListener&&!REDUZ())window.addEventListener('scroll',()=>{parY=scrollY||0;progressoScroll();const hb=document.querySelector('.hubnav');if(hb&&hb.classList)hb.classList.toggle('scrolled',parY>24);if(!parT&&typeof requestAnimationFrame==='function'){parT=true;requestAnimationFrame(parallax)}},{passive:true});
 function telaDaRota(hash){
   const r=String(hash||'').replace(/^#\/?/,'').split('/'),a=r[0]||'',b=r[1]||'';
   if(a==='blog'&&b&&BLOG.some(x=>x.id===b)){S.post=b;return 'post'}
@@ -4334,7 +4619,8 @@ function telaDaRota(hash){
   const e=Object.entries(ROTAS).find(([k,v])=>v===a&&!['q','resumo','res'].includes(k));
   return e?e[0]:'intro';
 }
-function ir(tela){S.screen=tela;fechaSh();fsheet();render();scrollTo(0,0);entrou(tela)}
+function irAgora(tela){S.screen=tela;fechaSh();fsheet();render();scrollTo(0,0);entrou(tela)}
+function ir(tela){if(typeof document!=='undefined'&&document.startViewTransition&&!REDUZ()){try{document.startViewTransition(()=>irAgora(tela));return}catch(e){}}irAgora(tela)}
 function entrou(tela){
   if(tela==='forum')carregaForum();else if(tela==='garagem')carregaGaragem();else if(tela==='admin')carregaAdmin();
   else if(tela==='intro')carregaHome();
@@ -4361,11 +4647,13 @@ document.addEventListener('click',e=>{
     case 'post':S.post=t.dataset.id;return ir('post');
     case 'tool':T.tool=t.dataset.id;T.hub=false;lsSet('pm-tool',T.tool);registraUso(T.tool);return ir('ferramentas');
     case 'ferrHub':T.hub=true;return ir('ferramentas');
-    case 'thGrupo':T.g=t.dataset.id;return render();
+    case 'thGrupo':T.g=t.dataset.id;render();if(SH.filtro)fsheet();return;
+    case 'abreFiltro':SH.filtro=t.dataset.id;return fsheet();
+    case 'limpaFiltro':{const k=t.dataset.id;if(k==='ferr'){T.q='';T.g=''}else if(k==='rank'){if(RS.kind==='vendas'){Object.assign(VS,{per:ULT,grupo:'',seg:'',marca:'',q:'',ord:'vendas',n:30})}else RS.cat=''}else if(k==='cat'){Object.assign(CT,{q:'',tipo:'',pbe:'',cat:'',ord:'marca',n:30})}else if(k==='pes'){PF.busca='';PF.uf=''}render();fsheet();return}
     case 'entrar':return abreAuth(t.dataset.m||'entrar',t.dataset.why||'');
     case 'amodo':{const g=id=>(document.getElementById(id)||{}).value||'';SH.auth={...SH.auth,modo:t.dataset.m,email:g('au-email'),nasc:g('au-nasc'),enviado:false};return fsheet()}
     case 'verSenha':{const i=document.getElementById(t.dataset.for||'au-senha');if(i)i.type=i.type==='password'?'text':'password';return}
-    case 'fclose':fechaSh();return fsheet();
+    case 'fclose':{const f=SH.filtro;fechaSh();fsheet();if(f)render();return}
     case 'conta':SH.conta=true;return fsheet();
     case 'abreConta':SH.conta=true;return fsheet();
     case 'abreCfg':SH.conta='cfg';return fsheet();
@@ -4412,7 +4700,8 @@ document.addEventListener('click',e=>{
     case 'verFoto':{const id=t.dataset.id,uid=(perfOf([...PF.per.values()].find(x=>x.usuario===S.perfil)?.uid)||{}).uid;const g=(PF.gar[uid]||[]).find(x=>x.id===id),po=(PF.posts[uid]||[]).find(x=>x.id===id);const o=g?{f:g.foto,t:g.carro,s:(GT.find(x=>x[0]===g.tipo)||[])[2],n:g.nota}:po?{f:po.foto,t:po.titulo||'Post',s:'Post',n:po.texto}:null;if(o&&o.f){SH.ver=o;fsheet()}return}
     case 'gfotoX':{const sn=gSnap();SH.gar={...SH.gar,foto:''};fsheet();return gRest(sn)}
     case 'cfotoX':SH.compose={...snapCompose(),foto:''};return fsheet();
-    case 'hmTab':HM.tab=t.dataset.id;return render();
+    case 'xp':{const id=t.dataset.id;HX[id]=!HX[id];const box=document.getElementById('xp-'+id);if(box){box.classList.toggle('open',!!HX[id]);box.querySelectorAll('li,.ca,.fpi,.bl li,.qk,.tc,.th-grid>*').forEach((e,i)=>e.style.setProperty('--xd',(i*45)+'ms'))}t.setAttribute('aria-expanded',String(!!HX[id]));const sp=t.querySelector('span');if(sp)sp.textContent=HX[id]?'Mostrar menos':(t.dataset.r||'Ver mais');return}
+    case 'hmTab':{HM.tab=t.dataset.id;const box=document.getElementById('hm-rank');if(!box)return render();document.querySelectorAll('[data-h=hmTab]').forEach(x=>x.setAttribute('aria-pressed',String(x.dataset.id===HM.tab)));box.classList.remove('swap');void box.offsetWidth;box.innerHTML=painelRank();box.classList.add('swap');animaTela();return}
     case 'rkIr':RS.kind=t.dataset.id;return ir('rankings');
     case 'tema':return alternaTema();
   }
@@ -4440,8 +4729,11 @@ document.addEventListener('change',e=>{
   else if(h==='vsSet'){VS[t.dataset.k]=t.value;if(t.dataset.k==='grupo'&&VS.seg&&(VS.grupo==='C'?!/picape|furgao/.test(VS.seg):VS.grupo==='A'&&/picape|furgao/.test(VS.seg)))VS.seg='';VS.n=30;render()}
   else if(h==='rkCat'){RS.cat=t.value;render()}
   else if(h==='garOutro'){const sn=gSnap();SH.gar={...SH.gar,outro:t.checked};fsheet();gRest(sn)}
-  else if(h==='gm'){const sn=gSnap();SH.gar={...SH.gar,m:t.value,mod:''};fsheet();gRest(sn)}
-  else if(h==='gmod'){const sn=gSnap();SH.gar={...SH.gar,mod:t.value};fsheet();gRest(sn)}
+  else if(h==='vsel'){const s=t.dataset.s,n=t.dataset.n;vsIniciar();if(n==='m')VS2[s]={m:t.value,mod:'',i:'',manual:false};else if(n==='mod')VS2[s]={...VS2[s],mod:t.value,i:''};else VS2[s]={...VS2[s],i:t.value};pintaTool()}
+  else if(h==='vman'){VS2[t.dataset.s]={...VS2[t.dataset.s],manual:t.checked};pintaTool()}
+  else if(h==='gm'){const sn=gSnap();SH.gar={...SH.gar,m:t.value,mod:'',v:'',vlivre:''};fsheet();gRest(sn)}
+  else if(h==='gmod'){const sn=gSnap();SH.gar={...SH.gar,mod:t.value,v:'',vlivre:''};fsheet();gRest(sn)}
+  else if(h==='gv'){const sn=gSnap();SH.gar={...SH.gar,v:t.value};fsheet();gRest(sn)}
   else if(h==='gfoto'){const f=t.files&&t.files[0];if(!f)return;const sn=gSnap();processaFotoGrande(f).then(d=>{SH.gar={...SH.gar,foto:d};fsheet();gRest(sn)}).catch(x=>{const er=document.getElementById('gr-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
   else if(h==='cfoto'){const f=t.files&&t.files[0];if(!f)return;const c=snapCompose();processaFotoGrande(f).then(d=>{SH.compose={...c,foto:d};fsheet()}).catch(x=>{const er=document.getElementById('fc-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
   else if(h==='foto'){const f=t.files&&t.files[0];if(!f)return;const atual=lePerfilForm();processaFoto(f).then(d=>{SH.perfil={...atual,foto:d};fsheet()}).catch(x=>{const er=document.getElementById('pf-err');if(er){er.textContent=x.message||ERR.foto_invalida;er.hidden=false}})}
@@ -4454,12 +4746,12 @@ document.addEventListener('submit',e=>{const id=e.target&&e.target.id;if(!id)ret
   else if(id==='msg-form'){e.preventDefault();enviaMsg()}
 });
 document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target&&e.target.dataset&&e.target.dataset.h==='vsDet'){e.preventDefault();e.target.click()}});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver)){fechaSh();fsheet()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs||SH.ver||SH.filtro)){const f=SH.filtro;fechaSh();fsheet();if(f)render()}});
 window.addEventListener('hashchange',()=>{const t=telaDaRota(location.hash);if(t!==S.screen||t==='post'||t==='ferramentas'){S.screen=t;fechaSh();fsheet();render();scrollTo(0,0);entrou(t)}});
 setInterval(()=>{if(S.screen==='forum'&&!SH.open&&!SH.compose&&!SH.auth&&!document.hidden)carregaForum()},30000);
 const snapCompose=()=>{const g=id=>{const x=document.getElementById(id);return x?x.value:''};const c=SH.compose||{};return {...c,title:g('fc-title'),body:g('fc-body'),a:g('fc-a'),b:g('fc-b'),o:[0,1,2,3].map(k=>g('fc-o'+k)),cars:g('fc-cars')}};
-const gSnap=()=>{const g=id=>(document.getElementById(id)||{}).value||'';return {ano:g('gr-ano'),apelido:g('gr-apelido'),nota:g('gr-nota'),livre:g('gr-livre')}};
-const gRest=sn=>{for(const [k,id] of [['ano','gr-ano'],['apelido','gr-apelido'],['nota','gr-nota'],['livre','gr-livre']]){const e=document.getElementById(id);if(e&&sn[k])e.value=sn[k]}};
+const gSnap=()=>{const g=id=>(document.getElementById(id)||{}).value||'';return {ano:g('gr-ano'),apelido:g('gr-apelido'),nota:g('gr-nota'),livre:g('gr-livre'),vlivre:g('gr-vlivre')}};
+const gRest=sn=>{for(const [k,id] of [['ano','gr-ano'],['apelido','gr-apelido'],['nota','gr-nota'],['livre','gr-livre'],['vlivre','gr-vlivre']]){const e=document.getElementById(id);if(e&&sn[k])e.value=sn[k]}};
 function refoca(id){render();const i=document.getElementById(id);if(i){i.focus();try{i.setSelectionRange(i.value.length,i.value.length)}catch(e){}}}
 const lePerfilForm=()=>{const g=id=>{const e=document.getElementById(id);return e?e.value:''},c=id=>{const e=document.getElementById(id);return !!(e&&e.checked)},p=SH.perfil||{};
   return {...p,nome:g('pf-nome'),usuario:g('pf-usuario'),bio:g('pf-bio'),carro:g('pf-carro'),cidade:g('pf-cidade'),uf:g('pf-uf'),mostrarCidade:c('pf-mcid'),mostrarIdade:c('pf-mid')}};
@@ -4473,7 +4765,8 @@ async function salvaPerfilForm(){
 }
 async function salvaGarForm(){
   const g=SH.gar,er=document.getElementById('gr-err'),bad=m=>{er.textContent=m;er.hidden=false},v=id=>((document.getElementById(id)||{}).value||'').trim();
-  const carro=g.outro?v('gr-livre'):(g.m&&g.mod?`${g.m} ${g.mod}`:'');
+  const ver=g.v==='__outra__'?v('gr-vlivre'):(g.v||'');
+  const carro=(g.outro?v('gr-livre'):(g.m&&g.mod?`${g.m} ${g.mod}${ver?' '+ver:''}`:'')).slice(0,80);
   if(!carro)return bad(g.outro?'Escreva qual é o carro.':'Escolha a marca e o modelo do carro.');
   const ano=+v('gr-ano')||null;
   const bt=document.querySelector('#gar-form button[type=submit]');if(bt)bt.disabled=true;
