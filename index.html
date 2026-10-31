@@ -610,6 +610,189 @@ label .pw{display:flex;align-items:stretch}
 .catf.pes{display:grid;grid-template-columns:2fr 1fr;gap:10px;margin:0 0 14px}
 @media (max-width:560px){.catf.pes{grid-template-columns:1fr}.mb{max-width:92%}.pcap{height:72px}.pin{margin-top:-36px}}
 .destaque-vendas{margin-top:8px}
+
+/* tema claro: barra clara para a troca ser visível já na primeira tela */
+:root[data-theme="light"] body::before{background:#fff}
+:root[data-theme="light"] .hubnav{background:#fff;color:#000;border-bottom:1px solid var(--line)}
+:root[data-theme="light"] .hubnav .brand{color:#000}
+:root[data-theme="light"] .hubnav .tabs2{background:var(--surface)}
+:root[data-theme="light"] .hubnav .tabs2 button{color:#2B3A44}
+:root[data-theme="light"] .hubnav .tabs2 button[aria-current="page"]{color:#000}
+:root[data-theme="light"] .hubnav .acct,:root[data-theme="light"] .hubnav .tema{border-color:#B9CBD3;color:#000}
+:root[data-theme="light"] .hubnav .acct.go{background:var(--faixa);border-color:var(--faixa)}
+.hubnav .tema{width:auto;padding:0 12px;gap:6px;font-weight:700;font-size:13px}
+.hubnav .tema::after{content:"Escuro";}
+:root[data-theme="dark"] .hubnav .tema::after{content:"Claro"}
+/* hub de ferramentas */
+.th-head{padding-bottom:4px}
+.th-search{display:block;margin:10px 0 14px}
+.th-search .field{width:100%;font-size:17px;padding:14px 16px;border-radius:14px}
+.th-grupo{margin:28px 0 8px}
+.th-grupo .gh{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.th-grupo .gh h3,.th-rec h3,.th-dados h3{margin:0;font-family:"Ubuntu",sans-serif;font-size:21px}
+.th-grupo .gh p{margin:2px 0 0;color:var(--muted);font-size:14px}
+.th-grupo .dot{width:10px;align-self:stretch;border-radius:6px;background:var(--gc)}
+.th-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:10px}
+.tc{display:flex;align-items:center;gap:14px;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:16px;padding:14px 16px;cursor:pointer;color:inherit;font:inherit;min-height:84px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.tc:hover{transform:translateY(-2px);border-color:var(--gc,var(--faixa));box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.tc .ti{flex:none;width:44px;height:44px;border-radius:12px;background:var(--gc,var(--faixa));color:#000;display:grid;place-items:center}
+.tc .ti svg{width:24px;height:24px}
+.tc .tx{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.tc .tx b{font-family:"Ubuntu",sans-serif;font-size:17px;line-height:1.2}
+.tc .tx span{font-size:13.5px;color:var(--muted);line-height:1.35}
+.tc .ar{font-style:normal;font-weight:800;color:var(--gc,var(--faixa));flex:none;transition:transform .15s}
+.tc:hover .ar{transform:translateX(4px)}
+.th-rec,.th-dados{margin:22px 0 0}.th-rec h3,.th-dados h3{margin-bottom:10px}
+.th-top{margin:8px 0 4px}.th-top .gb{display:inline-block;background:var(--gc);color:#000;font-weight:800;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:4px 10px;border-radius:999px}
+.th-more{margin-top:8px}
+.tcard.all{border-style:dashed;border-color:var(--faixa)}
+@media (max-width:560px){.th-grid{grid-template-columns:1fr}.hubnav .tema::after{content:none}.hubnav .tema{width:38px;padding:0}}
+
+/* menu da conta */
+.pcard{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:14px;cursor:pointer;color:inherit;font:inherit}
+.pcard:hover{border-color:var(--ciano)}
+.menu{display:flex;flex-direction:column;border:1.5px solid var(--line);border-radius:16px;overflow:hidden}
+.menu .mi{display:flex;align-items:center;gap:12px;background:var(--bg);border:0;border-bottom:1px solid var(--line);padding:14px 16px;cursor:pointer;color:inherit;font:inherit;font-weight:600;text-align:left;min-height:52px}
+.menu .mi:last-child{border-bottom:0}.menu .mi:hover{background:var(--surface)}
+.menu .mi span:nth-child(2){flex:1}.menu .mi i{font-style:normal;color:var(--muted);font-size:20px}
+.menu .mic{width:34px;height:34px;border-radius:10px;background:var(--placa-soft);color:var(--ciano-ink);display:grid;place-items:center;flex:none}
+.menu .mic svg{width:19px;height:19px}
+
+/* tela inicial em painel */
+.hero.compact{padding:26px 0 70px}
+.hero.compact .herologo svg{height:54px;width:auto}
+.hero.compact h1{font-size:clamp(34px,6vw,52px);margin:8px 0 0}
+.hero.compact .slogan{margin:4px 0 14px}
+.dash-wrap{margin-top:-46px;position:relative;z-index:2}
+.novstrip{margin:0 0 12px;padding:10px 14px;border-radius:12px;background:var(--placa-soft);color:var(--ciano-ink);font-size:14px}
+.dash{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;align-items:stretch}
+.dc{background:var(--bg);border:1.5px solid var(--line);border-radius:20px;padding:18px;display:flex;flex-direction:column;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.07);min-width:0}
+.dc header h2{margin:0;font-family:"Ubuntu",sans-serif;font-size:20px}
+.dc header p{margin:2px 0 0;color:var(--muted);font-size:13.5px}
+.dc footer{margin-top:auto}
+.dc .lk{background:none;border:0;color:var(--ciano-ink);font:inherit;font-weight:800;cursor:pointer;padding:6px 0;min-height:40px;text-align:left}
+.dc .lk:hover{text-decoration:underline}
+.dc.match{background:var(--asfalto);color:#fff;border-color:#22323C;gap:10px}
+.dc.match h2{font-family:"Ubuntu",sans-serif;font-size:24px;margin:0}
+.dc.match p{margin:0;color:#C7D0D7}.dc.match ul{margin:0;padding-left:18px;color:#C7D0D7;font-size:14px}
+.dc.match .sqlogo svg{height:44px;width:auto}.dc.match .btn{margin-top:auto}
+.dc.blog,.dc.eco{grid-column:span 1}
+.dc.blog{grid-column:span 2}
+.dc .rk li{padding:8px 0}
+.qks{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.qk{display:flex;align-items:center;gap:10px;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:10px;cursor:pointer;color:inherit;font:inherit;text-align:left;min-height:58px;transition:border-color .15s,transform .15s}
+.qk:hover{border-color:var(--gc);transform:translateY(-2px)}
+.qk .ti{flex:none;width:34px;height:34px;border-radius:10px;background:var(--gc);color:#000;display:grid;place-items:center}
+.qk .ti svg{width:20px;height:20px}.qk b{font-size:14px;line-height:1.2;font-family:"Ubuntu",sans-serif}
+.dc .post.feat{min-height:0}
+.bl,.fl{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.bl li button,.fl li button{display:flex;gap:10px;align-items:baseline;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:11px 0;cursor:pointer;color:inherit;font:inherit;font-weight:600}
+.bl li button:hover,.fl li button:hover{color:var(--ciano-ink)}
+.bl .k,.fl .k{font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ciano-ink);flex:none}
+@media (max-width:980px){.dash{grid-template-columns:repeat(2,minmax(0,1fr))}.dc.blog{grid-column:span 2}}
+@media (max-width:640px){.dash{grid-template-columns:1fr}.dc.blog{grid-column:auto}.hero.compact{padding:18px 0 64px}.dash-wrap{margin-top:-40px}}
+
+.dc.blog{grid-column:span 2}.dc.foro{grid-column:span 1}
+@media (max-width:980px){.dc.foro{grid-column:span 2}}
+@media (max-width:640px){.dc.foro{grid-column:auto}}
+/* listas compactas dentro dos cartões da tela inicial */
+.dc .rk{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.dc .rk li{display:grid;grid-template-columns:30px 46px minmax(0,1fr) auto;align-items:center;gap:8px;padding:9px 0;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:none;box-shadow:none;min-height:0}
+.dc .rk li:first-child{border-top:0}
+.dc .rk .bar{display:none}
+.dc .rk .nm{display:flex;flex-direction:column;min-width:0}
+.dc .rk .nm b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:15px}
+.dc .rk .nm .mut{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:12.5px}
+.dc .rk .vl{font-weight:800;font-variant-numeric:tabular-nums;font-size:14px;white-space:nowrap}
+.dc .rk .pos{font-weight:800;color:var(--muted);font-size:13px}
+.dc .rk svg.mini,.dc .rk .mini{width:46px;height:auto}
+
+/* ===== celular: colunas lado a lado ===== */
+@media (max-width:640px){
+  .dash{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .dc{padding:12px;border-radius:16px;gap:8px}
+  .dc.vendas,.dc.eco{grid-column:span 1}
+  .dc.ferr,.dc.match,.dc.blog,.dc.foro{grid-column:span 2}
+  .dc header h2{font-size:16px;line-height:1.2}.dc header p{font-size:12px}
+  .dc .rk li{grid-template-columns:18px minmax(0,1fr);grid-template-rows:auto auto;column-gap:6px;row-gap:0;padding:7px 0}
+  .dc .rk li .mini,.dc .rk li svg{display:none}
+  .dc .rk .pos{grid-row:1/3;align-self:center;font-size:12px}
+  .dc .rk .nm b{font-size:13.5px}.dc .rk .nm .mut{font-size:11.5px}
+  .dc .rk .vl{grid-column:2;font-size:13px;color:var(--ciano-ink)}
+  .dc .lk{font-size:13px;min-height:36px}
+  .qks{grid-template-columns:repeat(3,1fr);gap:6px}
+  .qk{flex-direction:column;align-items:flex-start;gap:6px;padding:10px 8px;min-height:84px}
+  .qk b{font-size:12.5px}
+  .th-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+  .tc{flex-direction:column;align-items:flex-start;gap:8px;padding:12px;min-height:0}
+  .tc .ar{display:none}.tc .tx b{font-size:15px}
+  .tc .tx span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;font-size:12.5px}
+  .pst{grid-template-columns:repeat(4,1fr);gap:4px;padding:12px}.pst b{font-size:18px}.pst li{font-size:11px}
+  .gcols{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.gcols h3{font-size:15px;flex-wrap:wrap}
+  .pin{padding:0 14px}.bio{margin:12px 14px 0}.carrodomomento{margin:10px 14px 0}
+}
+
+/* barra inferior no celular */
+.bnav{display:none}
+@media (max-width:760px){
+  .hubnav .tabs2{display:none}
+  .hubnav .in{padding-top:8px;padding-bottom:8px;flex-wrap:nowrap}
+  .hubnav .brand{font-size:17px}.hubnav .brand svg{height:26px}
+  .hubnav .tema,.hubnav .acct{order:unset}
+  body{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px))}
+  .bnav{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--bg);border-top:1px solid var(--line);padding:6px max(6px,env(safe-area-inset-right,0px)) calc(6px + env(safe-area-inset-bottom,0px)) max(6px,env(safe-area-inset-left,0px));box-shadow:0 -6px 18px rgba(0,0,0,.08)}
+  .bnav button{display:flex;flex-direction:column;align-items:center;gap:2px;background:none;border:0;color:var(--muted);font:inherit;font-size:11px;font-weight:700;padding:6px 2px;min-height:48px;cursor:pointer;border-radius:12px}
+  .bnav button svg{width:23px;height:23px}
+  .bnav button[aria-current="page"]{color:var(--ink);background:var(--placa-soft)}
+  .bnav button[aria-current="page"] svg{color:var(--faixa)}
+  .fab{bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+  .dc .rk li{grid-template-columns:16px minmax(0,1fr) auto;grid-template-rows:auto;align-items:center;column-gap:6px;padding:8px 0}
+  .dc .rk .pos{grid-row:auto}
+  .dc .rk .vl{grid-column:3;font-size:12.5px}
+  .dc .rk .nm .mut{display:block}
+}
+@media (max-width:760px){
+  .hubnav .brand{order:0;margin-right:auto}
+  .hubnav .tema{order:1;margin-left:0}.hubnav .acct{order:2;margin-left:0}
+  .dc.match,.dc.match *{text-align:left}.dc.match .sqlogo{align-self:flex-start}.dc.match .btn{align-self:stretch;text-align:center}
+}
+
+/* impacto da tela inicial */
+.stats{list-style:none;margin:22px 0 0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.stats li{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:14px;padding:12px 14px;backdrop-filter:blur(4px);display:flex;flex-direction:column;gap:2px}
+.stats b{font-family:"Ubuntu",sans-serif;font-size:clamp(24px,4.4vw,34px);color:#fff;line-height:1.05;font-variant-numeric:tabular-nums}
+.stats span{font-size:12.5px;color:#C7D0D7;line-height:1.3}
+.cuid{margin-top:34px}
+.cuid-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.cu{display:flex;flex-direction:column;gap:4px;text-align:left;background:var(--placa-soft);border:1.5px solid transparent;border-radius:16px;padding:16px;cursor:pointer;color:inherit;font:inherit;min-height:104px;transition:transform .15s,border-color .15s}
+.cu:hover{transform:translateY(-3px);border-color:var(--ciano)}
+.cu b{font-family:"Ubuntu",sans-serif;font-size:17px}.cu span{font-size:13px;color:var(--muted);line-height:1.35}
+.hubs{margin-top:30px}
+.hub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.hb{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--bg);border:1.5px solid var(--line);border-radius:18px;padding:16px;cursor:pointer;color:inherit;font:inherit;min-height:150px;transition:transform .15s,border-color .15s,box-shadow .15s}
+.hb:hover{transform:translateY(-4px);border-color:var(--gc);box-shadow:0 10px 24px rgba(0,0,0,.1)}
+.hb .ti{width:44px;height:44px;border-radius:12px;background:var(--gc);color:#000;display:grid;place-items:center;margin-bottom:6px}
+.hb .ti svg{width:24px;height:24px}.hb b{font-family:"Ubuntu",sans-serif;font-size:18px}.hb span:last-child{font-size:13.5px;color:var(--muted);line-height:1.4}
+@media (max-width:980px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.cuid-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.stats{gap:8px;margin-top:16px}.stats li{padding:10px}.stats span{font-size:11.5px}.cuid-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.cu{min-height:92px;padding:12px}.hub-grid{gap:8px}.hb{min-height:0;padding:12px}.hb b{font-size:16px}.hb span:last-child{font-size:12.5px}.cu:last-child{grid-column:span 2}}
+/* revisão 1 */
+.dc.foro{grid-column:1/-1}
+@media (min-width:981px){.dc.foro .fl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));column-gap:18px}.dc.foro .fl li button{border-top:1px solid var(--line)}}
+/* revisão 2 */
+@media (max-width:640px){
+  .bl li button,.fl li button{flex-direction:column;gap:2px;align-items:flex-start;padding:10px 0}
+  .cuid{margin-top:22px}.hubs{margin-top:20px}
+  .cuid h2,.hubs h2{font-size:22px}.cuid .sub,.hubs .sub{font-size:14px;margin-top:2px}
+}
+
+/* faixa de fontes (sem números) */
+.stats li{flex-direction:row;align-items:center;gap:10px}
+.stats .si{flex:none;width:34px;height:34px;border-radius:10px;background:rgba(255,255,255,.14);color:var(--ciano);display:grid;place-items:center}
+.stats .si svg{width:19px;height:19px}
+.stats .st{display:flex;flex-direction:column;min-width:0}
+.stats .st b{font-size:clamp(14px,2.6vw,16px);font-weight:700}
+.stats .st span{font-size:12px}
+@media (max-width:640px){.rodape{margin-top:28px}.stats .si{width:28px;height:28px}.stats .si svg{width:16px;height:16px}.stats li{padding:8px;gap:8px}}
 </style>
 </head>
 <body>
@@ -2239,6 +2422,7 @@ const ERR={
   igual:'Escolha uma senha diferente da atual.',
   usuario_em_uso:'Esse nome de usuário já está em uso. Escolha outro.',
   usuario_invalido:'O nome de usuário precisa ter de 3 a 20 caracteres: letras minúsculas, números ou _ (sem espaços nem acentos).',
+  usuario_30_dias:'Você já trocou o @usuário há pouco. A troca só pode ser feita uma vez a cada 30 dias.',
   usuario_reservado:'Esse nome de usuário não está disponível.',
   foto_invalida:'Não foi possível usar essa foto. Escolha uma imagem JPG ou PNG.',
   perfil_texto_longo:'Algum campo do perfil passou do limite de caracteres.',
@@ -2258,8 +2442,10 @@ const ERR={
   post_indisponivel:'Este post não está mais disponível.'
 };
 const PMErro=(k,det)=>{const e=new Error(ERR[k]||ERR.generico);e.tipo=k;e.det=det;return e};
-const traduz=m=>{m=String(m||'');for(const k of ['muitos_posts','muitos_comentarios','post_indisponivel','usuario_invalido','usuario_reservado','foto_invalida','perfil_texto_longo','muitos_seguindo','diario_cheio','garagem_cheia','uf_invalida','precisa_seguir_de_volta','mensagem_bloqueada','muitas_mensagens'])if(m.includes(k))return PMErro(k);if(/membros_usuario_unico|duplicate key.*usuario/i.test(m))return PMErro('usuario_em_uso');return null};
+const traduz=m=>{m=String(m||'');for(const k of ['usuario_30_dias','muitos_posts','muitos_comentarios','post_indisponivel','usuario_invalido','usuario_reservado','foto_invalida','perfil_texto_longo','muitos_seguindo','diario_cheio','garagem_cheia','uf_invalida','precisa_seguir_de_volta','mensagem_bloqueada','muitas_mensagens'])if(m.includes(k))return PMErro(k);if(/membros_usuario_unico|duplicate key.*usuario/i.test(m))return PMErro('usuario_em_uso');return null};
 const idadeDe=(nasc,hoje=new Date())=>{const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(nasc||''));if(!m)return null;const y=+m[1],mo=+m[2],d=+m[3];const dt=new Date(Date.UTC(y,mo-1,d));if(dt.getUTCFullYear()!==y||dt.getUTCMonth()!==mo-1||dt.getUTCDate()!==d||y<1900)return null;let a=hoje.getUTCFullYear()-y;if(hoje.getUTCMonth()+1<mo||(hoje.getUTCMonth()+1===mo&&hoje.getUTCDate()<d))a--;return a>=0?a:null};
+/* Quando o @usuário pode ser trocado de novo (null = já pode). */
+const proxTrocaUsuario=(alt,agora=Date.now())=>{if(!alt)return null;const t=new Date(alt).getTime()+30*864e5;return t>agora?new Date(t):null};
 const usuarioOk=u=>/^[a-z0-9_]{3,20}$/.test(String(u||''));
 const RESERVADOS=['admin','administrador','possantmatch','suporte','moderacao','moderador','mscarros','oficial','root','sistema','equipe'];
 const fotoOk=f=>f===''||(typeof f==='string'&&f.length<=70000&&/^data:image\/jpeg;base64,[A-Za-z0-9+/=]+$/.test(f));
@@ -2330,8 +2516,8 @@ const Real={
     if(!this.sess)return null;
     let admin=false,p={};
     try{admin=(await this.rpc('sou_admin'))===true}catch(e){}
-    try{const m=await this.rest('GET','membros?select=nome,usuario,bio,carro,cidade,uf,mostrar_cidade,mostrar_idade,foto&uid=eq.'+encodeURIComponent(this.sess.uid)+'&limit=1');p=(m&&m[0])||{}}catch(e){}
-    return {uid:this.sess.uid,email:this.sess.email,admin,nome:p.nome||'',usuario:p.usuario||'',bio:p.bio||'',carro:p.carro||'',cidade:p.cidade||'',uf:p.uf||'',mostrarCidade:!!p.mostrar_cidade,mostrarIdade:!!p.mostrar_idade,foto:p.foto||''}},
+    try{const m=await this.rest('GET','membros?select=nome,usuario,usuario_alterado,bio,carro,cidade,uf,mostrar_cidade,mostrar_idade,foto&uid=eq.'+encodeURIComponent(this.sess.uid)+'&limit=1');p=(m&&m[0])||{}}catch(e){}
+    return {uid:this.sess.uid,email:this.sess.email,admin,nome:p.nome||'',usuario:p.usuario||'',usuarioAlterado:p.usuario_alterado||null,bio:p.bio||'',carro:p.carro||'',cidade:p.cidade||'',uf:p.uf||'',mostrarCidade:!!p.mostrar_cidade,mostrarIdade:!!p.mostrar_idade,foto:p.foto||''}},
   async garagem(uid){return (await this.rest('GET','garagem?select=id,tipo,carro,apelido,ano,nota&uid=eq.'+encodeURIComponent(uid)+'&order=criado.desc&limit=60'))||[]},
   addGaragem(o){return this.rest('POST','garagem',{uid:this.sess.uid,tipo:o.tipo,carro:String(o.carro||'').trim(),apelido:String(o.apelido||'').trim(),ano:o.ano||null,nota:String(o.nota||'').trim()},'return=minimal')},
   delGaragem(id){return this.rest('DELETE','garagem?id=eq.'+encodeURIComponent(id))},
@@ -2406,7 +2592,7 @@ const Demo={
     const uid=this.id();const u={uid,email,nome:'',usuario:'user'+uid.replace(/[^a-z0-9]/g,'').slice(0,8),bio:'',carro:'',cidade:'',uf:'',mostrarCidade:false,mostrarIdade:false,anoNasc:+String(nasc).slice(0,4),foto:'',criado:Date.now(),h:await this.hash(senha)};this.st.users.push(u);this.st.sess=u.uid;this.gravar();return this.eu()},
   async entrar(email,senha){const u=this.st.users.find(x=>x.email===email);if(!u||u.h!==await this.hash(senha))throw PMErro('login');this.st.sess=u.uid;this.gravar();return this.eu()},
   async sair(){this.st.sess=null;this.gravar()},
-  async eu(){const u=this.me();return u?{uid:u.uid,email:u.email,admin:u.email===this.admEmail(),nome:u.nome||'',usuario:u.usuario||'',bio:u.bio||'',carro:u.carro||'',cidade:u.cidade||'',uf:u.uf||'',mostrarCidade:!!u.mostrarCidade,mostrarIdade:!!u.mostrarIdade,foto:u.foto||''}:null},
+  async eu(){const u=this.me();return u?{uid:u.uid,email:u.email,admin:u.email===this.admEmail(),nome:u.nome||'',usuario:u.usuario||'',usuarioAlterado:u.usuarioAlterado||null,bio:u.bio||'',carro:u.carro||'',cidade:u.cidade||'',uf:u.uf||'',mostrarCidade:!!u.mostrarCidade,mostrarIdade:!!u.mostrarIdade,foto:u.foto||''}:null},
   async recuperar(){return true},
   linkRecuperacao(){return null},
   async trocarSenha(nova){const u=this.need();if(!senhaCheck(nova).ok)throw PMErro('fraca');const h=await this.hash(nova);if(h===u.h)throw PMErro('igual');u.h=h;this.gravar();return this.eu()},
@@ -2416,6 +2602,7 @@ const Demo={
     if(!usuarioOk(us))throw PMErro('usuario_invalido');
     if(RESERVADOS.includes(us)&&u.email!==this.admEmail())throw PMErro('usuario_reservado');
     if(this.st.users.some(x=>x.uid!==u.uid&&x.usuario===us))throw PMErro('usuario_em_uso');
+    if(us!==u.usuario){if(u.usuarioAlterado&&Date.now()-new Date(u.usuarioAlterado).getTime()<30*864e5)throw PMErro('usuario_30_dias');u.usuarioAlterado=new Date().toISOString()}
     const t=(v,n)=>{v=String(v||'').replace(/[\u0000-\u001f<>]/g,'').trim();if(v.length>n)throw PMErro('perfil_texto_longo');return v};
     if(!fotoOk(p.foto||''))throw PMErro('foto_invalida');
     const uf=String(p.uf||'').toUpperCase();if(uf&&!UFS.includes(uf))throw PMErro('uf_invalida');Object.assign(u,{usuario:us,nome:t(p.nome,40),bio:t(p.bio,160),carro:t(p.carro,60),cidade:t(p.cidade,40),uf,mostrarCidade:!!p.mostrarCidade,mostrarIdade:!!p.mostrarIdade,foto:p.foto||''});this.gravar()},
@@ -2499,22 +2686,29 @@ const IC={
  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
  sun:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
  moon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5z"/></svg>',
+ home:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h5v-6h4v6h5V10"/></svg>',
+ trofeu:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 4h8v5a4 4 0 0 1-8 0zM8 6H4v1a4 4 0 0 0 4 4M16 6h4v1a4 4 0 0 1-4 4M12 13v4M8 21h8M10 17h4"/></svg>',
+ barras:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>',
+ chave:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.1L3 17.7 6.3 21l6.3-6.3a4 4 0 0 0 5.1-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/></svg>',
  check:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7"/></svg>',
  car:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 15l1.6-5A2 2 0 0 1 6.5 8.6h11a2 2 0 0 1 1.9 1.4L21 15v3h-2.2M3 15v3h2.2M3 15h18"/><circle cx="7.5" cy="17.5" r="1.8"/><circle cx="16.5" cy="17.5" r="1.8"/></svg>'
 };
-const NAVTABS=[['home','Início'],['discover','Descobrir'],['forum','Fórum'],['ferramentas','Ferramentas'],['vendas','Vendas'],['rankings','Rankings'],['catalogo','Catálogo']];
+const NAVTABS=[['home','Início'],['rankings','Rankings'],['vendas','Vendas'],['ferramentas','Ferramentas'],['forum','Fórum'],['discover','Descobrir'],['catalogo','Catálogo']];
 function hubnav(cur){
   const b=([k,l])=>`<button data-h="${k}" ${cur===k?'aria-current="page"':''}>${l}</button>`;
   const conta=PM.me?`<button class="acct" data-h="conta" aria-label="Minha conta">${esc(PM.me.nome||PM.me.email.split('@')[0])}</button>`:`<button class="acct go" data-h="entrar">Entrar</button>`;
   const dk=document.documentElement.dataset.theme==='dark';
   const tema=`<button class="tema" data-h="tema" aria-label="${dk?'Mudar para o tema claro':'Mudar para o tema escuro'}" title="${dk?'Tema claro':'Tema escuro'}">${dk?IC.sun:IC.moon}</button>`;
-  return `<header class="hubnav"><div class="in"><button class="brand" data-h="home" aria-label="Início">${PMSVG}<span>Possant<b>Match</b></span></button>${tema}${conta}<nav class="tabs2" aria-label="Seções">${NAVTABS.map(b).join('')}</nav></div></header>`;
+  const bn=[['home','Início',IC.home],['rankings','Rankings',IC.trofeu],['vendas','Vendas',IC.barras],['ferramentas','Ferramentas',IC.chave],['forum','Fórum',IC.chat]];
+  const bnav=`<nav class="bnav" aria-label="Navegação principal">${bn.map(([k,l,ic])=>`<button data-h="${k}" ${cur===k?'aria-current="page"':''}>${ic}<span>${l}</span></button>`).join('')}</nav>`;
+  return `<header class="hubnav"><div class="in"><button class="brand" data-h="home" aria-label="Início">${PMSVG}<span>Possant<b>Match</b></span></button>${tema}${conta}<nav class="tabs2" aria-label="Seções">${NAVTABS.map(b).join('')}</nav></div></header>${bnav}`;
 }
 const SCREENS={};
 function alternaTema(){
   const t=document.documentElement.dataset.theme==='dark'?'light':'dark';
   document.documentElement.dataset.theme=t;try{localStorage.setItem('pm-tema',t)}catch(e){}
   const m=document.querySelector('meta[name=theme-color]');if(m)m.content=t==='dark'?'#05090C':'#000000';
+  aviso(t==='dark'?'Tema escuro ativado.':'Tema claro ativado.');
   document.querySelectorAll('.tema').forEach(b=>{b.innerHTML=t==='dark'?IC.sun:IC.moon;b.setAttribute('aria-label',t==='dark'?'Mudar para o tema claro':'Mudar para o tema escuro');b.title=t==='dark'?'Tema claro':'Tema escuro'});
 }
 const fsheet=()=>{const el=document.getElementById('fsheet');if(!el)return;el.innerHTML=SH.auth?authSheet():SH.compose?composeSheet():SH.open?replySheet():SH.perfil?perfilSheet():SH.gar?garSheet():SH.den?denSheet():SH.vs?vsDetSheet():SH.conta?contaSheet():'';document.body.classList.toggle('locked',!!(SH.auth||SH.compose||SH.open||SH.conta||SH.perfil||SH.gar||SH.den||SH.vs));if(SH.auth||SH.compose||SH.perfil||SH.gar||SH.den){const i=el.querySelector&&el.querySelector('input:not([type=hidden]),textarea');if(i)setTimeout(()=>{try{i.focus()}catch(e){}},40)}};
@@ -2565,17 +2759,23 @@ function authSheet(){
   </form></section>`;
 }
 function contaSheet(){
-  const m=PM.me;if(!m)return '';
-  const c=SH.conta;
-  return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet auth" role="dialog" aria-modal="true" aria-label="Minha conta"><div class="sh-h"><div><p class="sh-k">Minha conta</p><h3 style="margin:2px 0 0;overflow-wrap:anywhere">${esc(m.email)}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>
-  <div class="fform">${SH.novo?'<p class="notice info">Conta criada. Escolha o nome que vai aparecer nos seus posts e comentários. Se preferir, deixe em branco e você aparece como Participante.</p>':''}
+  const m=PM.me;if(!m)return '';const us=m.usuario||'';
+  const c=SH.conta,cab=(k,t)=>`<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet auth" role="dialog" aria-modal="true" aria-label="${t}"><div class="sh-h"><div><p class="sh-k">${k}</p><h3 style="margin:2px 0 0;overflow-wrap:anywhere">${t}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>`;
+  if(c===true){
+    const it=(h,ic,t,x='',extra='')=>`<button class="mi" data-h="${h}" ${extra}><span class="mic">${ic}</span><span>${t}</span>${x}<i aria-hidden="true">›</i></button>`;
+    return cab('Minha conta','')+`<div class="fform"><button class="pcard" data-h="perfil" data-u="${esc(us)}">${avatar({foto:m.foto,usuario:m.usuario,nome:m.nome},56)}<span class="pn"><b>${esc(m.nome||'@'+us)}</b><span class="mut">@${esc(us)} · ver meu perfil</span></span></button>
+    <nav class="menu" aria-label="Menu da conta">
+     ${it('perfil',IC.car,'Meu perfil','',`data-u="${esc(us)}"`)}${it('mensagens',IC.chat,'Mensagens',PF.naoLidas?`<span class="bdg">${PF.naoLidas}</span>`:'')}${it('pessoas',IC.heart,'Pessoas')}${it('garagem',IC.lock,'Carros salvos')}${m.admin?it('admin',IC.check,'Painel do administrador'):''}${it('abreCfg',IC.eye,'Configurações')}
+    </nav><button class="btn btn-ghost" data-h="sair">Sair da conta</button></div></section>`;
+  }
+  return cab('Configurações','Configurações da conta')+`<div class="fform"><button class="back" data-h="abreConta">← Voltar ao menu</button>${SH.novo?'':''}
+   <p class="mut" style="margin:0;overflow-wrap:anywhere">${esc(m.email)}</p>
    <label>Nome no fórum<input class="field" id="ct-nome" maxlength="40" value="${esc(m.nome||'')}" placeholder="Como quer ser chamado"></label>
    <button class="btn btn-go" data-h="salvaNome">Salvar nome</button>
-   <div class="two2"><button class="btn btn-go" data-h="perfil" data-u="${esc(m.usuario)}">Meu perfil</button><button class="btn btn-ghost" data-h="mensagens">Mensagens${PF.naoLidas?` (${PF.naoLidas})`:''}</button><button class="btn btn-ghost" data-h="pessoas">Pessoas</button><button class="btn btn-ghost" data-h="garagem">Carros salvos</button>${m.admin?'<button class="btn btn-ghost" data-h="admin">Painel do administrador</button>':''}</div>
+   <button class="btn btn-ghost" data-h="editaPerfil">Editar foto, @usuário e biografia</button>
    ${c==='senha'?`<div class="box"><b>Alterar senha</b>${campoSenha('ct-senha','Nova senha','new-password')}${senhaDica('')}<p id="ct-msg" class="notice" hidden role="alert"></p><button class="btn btn-go" data-h="trocaSenha">Salvar nova senha</button></div>`:'<button class="btn btn-ghost" data-h="abreSenha">Alterar senha</button>'}
    <button class="btn btn-ghost" data-h="baixarDados">Baixar meus dados</button>
-   <button class="btn btn-ghost" data-h="sair">Sair da conta</button>
-   ${c==='excluir'?`<div class="box perigo"><b>Excluir minha conta</b><p>Isso apaga a sua conta e tudo o que você criou aqui: posts, comentários, votos, curtidas, perfil, seguidores, mensagens e garagem. Não dá para desfazer.</p><button class="btn btn-danger" data-h="excluirConta">Sim, excluir minha conta</button> <button class="btn btn-ghost" data-h="abreConta">Cancelar</button></div>`:'<button class="link danger" data-h="abreExcluir">Excluir minha conta</button>'}
+   ${c==='excluir'?`<div class="box perigo"><b>Excluir minha conta</b><p>Isso apaga a sua conta e tudo o que você criou aqui: posts, comentários, votos, curtidas, perfil, seguidores, mensagens e garagem. Não dá para desfazer.</p><button class="btn btn-danger" data-h="excluirConta">Sim, excluir minha conta</button> <button class="btn btn-ghost" data-h="abreCfg">Cancelar</button></div>`:'<button class="link danger" data-h="abreExcluir">Excluir minha conta</button>'}
   </div></section>`;
 }
 async function carregaEu(){try{PM.me=await DB.eu()}catch(e){PM.me=null}PM.vagas=await DB.vagas();PM.carregado=true}
@@ -2605,7 +2805,7 @@ async function enviaAuth(){
   if(criar){const id=idadeDe(nasc);if(id===null)return err(ERR.nascimento);if(id<18)return err(ERR.menor);if(!aceite)return err(ERR.sem_aceite)}
   bt.disabled=true;msg.hidden=true;
   try{PM.me=criar?await DB.cadastrar(email,senha,nasc):await DB.entrar(email,senha);PM.vagas=await DB.vagas();const v=SH.volta;SH.auth=null;SH.volta=null;
-    if(criar&&!PM.me.nome){SH.novo=true;SH.conta=true}fsheet();render();aviso(criar?'Conta criada. Você já está dentro.':'Bem-vindo de volta.');if(v)v()}
+    if(criar){SH.novo=true;SH.perfil={...PM.me}}fsheet();render();aviso(criar?'Conta criada. Você já está dentro.':'Bem-vindo de volta.');if(v)v()}
   catch(e){bt.disabled=false;err(e.message||ERR.generico);if(e.tipo==='limite'||e.tipo==='existe'){PM.vagas=await DB.vagas()}}
   se.value='';
 }
@@ -2718,33 +2918,37 @@ const BLOG=[
      ['p','A etiqueta traz o consumo urbano e o rodoviário em quilômetros por litro. Em carros flex, há um valor para etanol e outro para gasolina.'],
      ['h','Elétricos e híbridos'],
      ['p','Elétricos mostram consumo em km por litro equivalente e a autonomia. Híbridos plug-in têm dois números, um no modo elétrico e outro com o motor a combustão.'],
-     ['p','Todos os 968 modelos e versões da tabela oficial de 2026 estão no Catálogo do PossantMatch, com busca e filtros.']],tool:'catalogo'}
+     ['p','Todas as versões da tabela oficial de 2026 estão no Catálogo do PossantMatch, com busca e filtros.']],tool:'catalogo'}
 ];
 const blogTool={financiamento:['ferramentas','Abrir o simulador'],vistoria:['ferramentas','Abrir o checklist'],etanol:['ferramentas','Abrir a calculadora'],catalogo:['catalogo','Abrir o catálogo']};
 const blogCard=(p,big)=>`<button class="post ${big?'feat':''}" data-h="post" data-id="${p.id}"><span class="k">${p.k}</span><h3>${p.t}</h3><p>${p.lead}</p><span class="m">${p.min} min de leitura</span></button>`;
 
+const tcardMini=([k,t,d,kick,ic],cor)=>`<button class="qk" data-h="tool" data-id="${k}" style="--gc:${cor||'var(--faixa)'}"><span class="ti">${TICON[ic]}</span><b>${t}</b></button>`;
+const dcard=(cls,tit,sub,corpo,rodape)=>`<section class="dc ${cls}"><header><h2>${tit}</h2>${sub?`<p>${sub}</p>`:''}</header>${corpo}<footer>${rodape}</footer></section>`;
 SCREENS.intro=function intro(){
   const started=S.A.uf||S.A.condicao;
-  const nov=(Novas.lista||[]).slice(0,2);
+  const nov=(Novas.lista||[]).slice(0,1);
   const vit=(FV.vitrine||[]).slice(0,3);
-  const tcard=([k,t,d,kick,ic])=>`<button class="tcard" data-h="tool" data-id="${k}"><span class="ti">${TICON[ic]}</span><span class="tk">${kick}</span><h3>${t}</h3><p>${d}</p><span class="go">Abrir ferramenta <i aria-hidden="true">→</i></span></button>`;
-  return hubnav('home')+`<section class="hero"><video class="hv" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="hero.webm" type="video/webm"><source src="hero.mp4" type="video/mp4"></video>
+  const econ=rankingCat('econ',{n:5})||[],emx=econ[0]?econ[0].v:1;
+  const [bf,...br]=BLOG;
+  const match=`<aside class="dc match" aria-label="Escolha seu carro"><div class="sqlogo">${PMSVG}</div><h2>Qual carro combina com você?</h2><p>Responda sobre sua rotina e seu orçamento. Receba 3 carros com parcela, seguro, IPVA e custo anual.</p><ul><li>${STEPS.length} etapas, cerca de 9 minutos</li><li>Do hatch à picape, novos e seminovos</li></ul><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></aside>`;
+  const vendas=dcard('vendas',`Mais vendidos de ${mesNome(ULT)}`,`Fenabrave, ${esc(VENDAS.edicao)}`,`<ol class="rk">${topLista('A',5)}</ol>`,`<button class="lk" data-h="vendas">Ver todas as vendas dos últimos 24 meses →</button>`);
+  const ferr=dcard('ferr','Ferramentas','Grátis e sem cadastro',`<div class="qks">${POPULARES.map(k=>TOOLS.find(t=>t[0]===k)).filter(Boolean).map(t=>tcardMini(t,grupoDe(t[0])[3])).join('')}</div>`,`<button class="lk" data-h="ferramentas">Ver todas as ferramentas →</button>`);
+  const blog=dcard('blog','No blog','Guias curtos para decidir bem',`<button class="post feat" data-h="post" data-id="${bf.id}"><span class="k">${bf.k}</span><h3>${bf.t}</h3><p>${bf.lead}</p><span class="m">${bf.min} min de leitura</span></button><ul class="bl">${br.slice(0,3).map(p=>`<li><button data-h="post" data-id="${p.id}"><span class="k">${p.k}</span>${p.t}</button></li>`).join('')}</ul>`,`<button class="lk" data-h="blog">Ver todos os artigos →</button>`);
+  const eco=dcard('eco','Os mais econômicos','Fonte: Inmetro, PBE Veicular 2026',`<ol class="rk">${econ.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.motor)}</span></span>${barra(x.v,emx)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>`,`<button class="lk" data-h="rankings">Ver todos os rankings →</button>`);
+  const foro=dcard('foro','Agora no fórum','Duelos, dúvidas e opiniões',vit.length?`<ul class="fl">${vit.map(p=>`<li><button data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span>${esc(p.titulo||p.trecho)}</button></li>`).join('')}</ul>`:`<p class="mut">As primeiras conversas estão chegando. Abra um duelo entre dois carros ou faça uma pergunta.</p>`,`<button class="lk" data-h="forum">Abrir o fórum →</button>`);
+  const stats=[[IC.check,'Consumo oficial','Inmetro, PBE Veicular'],[IC.barras,'Vendas mês a mês','Fenabrave'],[IC.eye,'Preços ao vivo','Tabela FIPE'],[IC.heart,'Comunidade','Fórum e garagens']];
+  const hubs=[['rankings',IC.trofeu,'Rankings','Mais econômicos, elétricos e com menos CO₂','var(--faixa)'],['vendas',IC.barras,'Vendas','Os mais vendidos dos últimos 24 meses','var(--ciano)'],['ferramentas',IC.chave,'Ferramentas','Calculadoras para cada decisão','#2BB673'],['catalogo',IC.car,'Catálogo oficial','Todas as versões à venda, uma a uma','#F5B800'],['blog',IC.check,'Aprenda','Guias curtos para comprar, cuidar e economizar','var(--faixa)'],['forum',IC.chat,'Comunidade','Duelos, enquetes e dúvidas entre apaixonados','var(--ciano)'],['discover',IC.eye,'Descobrir','Vídeos e novidades do @mscarros','#2BB673'],['pessoas',IC.heart,'Garagens','Perfis, carros que já teve e os dos sonhos','#F5B800']];
+  const cuidado=[['ipva','IPVA e documentos','Estimativa por estado e prazos'],['manutencao','Revisões','Óleo, filtros, freios e correia'],['luzes','Luzes do painel','O que cada uma significa'],['pneu','Pneus','Medida certa sem errar o velocímetro'],['pontos','Pontos da CNH','Quanto falta para suspender']];
+  return hubnav('home')+`<section class="hero compact"><video class="hv" autoplay muted loop playsinline preload="metadata" poster="hero-poster.jpg" aria-hidden="true" tabindex="-1"><source src="hero.webm" type="video/webm"><source src="hero.mp4" type="video/mp4"></video>
   <div class="wrap"><div class="herologo">${PMSVG}</div><h1>Possant<span>Match</span></h1><p class="slogan">Acelere a escolha do seu próximo carro</p>
-  <p>Blog, ferramentas, fórum e um match que olha para a sua rotina e o seu bolso. Tudo sobre carros em um só lugar.</p>
-  <div class="ctas"><button class="btn btn-go" data-h="blog">Ler o blog</button><button class="btn btn-ghost on-dark" data-h="ferramentas">Ver as ferramentas</button><button class="btn btn-ghost on-dark" data-go="start">${started?'Continuar meu match':'Descobrir meu carro'}</button></div>
-  <ul class="chips-t" aria-label="Ferramentas">${TOOLS.map(([k,t])=>`<li><button data-h="tool" data-id="${k}">${t}</button></li>`).join('')}</ul></div><div class="lane"></div></section>
-  <main class="wrap wide">
-  <div class="homegrid"><div><section class="sec" id="blog"><h2>No blog</h2><p class="sub">Guias curtos para decidir com a cabeça e com a calculadora.</p>
-   <div class="posts big">${BLOG.slice(0,5).map((p,i)=>blogCard(p,i===0)).join('')}</div><p class="more"><button class="btn btn-ghost" data-h="blog">Ver todos os artigos</button></p></section></div>
-  <aside class="sq" aria-label="Escolha seu carro"><div class="sqi"><div class="sqlogo">${PMSVG}</div><h2>Qual carro combina com você?</h2><p>Responda sobre sua rotina, família e orçamento. Receba 3 carros com parcela, seguro, IPVA e custo anual.</p><ul><li>${STEPS.length} etapas, cerca de 9 minutos</li><li>${CARS.length} versões, de hatch a picape</li><li>Consumo conforme o Inmetro</li></ul><button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button></div></aside></div></main>
-  <section class="toolband" aria-labelledby="tb-h"><div class="wrap wide"><div class="tbh"><h2 id="tb-h">Ferramentas para decidir melhor</h2><p>Grátis e sem cadastro. Use antes de ir à concessionária.</p></div>
-   <div class="tgrid">${TOOLS.map(tcard).join('')}<button class="tcard cat" data-h="catalogo"><span class="ti">${IC.car}</span><span class="tk">Catálogo</span><h3>Catálogo oficial do Inmetro</h3><p>${CAT.length} versões à venda em 2026, com consumo, autonomia e nota de eficiência.</p><span class="go">Abrir catálogo <i aria-hidden="true">→</i></span></button></div></div></section>
-  <main class="wrap wide">
-  ${destaqueVendas()}${miniRanking(5)}
-  ${nov.length?`<section class="sec"><h2>Novidades do site</h2><div class="nvs">${nov.map(n=>`<article class="nv"><b>${esc(n.titulo)}</b><p>${esc(n.texto)}</p><span class="m">${ago(new Date(n.criado).getTime())}</span></article>`).join('')}</div></section>`:''}
-  <section class="sec"><h2>Agora no fórum</h2><p class="sub">Duelos, dúvidas e opiniões de quem está escolhendo carro. Crie sua conta para abrir os posts, curtir e comentar.</p>
-  ${vit.length?`<div class="posts">${vit.map(p=>`<button class="post" data-h="forum"><span class="k">${FT[p.tipo]||'Post'}</span><h3>${esc(p.titulo||p.trecho)}</h3><p>${esc(p.trecho||'')}</p><span class="m">${IC.lock} Entre para abrir</span></button>`).join('')}</div>`:`<div class="empty2"><b>As primeiras conversas estão chegando</b>Faça uma pergunta ou abra um duelo entre dois carros. O fórum é aberto a quem criar uma conta.</div>`}
-  <p class="more"><button class="btn btn-ghost" data-h="forum">Abrir o fórum</button></p></section></main>`;
+  <div class="ctas"><button class="btn btn-go" data-h="rankings">Rankings</button><button class="btn btn-ghost on-dark" data-h="ferramentas">Ferramentas</button><button class="btn btn-ghost on-dark" data-go="start">${started?'Continuar meu match':'Escolher meu carro'}</button></div><ul class="stats" aria-label="O PossantMatch em números">${stats.map(([ic,t,f])=>`<li><span class="si">${ic}</span><span class="st"><b>${t}</b><span>${f}</span></span></li>`).join('')}</ul></div><div class="lane"></div></section>
+  <main class="wrap wide dash-wrap">${nov.length?`<p class="novstrip"><b>Novo:</b> ${esc(nov[0].titulo)}. ${esc(nov[0].texto)}</p>`:''}
+  <div class="dash">${vendas}${eco}${ferr}${match}${blog}${foro}</div>
+  <section class="sec cuid" aria-labelledby="cu-h"><h2 id="cu-h">Cuide do seu carro</h2><p class="sub">Documentos, revisões e segurança no dia a dia. Tudo em português claro e sem enrolação.</p>
+   <div class="cuid-grid">${cuidado.map(([k,t,d])=>`<button class="cu" data-h="tool" data-id="${k}"><b>${t}</b><span>${d}</span></button>`).join('')}</div></section>
+  <section class="sec hubs" aria-labelledby="hb-h"><h2 id="hb-h">Tudo sobre carros em um só lugar</h2><p class="sub">Dados oficiais, ferramentas e uma comunidade para decidir, cuidar e aprender.</p>
+   <div class="hub-grid">${hubs.map(([k,ic,t,d,cor])=>`<button class="hb" data-h="${k}" style="--gc:${cor}"><span class="ti">${ic}</span><b>${t}</b><span>${d}</span></button>`).join('')}</div></section></main>`;
 };
 SCREENS.blog=function(){return hubnav('home')+`<main class="wrap wide"><section class="sec"><h2>Blog</h2><p class="sub">Guias práticos para escolher, comprar e manter o seu carro.</p><div class="posts big">${BLOG.map(p=>blogCard(p)).join('')}</div></section></main>`};
 SCREENS.post=function(){
@@ -2764,7 +2968,7 @@ SCREENS.discover=function(){
   const started=S.A.uf||S.A.condicao;
   return hubnav('discover')+`<main class="wrap wide"><section class="sec"><h2>Descobrir</h2><p class="sub">Escolha seu carro com a ajuda dos números e veja os vídeos do @${TIKTOK_USER}.</p></section>
   <div class="dgrid"><section class="dcard" aria-label="Match de carro"><div class="sqlogo">${PMSVG}</div><h2>Qual carro combina com você?</h2><p>${STEPS.length} etapas, cerca de 9 minutos. No fim, 3 carros com parcela, seguro, IPVA e custo anual para o seu perfil.</p>
-   <ul><li>${CARS.length} versões, de hatch a picape</li><li>Consumo conferido com a tabela oficial do Inmetro</li><li>Descarte o que não gostar e traga outra opção</li></ul>
+   <ul><li>Do hatch à picape, novos e seminovos</li><li>Consumo conferido com a tabela oficial do Inmetro</li><li>Descarte o que não gostar e traga outra opção</li></ul>
    <button class="btn btn-go" data-go="start">${started?'Continuar meu match':'Começar o match'}</button>${started?'<button class="btn btn-ghost" data-go="reset">Recomeçar</button>':''}</section>
   <section class="tt" aria-label="Vídeos do TikTok"><div class="tthead"><b>@${TIKTOK_USER}</b><span>no TikTok</span></div>
    <div class="ttbox" id="ttbox">${TT.on?ttEmbed():`<div class="ttask"><p>Os vídeos vêm do TikTok. Ao carregar, o TikTok pode registrar o seu acesso.</p><button class="btn btn-go" data-h="ttLoad">Carregar vídeos</button><a class="btn btn-ghost" href="https://www.tiktok.com/@${TIKTOK_USER}" target="_blank" rel="noopener noreferrer">Abrir no TikTok</a></div>`}</div></section></div></main>`;
@@ -3097,13 +3301,13 @@ async function enviaMsg(){
 
 /* ---------- Perfil: editar, foto, garagem, denúncia, exportar dados ---------- */
 function perfilSheet(){
-  const m=SH.perfil,p=m;if(!p)return '';
+  const m=SH.perfil,p=m;if(!p)return '';const trava=proxTrocaUsuario(PM.me&&PM.me.usuarioAlterado);
   const foto=p.foto&&fotoOk(p.foto)?avatar({foto:p.foto,usuario:p.usuario,nome:p.nome},84):avatar({usuario:p.usuario,nome:p.nome||p.usuario},84);
-  return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet" role="dialog" aria-modal="true" aria-label="Editar perfil"><div class="sh-h"><div><p class="sh-k">Meu perfil</p><h3 style="margin:2px 0 0">Editar perfil</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>
-  <form class="fform" id="perfil-form" novalidate>
+  return `<div class="fsheet-bg" data-h="fclose"></div><section class="fsheet" role="dialog" aria-modal="true" aria-label="Editar perfil"><div class="sh-h"><div><p class="sh-k">Meu perfil</p><h3 style="margin:2px 0 0">${SH.novo?'Monte o seu perfil':'Editar perfil'}</h3></div><button class="sh-x" data-h="fclose" aria-label="Fechar">✕</button></div>
+  <form class="fform" id="perfil-form" novalidate>${SH.novo?'<p class="notice info">Conta criada. Escolha seu @usuário, o nome e uma foto. Você pode pular e fazer isso depois.</p>':''}
    <div class="fotoedit">${foto}<div><label class="btn btn-ghost btn-sm" for="pf-foto">Escolher foto</label><input id="pf-foto" type="file" accept="image/jpeg,image/png,image/webp" class="sr" data-h="foto">${p.foto?'<button type="button" class="lk" data-h="removeFoto">remover foto</button>':''}<span class="mut">JPG ou PNG. A foto é recortada em quadrado e reduzida.</span></div></div>
    <label>Nome<input class="field" id="pf-nome" maxlength="40" value="${esc(p.nome||'')}" placeholder="Como quer ser chamado"></label>
-   <label>Nome de usuário<span class="pw"><span class="arr">@</span><input class="field" id="pf-usuario" maxlength="20" value="${esc(p.usuario||'')}" autocapitalize="none" autocomplete="off" spellcheck="false"></span><span class="mut">De 3 a 20 caracteres: letras minúsculas, números e _.</span></label>
+   <label>Nome de usuário<span class="pw"><span class="arr">@</span><input class="field" id="pf-usuario" maxlength="20" value="${esc(p.usuario||'')}" autocapitalize="none" autocomplete="off" spellcheck="false" ${trava?'readonly':''}></span><span class="mut">${trava?`Você poderá trocar de novo em ${trava.toLocaleDateString('pt-BR')}.`:'De 3 a 20 caracteres: letras minúsculas, números e _. Depois de trocar, só dá para mudar de novo em 30 dias.'}</span></label>
    <label>Biografia <span class="mut" id="pf-bio-n">${(p.bio||'').length}/160</span><textarea class="field" id="pf-bio" maxlength="160" placeholder="Conte um pouco sobre você e o seu jeito de gostar de carro">${esc(p.bio||'')}</textarea></label>
    <label>Carro do momento<select class="field" id="pf-carro"><option value="">Nenhum</option>${(p.carro&&!MODELS.includes(p.carro)?[p.carro]:[]).concat(MODELS).map(c=>`<option ${c===p.carro?'selected':''}>${esc(c)}</option>`).join('')}</select></label>
    <div class="box"><b>Sobre você (opcional)</b><p class="mut">Só mostramos o que você permitir. Você pode mudar isso quando quiser. Seu e-mail nunca aparece.</p>
@@ -3331,11 +3535,41 @@ function toolVist(){
 }
 
 TOOLFN.financiamento=toolFin;TOOLFN.vistoria=toolVist;
+const TGRUPOS=[
+ ['comprar','Escolher e comprar','Do preço justo ao negócio fechado','var(--faixa)',['fipe','comparador','financiamento','consorcio','vistoria','eletrico']],
+ ['custos','Quanto custa ter','A conta que o vendedor não faz','var(--ciano)',['custo','trocar','aplicativo','ipva']],
+ ['comb','Combustível e viagem','Abasteça e viaje com a conta feita','#2BB673',['etanol','combustivel','viagem','consumo']],
+ ['manut','Manutenção e trânsito','Cuide do carro e evite dor de cabeça','#F5B800',['manutencao','pneu','luzes','pontos']]
+];
+const grupoDe=id=>TGRUPOS.find(g=>g[4].includes(id))||TGRUPOS[0];
+const POPULARES=['fipe','custo','financiamento','etanol','comparador','ipva'];
+const semAcento=x=>String(x||'').normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+T.hub=false;T.q='';T.g='';
+const usoFerr=()=>lsGet('pm-tool-uso',[]).filter(id=>TOOLS.some(t=>t[0]===id)).slice(0,4);
+function registraUso(id){const l=[id,...lsGet('pm-tool-uso',[]).filter(x=>x!==id)].slice(0,6);lsSet('pm-tool-uso',l)}
+const toolCard=(t,cor)=>{const [k,nome,desc,kick,ic]=t;return `<button class="tc" data-h="tool" data-id="${k}" style="--gc:${cor}"><span class="ti">${TICON[ic]}</span><span class="tx"><b>${nome}</b><span>${desc}</span></span><i class="ar" aria-hidden="true">→</i></button>`};
 SCREENS.ferramentas=function(){
-  return hubnav('ferramentas')+`<main class="wrap wide"><section class="sec"><h2>Ferramentas</h2><p class="sub">Calcule antes de decidir.</p></section>
-  <div class="trail static" role="tablist">${TOOLS.map(([k,t])=>`<button class="chip" data-h="tool" data-id="${k}" aria-pressed="${T.tool===k}">${t}</button>`).join('')}</div>
-  <section class="toolbox" id="toolbox" aria-live="polite">${toolHtml()}</section></main>`;
+  if(!T.hub||!TOOLS.some(x=>x[0]===T.tool)&&false){}
+  if(T.hub)return hubFerramentas();
+  const t=TOOLS.find(x=>x[0]===T.tool)||TOOLS[0],g=grupoDe(t[0]);
+  const irmas=g[4].filter(x=>x!==t[0]).map(x=>TOOLS.find(y=>y[0]===x)).filter(Boolean);
+  return hubnav('ferramentas')+`<main class="wrap wide"><button class="back" data-h="ferrHub">← Todas as ferramentas</button>
+  <div class="th-top" style="--gc:${g[3]}"><span class="gb">${g[1]}</span></div>
+  <section class="toolbox" id="toolbox" aria-live="polite">${toolHtml()}</section>
+  <section class="sec th-more"><h2>Outras em “${g[1]}”</h2><div class="th-grid">${irmas.map(x=>toolCard(x,g[3])).join('')}</div><p class="more"><button class="btn btn-ghost" data-h="ferrHub">Ver todas as ferramentas</button></p></section></main>`;
 };
+function hubFerramentas(){
+  const q=semAcento(T.q).trim(),uso=usoFerr();
+  const casa=t=>!q||semAcento(t[1]+' '+t[2]+' '+t[3]).includes(q);
+  const grupos=TGRUPOS.filter(g=>!T.g||g[0]===T.g).map(g=>[g,g[4].map(id=>TOOLS.find(t=>t[0]===id)).filter(t=>t&&casa(t))]).filter(([g,l])=>l.length);
+  const total=grupos.reduce((a,[,l])=>a+l.length,0);
+  return hubnav('ferramentas')+`<main class="wrap wide th-hub"><section class="sec th-head"><h2>Ferramentas</h2><p class="sub">Ferramentas gratuitas e sem cadastro. Escolha pelo que você quer resolver.</p>
+  <label class="th-search"><span class="sr">Buscar ferramenta</span><input class="field" id="th-q" data-h="thBusca" type="search" placeholder="O que você quer resolver? Ex.: parcela, IPVA, etanol" value="${esc(T.q)}" autocomplete="off"></label>
+  <div class="trail static" role="tablist" aria-label="Grupos"><button class="chip" data-h="thGrupo" data-id="" aria-pressed="${!T.g}">Todas</button>${TGRUPOS.map(g=>`<button class="chip" data-h="thGrupo" data-id="${g[0]}" aria-pressed="${T.g===g[0]}">${g[1]}</button>`).join('')}</div></section>
+  ${!q&&!T.g&&uso.length?`<section class="sec th-rec"><h3>Continue de onde parou</h3><div class="th-grid">${uso.map(id=>TOOLS.find(t=>t[0]===id)).map(t=>toolCard(t,grupoDe(t[0])[3])).join('')}</div></section>`:''}
+  ${grupos.map(([g,l])=>`<section class="th-grupo" style="--gc:${g[3]}"><div class="gh"><span class="dot"></span><div><h3>${g[1]}</h3><p>${g[2]}</p></div></div><div class="th-grid">${l.map(t=>toolCard(t,g[3])).join('')}</div></section>`).join('')||`<div class="empty2"><b>Nenhuma ferramenta encontrada</b>Tente outra palavra, como “parcela”, “combustível” ou “seguro”.<br><button class="btn btn-ghost btn-sm" data-h="thGrupo" data-id="">Limpar busca</button></div>`}
+  <section class="th-dados"><h3>Dados oficiais</h3><div class="th-grid"><button class="tc" data-h="catalogo" style="--gc:var(--ciano)"><span class="ti">${IC.car}</span><span class="tx"><b>Catálogo do Inmetro</b><span>Consumo, autonomia e nota de cada versão.</span></span><i class="ar" aria-hidden="true">→</i></button><button class="tc" data-h="rankings" style="--gc:#2BB673"><span class="ti">${IC.check}</span><span class="tx"><b>Rankings de consumo</b><span>Os mais econômicos, elétricos e com menos CO₂.</span></span><i class="ar" aria-hidden="true">→</i></button><button class="tc" data-h="vendas" style="--gc:var(--faixa)"><span class="ti">${IC.plus}</span><span class="tx"><b>Vendas no Brasil</b><span>Mais vendidos dos últimos 24 meses.</span></span><i class="ar" aria-hidden="true">→</i></button></div></section></main>`;
+}
 function toolHtml(){const t=TOOLS.find(x=>x[0]===T.tool)||TOOLS[0];const f=TOOLFN[t[0]];return `<h3>${t[1]}</h3>`+(f?f():'')}
 function pintaTool(){
   if(S.screen!=='ferramentas')return;const b=document.getElementById('toolbox');if(!b)return;
@@ -3361,7 +3595,7 @@ const catRow=r=>{
 };
 SCREENS.catalogo=function(){
   const l=catLista(),cats=[...new Set(CAT.map(r=>r.cat))].sort(),sel=(k,a,t)=>`<select class="field" id="ct-${k}" data-h="catSet" data-k="${k}" aria-label="${t}"><option value="">${t}</option>${a.map(x=>`<option ${CT[k]===x?'selected':''}>${esc(x)}</option>`).join('')}</select>`;
-  return hubnav('catalogo')+`<main class="wrap wide"><section class="sec"><h2>Catálogo oficial</h2><p class="sub">${CAT.length} versões de carros à venda em 2026, com consumo medido pelo Inmetro. Fonte: ${esc(CATALOGO.fonte)}. Consumo em km/l, cidade / estrada. A letra colorida é a nota PBE do carro na categoria, de A (mais eficiente) a E.</p></section>
+  return hubnav('catalogo')+`<main class="wrap wide"><section class="sec"><h2>Catálogo oficial</h2><p class="sub">Carros à venda em 2026, com consumo medido pelo Inmetro. Fonte: ${esc(CATALOGO.fonte)}. Consumo em km/l, cidade / estrada. A letra colorida é a nota PBE do carro na categoria, de A (mais eficiente) a E.</p></section>
   <div class="catf"><input class="field" id="ct-q" data-h="catSet" data-k="q" placeholder="Buscar marca, modelo ou versão" value="${esc(CT.q)}" aria-label="Buscar">${sel('tipo',['Combustão','Híbrido','Plug-in','Elétrico'],'Qualquer motor')}${sel('pbe',['A','B','C','D','E'],'Qualquer nota PBE')}${sel('cat',cats,'Qualquer categoria')}
   <select class="field" id="ct-ord" data-h="catSet" data-k="ord" aria-label="Ordenar"><option value="marca" ${CT.ord==='marca'?'selected':''}>Marca A–Z</option><option value="cons" ${CT.ord==='cons'?'selected':''}>Maior km/l na estrada</option><option value="aut" ${CT.ord==='aut'?'selected':''}>Maior autonomia (elétricos)</option></select></div>
   <p class="mut" id="ct-n">${l.length} ${plural(l.length,'resultado','resultados')}</p><div class="crs" id="crs">${l.slice(0,CT.n).map(catRow).join('')||'<div class="empty2"><b>Nada encontrado</b>Mude a busca ou os filtros.</div>'}</div>
@@ -3674,7 +3908,7 @@ const RS={kind:'econ',cat:''};
 const rkItem=(x,i,mx,asc)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)} · ${esc(x.r.cat)}</span></span>${barra(asc?mx/x.v:x.v,asc?mx/Math.min(...[x.v]):mx)}<span class="vl">${esc(x.txt)}</span></li>`;
 function miniRanking(n=5){
   const l=rankingCat('econ',{n});if(!l||!l.length)return '';const mx=l[0].v;
-  return `<section class="sec" aria-labelledby="mr-h"><h2 id="mr-h">Os mais econômicos de 2026</h2><p class="sub">Consumo oficial do Inmetro, no ciclo combinado, entre ${CAT.length} versões à venda.</p>
+  return `<section class="sec" aria-labelledby="mr-h"><h2 id="mr-h">Os mais econômicos de 2026</h2><p class="sub">Consumo oficial do Inmetro, no ciclo combinado, entre os carros à venda.</p>
   <ol class="rk">${l.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)}</span></span>${barra(x.v,mx)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>
   <p class="more"><button class="btn btn-ghost" data-h="rankings">Ver todos os rankings</button></p></section>`;
 }
@@ -3682,13 +3916,102 @@ SCREENS.rankings=function(){
   const cats=[...new Set(CAT.map(r=>r.cat))].sort();const asc=RS.kind==='efic'||RS.kind==='co2';
   const l=rankingCat(RS.kind,{cat:RS.cat,n:15})||[];const best=l[0]?l[0].v:1;
   const usaCat=!['autonomia','efic','plugin'].includes(RS.kind);
-  return hubnav('rankings')+`<main class="wrap wide"><section class="sec"><h2>Rankings do Inmetro</h2><p class="sub">Consumo, autonomia e emissões medidos pelo Inmetro (Tabela PBE Veicular 2026), sem estimativa. ${CAT.length} versões, ${new Set(CAT.map(catKey)).size} combinações de modelo, motor e câmbio.</p></section>
+  return hubnav('rankings')+`<main class="wrap wide"><section class="sec"><h2>Rankings do Inmetro</h2><p class="sub">Consumo, autonomia e emissões medidos pelo Inmetro (Tabela PBE Veicular 2026), sem estimativa.</p></section>
   <div class="trail static" role="tablist">${Object.entries(RK_TIPOS).map(([k,[t]])=>`<button class="chip" data-h="rkTipo" data-id="${k}" aria-pressed="${RS.kind===k}">${t}</button>`).join('')}</div>
   <div class="tf">${usaCat?`<label>Categoria<select class="field" id="rk-cat" data-h="rkCat"><option value="">Todas as categorias</option>${cats.map(c=>`<option ${RS.cat===c?'selected':''}>${esc(c)}</option>`).join('')}</select></label>`:''}</div>
   <p class="mut">${esc(RK_TIPOS[RS.kind][1])}. Mostra a melhor versão de cada modelo e motor.</p>
   ${l.length?`<ol class="rk big">${l.map((x,i)=>`<li><span class="pos">${i+1}º</span>${silDeCat(x.r,'mini')}<span class="nm"><b>${esc(x.r.marca)} ${esc(x.r.modelo)}</b><span class="mut">${esc(x.r.versao)} · ${esc(x.r.motor)} · ${esc(x.r.cat)}${x.r.pbe?` · nota ${esc(x.r.pbe)}`:''}${x.r.conpet?' · selo Conpet':''}</span></span>${barra(asc?best/x.v:x.v,asc?1:best)}<span class="vl">${esc(x.txt)}</span></li>`).join('')}</ol>`:'<div class="empty2"><b>Nada nesta combinação</b>Escolha outra categoria.</div>'}
   <p class="foot">Fonte: Tabela PBE Veicular 2026 (Inmetro/Conpet). O consumo do Inmetro é medido em laboratório e costuma ser mais favorável que o uso real.</p></main>`;
 };
+
+/* ===================== FROTA COMPLETA PARA A GARAGEM (atuais, antigos e clássicos) ===================== */
+/* Nomes de modelos que rodaram (ou rodam) no Brasil. Servem só para a pessoa escolher em lista; não trazem dados técnicos. */
+const FROTA_EXTRA=`Chevrolet:Opala,Chevette,Monza,Kadett,Ipanema,Omega,Vectra,Astra,Corsa,Celta,Prisma,Classic,Agile,Meriva,Zafira,Cobalt,Spin,Cruze,Sonic,Tracker,Onix,Onix Plus,Montana,S10,Silverado,Blazer,D-20,C-10,A-20,Veraneio,Caravan,Captiva,Equinox,Trailblazer,Bolt EUV,Camaro,Corvette,Marajó,Chevy 500,Joy,Joy Plus
+Fiat:147,Uno,Elba,Premio,Fiorino,Oggi,Tempra,Tipo,Palio,Palio Weekend,Siena,Strada,Marea,Brava,Doblò,Stilo,Idea,Punto,Linea,Bravo,Grand Siena,Mobi,Argo,Cronos,Pulse,Fastback,Toro,Fiorino,Ducato,Scudo,500,500e,Freemont,Uno Mille,Palio Adventure,Strada Adventure,Panorama
+Volkswagen:Fusca,Kombi,Brasília,Variant,TL,SP2,Passat,Santana,Quantum,Gol,Gol Quadrado,Gol Bola,Parati,Saveiro,Voyage,Logus,Pointer,Apollo,Polo,Polo Sedan,Fox,CrossFox,SpaceFox,Golf,Jetta,Bora,Tiguan,Touareg,Up!,Amarok,Virtus,Nivus,T-Cross,Taos,Saveiro Cross,Kombi Last Edition,Gol G1,Gol G2,Gol G3,Gol G4,Gol G5,Gol G6,Gol G7,Gol G8,Delivery,Constellation,ID.4,ID.Buzz
+Ford:Corcel,Corcel II,Belina,Del Rey,Pampa,Maverick,Landau,Galaxie,Rural,F-75,F-100,F-1000,F-250,Escort,Verona,Royale,Logus,Fiesta,Ka,Ka+,Focus,Fusion,Ecosport,EcoSport,Edge,Courier,Mondeo,Orion,Territory,Ranger,Bronco,Mustang,Maverick,Transit,F-150,Explorer,Taurus,KA Sedan,Fiesta Sedan,Puma
+Honda:Civic,City,Fit,Accord,CR-V,HR-V,WR-V,Pilot,Prelude,Legend,Integra,NSX,Odyssey,Elysion,Insight,e:Ny1,ZR-V,Civic Si,Civic Type R,Civic G10,Civic G11,City Hatchback,Fit Twist,Fit Cross
+Toyota:Bandeirante,Corolla,Corolla Cross,Etios,Etios Sedan,Yaris,Yaris Sedan,Yaris Cross,Hilux,Hilux SW4,SW4,Camry,RAV4,Prius,Land Cruiser,Land Cruiser Prado,Avalon,Supra,GR86,Fielder,Sienna,Highlander,Tacoma,Tundra,Corolla Fielder
+Hyundai:HB20,HB20S,HB20X,Creta,Tucson,ix35,i30,i30 CW,Azera,Veloster,Santa Fe,Elantra,Sonata,HR,Kona,Atos,Accent,Excel,Galloper,Grand Santa Fe,Ioniq,Ioniq 5,Palisade,Equus,Genesis,Terracan,Trajet,Coupe
+Renault:Clio,Sandero,Sandero Stepway,Logan,Duster,Duster Oroch,Oroch,Kwid,Captur,Megane,Megane Grand Tour,Scénic,Symbol,Twingo,Fluence,Master,Kangoo,Express,Laguna,R12,R18,Rafale,Koleos,Zoe,Kardian,Boreal,Safrane,19
+Peugeot:106,205,206,206 SW,207,207 Passion,208,208 GT,301,306,307,308,405,406,407,408,2008,3008,5008,Partner,Hoggar,Boxer,Expert,RCZ,Rifter,e-208,e-2008,Landtrek
+Citroën:2CV,AX,BX,ZX,Xantia,Xsara,Xsara Picasso,C3,C3 Aircross,C3 Picasso,C4,C4 Cactus,C4 Lounge,C4 Pallas,C4 Picasso,C5,C5 Aircross,C-Elysée,DS3,DS4,DS5,Aircross,Berlingo,Jumper,Jumpy,Basalt,ë-C3,Saxo,Evasion,Picasso
+Nissan:March,Versa,Sentra,Kicks,Frontier,Livina,Grand Livina,Tiida,Altima,Pathfinder,Leaf,Maxima,Murano,X-Trail,Juke,370Z,GT-R,Quest,Xterra,Pickup
+Mitsubishi:L200,L200 Triton,Pajero,Pajero Full,Pajero Sport,Pajero TR4,Pajero Dakar,ASX,Outlander,Lancer,Eclipse,Eclipse Cross,Space Wagon,Colt,Galant,Mirage,Airtrek,3000GT,Evo
+Kia:Sportage,Cerato,Sorento,Picanto,Soul,Bongo,Stonic,Carnival,Niro,Mohave,Optima,Rio,Sephia,Shuma,Clarus,Magentis,Opirus,Carens,Besta,EV6,EV5,Seltos
+Jeep:Willys,CJ-5,CJ-7,Wrangler,Renegade,Compass,Commander,Cherokee,Grand Cherokee,Gladiator,Avenger
+Caoa Chery:Tiggo 2,Tiggo 3X,Tiggo 5X,Tiggo 7,Tiggo 8,Arrizo 5,Arrizo 6,QQ,Celer,Cielo,Face,Eastar,S5,Tiggo
+Lifan:320,520,530,620,X60,X80,Foison,Lifan 320
+JAC:J2,J3,J3 Turin,J5,J6,J6 Turin,T40,T50,T60,T8,iEV20,iEV40,E-JS1,E-J7
+Land Rover:Defender,Discovery,Discovery Sport,Evoque,Freelander,Range Rover,Range Rover Sport,Range Rover Velar,Series III
+Mercedes-Benz:180,190,200,220,230,280,300,500,Classe A,Classe B,Classe C,Classe E,Classe S,Classe G,CLA,CLK,GLA,GLC,GLE,GLS,ML,SLK,Sprinter,Vito,L-608,Actros,SL,CLS,EQA,EQB
+BMW:Série 1,Série 2,Série 3,Série 4,Série 5,Série 6,Série 7,X1,X2,X3,X4,X5,X6,Z3,Z4,M2,M3,M4,M5,325i,318i,320i,328i,330i,i3,i4,iX,iX1,iX3,Isetta
+Audi:80,100,A1,A3,A4,A5,A6,A7,A8,Q2,Q3,Q5,Q7,Q8,TT,R8,e-tron,Q4 e-tron,S3,RS3,RS6
+Volvo:240,850,S40,S60,S80,S90,V40,V50,V60,V70,V90,XC40,XC60,XC70,XC90,C30,C40,EX30,EX90,740,940
+Porsche:911,718,Boxster,Cayman,Cayenne,Macan,Panamera,Taycan,944,924,928,356,Carrera GT
+Suzuki:Jimny,Vitara,Swift,Grand Vitara,Samurai,SX4,S-Cross,Baleno,Celerio,Fronx,Ignis,Alto,Sidekick
+Dodge:Dakota,Journey,Charger,Challenger,Durango,Caliber,Avenger,Viper,Ram,Magnum,Neon,Stratus
+Chrysler:PT Cruiser,300C,Neon,Stratus,Town & Country,Voyager,Sebring,Caravan,Grand Caravan
+Ram:1500,2500,3500,Rampage,Dakota
+Mini:Cooper,Cooper S,Countryman,Clubman,Paceman,Convertible,John Cooper Works,Electric
+Lexus:CT 200h,ES,GS,IS,LS,LX,NX,RX,UX,RC,LC,LFA
+Subaru:Impreza,Forester,Outback,XV,WRX,Legacy,Crosstrek,BRZ,Tribeca,Levorg,Justy,SVX
+SsangYong:Korando,Actyon,Actyon Sports,Kyron,Rexton,Musso,Tivoli,Istana
+Troller:T4,Pantanal,RF
+Agrale:Marruá,Marruá AM,Furgão
+Gurgel:BR-800,Supermini,X12,Xavante,Carajás,Itaipu,Tocantins,Delta,G15
+BYD:Dolphin,Dolphin Mini,Dolphin Plus,Seal,Song Plus,Song Pro,Yuan Plus,Yuan Pro,Tan,Han,King,Shark,Seagull,Sealion 6,Sealion 7,Atto 3,e6,Qin,F3
+GWM:Haval H6,Haval H6 GT,Ora 03,Poer,Tank 300,Wingle
+Alfa Romeo:145,146,147,155,156,164,166,GTV,Spider,Brera,MiTo,Giulietta,Giulia,Stelvio,Tonale,4C,33
+Smart:Fortwo,Forfour,Roadster
+Land Rover Série:Defender 90,Defender 110
+Seat:Ibiza,Leon,Toledo,Cordoba,Altea,Alhambra,Ateca,Arona
+Skoda:Fabia,Octavia,Superb,Yeti,Kodiaq,Karoq
+Daewoo:Espero,Lanos,Nubira,Matiz,Tico,Leganza
+Effa:Hafei,Towner
+Mazda:323,626,MX-5,MX-3,RX-7,RX-8,3,6,CX-3,CX-5,CX-9,Miata
+Opel:Kadett,Manta,Ascona,Vectra,Corsa,Astra
+Rover:Mini,200,400,600,Metro
+SEAT:Ibiza,Toledo
+Triumph:TR6,Spitfire,Stag
+MG:3,5,6,ZS,HS,MG4,Marvel R,Cyberster,TF,ZT,F
+Ferrari:308,328,348,355,360,430,458,488,F8,812,California,Portofino,Roma,296,SF90,Testarossa
+Lamborghini:Countach,Diablo,Murciélago,Gallardo,Huracán,Aventador,Urus,Revuelto
+Maserati:Ghibli,Quattroporte,GranTurismo,Levante,MC20,Grecale,3200 GT,Coupé
+Jaguar:XE,XF,XJ,F-Type,F-Pace,E-Pace,I-Pace,S-Type,X-Type
+Bentley:Continental,Flying Spur,Bentayga,Mulsanne
+Rolls-Royce:Ghost,Phantom,Wraith,Cullinan,Dawn,Silver Shadow
+Tesla:Model 3,Model S,Model X,Model Y,Cybertruck
+Leapmotor:C10,T03,C11
+Zeekr:001,X,7X
+GAC:GS3,GS4,GS8,Aion Y,Aion S,Aion V,Emkoo,M8
+Omoda:5,E5,Jaecoo 7
+Jaecoo:J7,J5
+Geely:EX5,EX2,Geometry,Coolray,Emgrand
+Denza:D9,N7,Z9
+Jetour:T2,Dashing,X70
+Caoa Changan:Hunter,Uni-T,Uni-K
+Foton:Tunland,View,Aumark
+Farizon:SV,SuperVan
+McLaren:570S,720S,Artura,GT
+Kia Motors:Bongo
+Iveco:Daily,Eurocargo,Stralis
+Scania:R 450,Streamline,G 410
+Volkswagen Caminhões:Delivery,Constellation,Meteor
+Ford Caminhões:Cargo
+DAF:XF,CF
+Fiat Professional:Fiorino,Strada,Toro,Ducato
+Renault Trucks:Master
+Land:Rover`;
+const FROTA=(()=>{
+  const m=new Map();
+  const add=(marca,mod)=>{marca=String(marca||'').trim();mod=String(mod||'').trim();if(!marca||!mod)return;if(!m.has(marca))m.set(marca,new Set());m.get(marca).add(mod)};
+  FROTA_EXTRA.split('\n').forEach(l=>{const i=l.indexOf(':');if(i<0)return;const marca=l.slice(0,i);l.slice(i+1).split(',').forEach(x=>add(marca,x))});
+  CARS.forEach(c=>add(c.m,c.mod));
+  CAT.forEach(r=>add(r.marca,r.modelo));
+  const nomes=[...m.keys()].filter(k=>m.get(k).size>=1&&!/^(Land|Land Rover Série|Kia Motors|Ford Caminhões|Volkswagen Caminhões|Renault Trucks|Fiat Professional|Iveco|Scania|DAF|SEAT|Rover|Effa|Opel|Triumph)$/.test(k)||k==='Land Rover').sort((a,b)=>a.localeCompare(b,'pt'));
+  return {marcas:nomes,modelos:marca=>[...(m.get(marca)||[])].sort((a,b)=>a.localeCompare(b,'pt',{numeric:true}))};
+})();
 
 /* ===================== SELETOR DE CARRO (listas, sem digitar) ===================== */
 /* Três listas encadeadas: marca, modelo e versão. O estado de cada seletor fica em T.pk[id]. */
@@ -3749,26 +4072,33 @@ const NOMES={blog:'Blog',discover:'Descobrir',forum:'Fórum',ferramentas:'Ferram
 function rotaAtual(){
   if(S.screen==='post')return 'blog/'+S.post;
   if(S.screen==='perfil')return '@'+S.perfil;
-  if(S.screen==='ferramentas')return 'ferramentas/'+T.tool;
+  if(S.screen==='ferramentas')return T.hub?'ferramentas':'ferramentas/'+T.tool;
   return ROTAS[S.screen]||'';
 }
 function tituloAtual(){
   if(S.screen==='post'){const p=BLOG.find(x=>x.id===S.post);return (p?p.t:'Blog')+' | PossantMatch'}
   if(S.screen==='perfil')return '@'+S.perfil+' | PossantMatch';
-  if(S.screen==='ferramentas'){const t=TOOLS.find(x=>x[0]===T.tool);return (t?t[1]:'Ferramentas')+' | PossantMatch'}
+  if(S.screen==='ferramentas'){const t=TOOLS.find(x=>x[0]===T.tool);return (T.hub||!t?'Ferramentas':t[1])+' | PossantMatch'}
   return NOMES[S.screen]?NOMES[S.screen]+' | PossantMatch':'PossantMatch | Acelere a escolha do seu próximo carro';
 }
 /* Chamada ao fim de cada render: ajusta título e endereço (o botão Voltar do navegador passa a funcionar). */
 function aposRender(){
+  if(S.screen==='intro')contaNumeros();
   try{document.title=tituloAtual()}catch(e){}
   const r=rotaAtual(),h=r?'#/'+r:'';
   if((location.hash||'')!==h&&!(r===''&&!location.hash)){try{history.pushState(null,'',location.pathname+h)}catch(e){}}
+}
+function contaNumeros(){
+  if(window.__contou||typeof matchMedia==='function'&&matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  const els=document.querySelectorAll('.stats b[data-n]');if(!els.length||typeof requestAnimationFrame!=='function')return;window.__contou=true;
+  const t0=Date.now(),D=900;
+  const f=()=>{const k=Math.min(1,(Date.now()-t0)/D),e=1-Math.pow(1-k,3);document.querySelectorAll('.stats b[data-n]').forEach(x=>{x.textContent=fmtN(+x.dataset.n*e)});if(k<1)requestAnimationFrame(f)};requestAnimationFrame(f);
 }
 function telaDaRota(hash){
   const r=String(hash||'').replace(/^#\/?/,'').split('/'),a=r[0]||'',b=r[1]||'';
   if(a==='blog'&&b&&BLOG.some(x=>x.id===b)){S.post=b;return 'post'}
   if(a[0]==='@'&&usuarioOk(a.slice(1))){S.perfil=a.slice(1);return 'perfil'}
-  if(a==='ferramentas'&&b&&TOOLS.some(x=>x[0]===b))T.tool=b;
+  if(a==='ferramentas'){if(b&&TOOLS.some(x=>x[0]===b)){T.tool=b;T.hub=false}else T.hub=true}
   if(a==='match')return ['q','resumo','res'].includes(S.screen)?S.screen:'q';
   const e=Object.entries(ROTAS).find(([k,v])=>v===a&&!['q','resumo','res'].includes(k));
   return e?e[0]:'intro';
@@ -3792,16 +4122,20 @@ document.addEventListener('click',e=>{
   const t=e.target.closest('[data-h]');if(!t||/^(SELECT|INPUT|TEXTAREA|FORM)$/.test(t.tagName))return;const h=t.dataset.h;
   const simple={home:'intro',blog:'blog',discover:'descobrir',forum:'forum',ferramentas:'ferramentas',catalogo:'catalogo',garagem:'garagem',admin:'admin',privacidade:'privacidade',termos:'termos'};
   const tela={home:'intro',blog:'blog',discover:'discover',forum:'forum',ferramentas:'ferramentas',catalogo:'catalogo',garagem:'garagem',admin:'admin',privacidade:'privacidade',termos:'termos',vendas:'vendas',rankings:'rankings',pessoas:'pessoas',mensagens:'mensagens'};
+  if(h==='ferramentas')T.hub=true;
   if(tela[h])return ir(tela[h]);
   switch(h){
     case 'post':S.post=t.dataset.id;return ir('post');
-    case 'tool':T.tool=t.dataset.id;lsSet('pm-tool',T.tool);return ir('ferramentas');
+    case 'tool':T.tool=t.dataset.id;T.hub=false;lsSet('pm-tool',T.tool);registraUso(T.tool);return ir('ferramentas');
+    case 'ferrHub':T.hub=true;return ir('ferramentas');
+    case 'thGrupo':T.g=t.dataset.id;return render();
     case 'entrar':return abreAuth(t.dataset.m||'entrar',t.dataset.why||'');
     case 'amodo':{const g=id=>(document.getElementById(id)||{}).value||'';SH.auth={...SH.auth,modo:t.dataset.m,email:g('au-email'),nasc:g('au-nasc'),enviado:false};return fsheet()}
     case 'verSenha':{const i=document.getElementById(t.dataset.for||'au-senha');if(i)i.type=i.type==='password'?'text':'password';return}
     case 'fclose':fechaSh();return fsheet();
     case 'conta':SH.conta=true;return fsheet();
     case 'abreConta':SH.conta=true;return fsheet();
+    case 'abreCfg':SH.conta='cfg';return fsheet();
     case 'abreSenha':SH.conta='senha';return fsheet();
     case 'abreExcluir':SH.conta='excluir';return fsheet();
     case 'trocaSenha':{const i=document.getElementById('ct-senha'),m=document.getElementById('ct-msg');const v=i?i.value:'';
@@ -3817,7 +4151,7 @@ document.addEventListener('click',e=>{
     case 'vote':case 'like':case 'send':case 'reply':case 'apagarCom':case 'apagarPost':return fAct(h,t);
     case 'aprova':case 'rejeita':case 'novidade':case 'delNov':return admAct(h,t);
     case 'fav':return toggleFav(t.dataset.id);
-    case 'cmpAdd':{const c=T.cmp.filter(x=>x!==t.dataset.id);c.unshift(t.dataset.id);T.cmp=c.slice(0,3);lsSet('pm-cmp',T.cmp);T.tool='comparador';return ir('ferramentas')}
+    case 'cmpAdd':{const c=T.cmp.filter(x=>x!==t.dataset.id);c.unshift(t.dataset.id);T.cmp=c.slice(0,3);lsSet('pm-cmp',T.cmp);T.tool='comparador';T.hub=false;return ir('ferramentas')}
     case 'vist':{const k=t.dataset.id,v=T.vist[k]||0;T.vist[k]=(v+1)%3;lsSet('pm-vist',T.vist);return pintaTool()}
     case 'vistLimpa':T.vist={};lsSet('pm-vist',T.vist);return pintaTool();
     case 'luzCor':T.f.luzes={cor:t.dataset.id};return pintaTool();
@@ -3826,8 +4160,8 @@ document.addEventListener('click',e=>{
     case 'ttLoad':return ttCarrega();
     case 'catMais':CT.n+=30;return pintaCat();
     case 'baixarDados':return DB.exportar().then(o=>{baixaJson(o,'meus-dados-possantmatch.json');aviso('Seus dados foram baixados.')}).catch(x=>aviso(x.message||ERR.generico));
-    case 'perfil':if(!exigeConta('Crie sua conta para ver perfis.'))return;S.perfil=t.dataset.u;return ir('perfil');
-    case 'editaPerfil':SH.perfil={...PM.me};return fsheet();
+    case 'perfil':if(!exigeConta('Crie sua conta para ver perfis.'))return;S.perfil=t.dataset.u||(PM.me&&PM.me.usuario);return ir('perfil');
+    case 'editaPerfil':SH.conta=null;SH.perfil={...PM.me};return fsheet();
     case 'removeFoto':SH.perfil={...lePerfilForm(),foto:''};return fsheet();
     case 'seguir':return seguirAct(t.dataset.id);
     case 'bloquear':return bloquearAct(t.dataset.id);
@@ -3853,6 +4187,7 @@ document.addEventListener('input',e=>{
   if(h==='etSet'){T.eta[t.dataset.k]=t.value;pintaTool()}
   else if(h==='finSet'){T.fin[t.dataset.k]=t.value;pintaTool()}
   else if(h==='catSet'&&t.tagName==='INPUT'){CT[t.dataset.k]=t.value;CT.n=30;pintaCat()}
+  else if(h==='thBusca'){T.q=t.value;refoca('th-q')}
   else if(h==='pessoaBusca'){PF.busca=t.value;refoca('ps-q')}
   else if(h==='vsBusca'){VS.q=t.value;VS.n=30;refoca('vs-q')}
 });
