@@ -1071,6 +1071,29 @@ table.vtbl td.win{color:#14804A;font-weight:800;background:rgba(43,182,115,.1)}
 table.vtbl th,table.vtbl td{white-space:normal!important;word-break:normal}
 table.vtbl tbody th{padding-right:6px}
 .res-fipe h3{hyphens:none!important;overflow-wrap:break-word}
+/* garagem no celular: uma coluna, texto nunca quebra letra por letra */
+.gc>div{min-width:0}.gc b,.gc .ap,.gc p{overflow-wrap:break-word;word-break:normal;hyphens:auto}
+@media (max-width:760px){
+  .gcols{grid-template-columns:minmax(0,1fr)!important;gap:18px!important}
+  .gcols h3{font-size:17px;flex-wrap:nowrap;justify-content:space-between}
+  .gc{flex-wrap:wrap;gap:10px;padding:12px}
+  .gc .gph{width:64px;height:64px}
+  .gc>div{flex:1 1 140px}
+  .gc .lk{margin-left:auto}
+}
+/* contraste no tema claro: laranja e verde mais escuros para texto pequeno */
+:root[data-theme="light"]{--txt-laranja:#BF3A0B;--txt-verde:#13703F}
+:root[data-theme="light"] .kicker:not(.on-dark),:root[data-theme="light"] .bcx .k,:root[data-theme="light"] .bl .k,:root[data-theme="light"] .fl .k,:root[data-theme="light"] .hm .k,:root[data-theme="light"] .post .k,:root[data-theme="light"] .fpi .k{color:var(--txt-laranja)}
+:root[data-theme="light"] .hubnav .brand b,:root[data-theme="light"] .hubnav .brand span b{color:var(--txt-laranja)}
+:root[data-theme="light"] .vl2 i.up,:root[data-theme="light"] .up{color:var(--txt-verde)}
+:root[data-theme="light"] table.vtbl td.win{color:var(--txt-verde)}
+:root[data-theme="light"] .post.feat .k{color:#7FD8E8}
+/* botão de tema: só o ícone no celular (o texto "Claro/Escuro" estourava o círculo) */
+@media (max-width:760px){
+  .hubnav .tema::after,:root[data-theme] .hubnav .tema::after,:root[data-theme="dark"] .hubnav .tema::after{content:none!important}
+  .hubnav .tema{width:40px!important;height:40px!important;padding:0!important;border-radius:50%}
+  .hubnav .acct{height:40px;display:inline-flex;align-items:center}
+}
 </style>
 </head>
 <body>
